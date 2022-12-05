@@ -1,0 +1,27 @@
+.app-link{
+    color: #0f2c52;
+}
+
+.app-link:hover {
+    font-weight: 600;
+    color: #1f57a0;
+}
+
+.app-caja{
+	border: 1px solid #0028566b;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.app-caja:hover{
+	background: #eee;
+	border: 1px solid #002856;
+}
+
+.ruta_app{
+	font-size: 16px;
+}
+
+.ruta_app:hover{
+	background: #eee !important;
+}

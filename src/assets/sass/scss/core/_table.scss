@@ -1,0 +1,45 @@
+.table {
+    // color: black !important;
+    vertical-align: middle !important;
+}
+
+table.basic {
+  border-collapse: collapse;
+  background-color: transparent;
+  font-size: 13px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+table th{
+  text-align: center;
+}
+
+.tr_color_yellow{
+  background: white;
+  background-color: white;
+}
+
+.tr_color_yellow:hover{
+  background: yellow;
+  background-color: yellow;
+}
+
+.tr_color_fafafa{
+  background: white;
+  background-color: white;
+}
+
+.tr_color_fafafa:hover{
+  background: #fafafa;
+  background-color: #fafafa;
+}
+
+.tr_color_e_yellow{
+  background: #eee;
+  background-color: #eee;
+}
+
+.tr_color_e_yellow:hover{
+  background: yellow;
+  background-color: yellow;
+}

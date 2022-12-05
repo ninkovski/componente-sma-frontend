@@ -1,0 +1,72 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+.sidebar .sidebar-app {
+    position: relative;
+    top: 60px;
+    height: 120px;
+    z-index: 4;
+    transition: all .2s ease-out
+}
+
+.sidebar .sidebar-content {
+    position: relative;
+    top: 20px;
+    height: calc(80% - 70px);
+    z-index: 4;
+    border-right: 0px solid #e4e4e4;
+    
+}
+
+.sidebar .sidebar-footer {
+    position: relative;
+    bottom: 10px;
+    height: 50px;
+    z-index: 16;
+    background-color: #0F2C52;
+}
+
+html.color-sidebar .sidebar-wrapper .sidebar-header {
+    border-right: none;
+    border-bottom: none;
+    box-shadow: none;
+    transition: all .500ms ease-out
+    //box-shadow: 0 2px 0 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%) !important;
+}
+
+.form-check-input:checked {
+    background-color: #0F2C52;
+    border-color: #0F2C52;
+}
+
+@media only screen and (max-width: 425px) {
+    button span {
+        display: none;
+    }
+}
+
+.text-sm {
+    font-size: 0.75em;
+    font-weight: 700;
+    padding: 0.25rem 0.35rem;
+}
+
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0px;
+}
+
+.wrapper.nav-collapsed .topbar {
+    left: 0px;
+}
+
+.page-wrapper {
+    //margin-top: 50px;
+    margin-top: 45px;
+}
+
+.user-box {
+    margin-left: 0px;
+}
+

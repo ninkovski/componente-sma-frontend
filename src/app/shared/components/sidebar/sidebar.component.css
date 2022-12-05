@@ -1,0 +1,40 @@
+.side_logo_app{
+	/*margin-top: 20px; 
+	filter: brightness(50);
+	padding-left: 5px;
+	width: 55px;*/
+    filter: brightness(50);
+    width: 60px;
+
+    /*
+    background: white;
+    border-radius: 5%;
+    box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%), 0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%);
+	*/
+}
+
+.caja_app{
+	background: transparent;
+	display: flex;
+	padding: 2px 4px;
+    flex-direction: row;
+    margin-bottom: 0px;
+    border-bottom: 1px solid #ffffff1f !important;
+}
+
+.app_siglas{
+	font-size: 18px;
+    font-weight: 600;
+}
+
+.app_nombre{
+	font-size: 14px;
+    line-height: 14px;
+    font-weight: 600;
+    color: #ffc107;
+    margin-top: -3px;
+}
+
+.app_entidad{
+	font-size: 12px;
+}

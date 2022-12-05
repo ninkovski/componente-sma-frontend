@@ -1,0 +1,86 @@
+<div *ngIf="!autenticated" id="app-spinner">
+	<div class="spinner-border"  role="status" style="color: #ff9800;"></div>
+	<h2 style="margin-top: 10px; margin-bottom: -2px;"><b>Ministerio Público</b></h2>
+    <h2 style="margin-top: -2px; font-size: 22px;">FISCALÍA DE LA NACIÓN</h2>
+</div>
+
+<div class="bg-login" *ngIf="autenticated">
+	<!--wrapper-->
+<div class="wrapper">
+	<header class="login-header shadow">
+		<nav class="navbar navbar-expand-lg navbar navbar-dark bg-mpfn rounded fixed-top rounded-0 shadow-sm">
+			<div class="container-fluid">
+				<a class="navbar-brand">
+					<img src="assets/images/mpfn.png" width="150" alt="" style="margin: -20px 6px;" />
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+				</button>
+<!-- 				<div class="collapse navbar-collapse" id="navbarSupportedContent1">
+					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+						<li class="nav-item"> <a class="nav-link active" aria-current="page" href="#" (click)="$event.preventDefault()"><i class='bx bx-home-alt me-1'></i>Auth</a>
+						</li>
+						<li class="nav-item"> <a class="nav-link" href="#" (click)="$event.preventDefault()"><i class='bx bx-book me-1'></i>Documentación</a>
+						</li>
+						<li class="nav-item"> <a class="nav-link" href="#" (click)="$event.preventDefault()"><i class='bx bx-video me-1'></i>Manual de usuario</a>
+						</li>
+					</ul>
+				</div> -->
+			</div>
+		</nav>
+	</header>
+	<div class="section-authentication-signin d-flex align-items-center justify-content-center my-5 my-lg-4">
+		<div class="container-fluid">
+			<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+				<div class="col mx-auto">
+					<div class="card mt-5 mt-lg-0">
+						<div class="card-body">
+							<div class="border p-4 rounded">
+								<div class="text-center" *ngIf="!errorApp && !app">
+									<div class="spinner-grow" role="status"> <span class="visually-hidden">Loading...</span>
+									</div>
+								</div>
+								<div *ngIf="!errorApp && app">	
+								<div class="text-center pb-2">
+									<img src="{{app.logo_sm}}" style="width: 70px; margin-right: 4px;" />
+								</div>
+								<h3 class="text-center"><b>{{app.siglas}}</b></h3>
+								<div class="card-title text-uppercase text-center pb-1">{{app.nombre}}</div>
+								<div *ngIf="user" class="login-separater text-center mb-3"> <span>SESIÓN ACTIVA</span>
+								</div>
+								<div class="row">
+									<div class="col-12">
+										<div class="d-grid">
+											<button type="button" class="btn btn-primary" (click)="loginApp()" *ngIf="!user"><i class="bx bxs-lock-open"></i> Iniciar sesión</button>
+											<button (click)="irApp()" *ngIf="user" type="button" class="btn btn-primary btn-block mt-3">
+												<img src="{{user.foto_rec}}" style="width: 30px; margin-right: 2px; border-radius: 50%;" /> {{user.nombres}} {{user.papellido}} <i aria-hidden="true" class="fa fa-arrow-right"></i>
+											</button>
+										</div>
+									</div>
+								</div>
+								</div>
+
+								<div *ngIf="errorApp && !app">
+								<div class="col-md-12">
+									<div class="text-center">
+										<h2 class="error-sub-title text-danger">Error aplicación cliente</h2>
+										<p class="error-message text-dark" [innerHTML]="errorMsg"></p>
+										<div class="mt-4"> <a routerLink="/" class="btn btn-primary btn-round m-1">Ir a la página inicial </a>
+										</div>
+									</div>
+								</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--end row-->
+		</div>
+	</div>
+	<footer class="shadow-sm border-top p-2 text-center fixed-bottom bg-mpfn">
+		<p class="mb-0 text-white">Es propiedad del Ministerio Público © {{year}}. Todos los derechos reservados.</p>
+	</footer>
+</div>
+<!--end wrapper-->
+</div>

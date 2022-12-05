@@ -1,0 +1,76 @@
+<div class="modal-header bg-mpfn">
+	<h5 class="modal-title text-white"><i class="{{icon}}"></i> {{titulo}} Ubicaciones de la dependencia</h5>
+	<a class="an-link" (click)="cancel()" tabIndex="-1">
+		<i class='bx bx-x mp-close text-white'></i>
+	</a>
+</div>
+<form [formGroup]="myform" autocomplete="off" style="display: contents;">
+<div class="modal-body bg-fafafa">
+	<div class="row" *ngIf="!cargado">
+        <div class="col-12 text-center p-3">
+            <div class="spinner-border text-primary" role="status"> 
+            <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="cargado" class="p-2">
+    	<div class="row mb-2">
+    		<div>
+    			<p class="mb-0">Distrito fiscal: {{data?.distrito_fiscal_nombre}}</p>
+    			<p class="mb-0">Dependencia: {{data?.codigo}} - <b>{{data?.nombre}}</b> ({{data?.abreviatura}})</p>
+    			<p class="mb-0" *ngIf="data?.ubigeo_nombre">Ubigeo: {{data?.ubigeo_nombre}}</p>
+    			<p class="mb-0">Ubicaciones: {{ubicaciones.length}}</p>
+    			
+    		</div>
+		</div>
+		<div class="table-responsive" id="myTable">
+	        <table class="table mb-0 table-hover table-bordered table-sm" style="font-size: 13px;">
+	            <thead class="bg-eee">
+	                <tr>
+	                    <th width="30" align="center">#</th>
+	                    <th>Establecimiento</th>
+	                    <th>Planta</th>
+	                    <th>Ambiente</th>
+	                    <th width="60">Editar</th>
+	                    <th width="60">Quitar</th>
+	                </tr>
+	            </thead>
+	            <tbody class="bg-white">
+	                <tr *ngFor="let p of ubicaciones; let i = index" [class.is-dupli]="p.dupli">
+	                    <td align="center" class="align-top">{{i+1}}</td>
+	                    <td class="align-top">
+	                    	<span>{{p.establecimiento.tipo_establecimiento_nombre}}:  {{p.establecimiento.nombre}}</span>
+	                    	<span *ngIf="p.establecimiento.direccion" class="txt-11 sal-linea text-secondary">{{p.establecimiento.direccion}}</span>
+	                    	<span *ngIf="p.establecimiento.ubigeo_nombre" class="txt-11 sal-linea text-secondary">{{p.establecimiento.ubigeo_nombre}}</span>
+	                    </td>
+	                    <td class="align-top">{{p.planta_nombre}}</td>
+	                    <td class="align-top">
+	                    	<span *ngIf="p.tipo_ambiente_nombre">{{p.tipo_ambiente_nombre}}<span *ngIf="p.ambiente_numero">: {{p.ambiente_numero}}</span></span>
+	                    	<span *ngIf="p.ambiente_nombre" class="txt-11 sal-linea text-secondary">{{p.ambiente_nombre}}</span>
+	                    </td>
+	                    <td align="center">
+	                    	<a class="an-link ms-2" tabIndex="-1" (click)="addUbica(i, p)">Editar</a>
+	                    </td> 
+	                    <td align="center">
+	                    	<a class="an-link ms-2" tabIndex="-1" (click)="delUbica(i, p)">Quitar</a>
+	                    </td>                   
+	                </tr>
+	            </tbody>
+	        </table>
+	    </div>
+	    <div *ngIf="duplicidad" class="mb-2 mt-2">
+	    	<div>
+	    		<div class="alert alert-danger">Hay establecimientos duplicados, por favor verifique.</div>
+	    	</div>
+        </div>
+        <div class="mt-1 mb-1 p-1">
+        	<button type="button" (click)="addUbica(null, null)" class="btn btn-outline-primary">+ Agregar</button>
+        </div>
+    </div>
+</div>
+<div class="modal-footer d-flex" *ngIf="cargado">
+	<div *ngIf="saving"><div class="spinner-border spinner-border-sm text-primary" role="status"></div><span class="ms-1 me-1">Guardando...</span></div>
+	<button type="button" (click)="cancel()" class="btn btn-outline-dark" [disabled]="saving">CANCELAR</button>
+	<button *ngIf="hay_cambios" type="submit" (click)="saveOrUpdate()" class="btn btn-primary" [disabled]="!myform.valid||saving||duplicidad">{{accion}}</button>
+</div>
+</form>

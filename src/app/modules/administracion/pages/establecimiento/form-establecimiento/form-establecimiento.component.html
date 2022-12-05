@@ -1,0 +1,116 @@
+<div class="modal-header bg-mpfn">
+	<h5 class="modal-title text-white"><i class="{{icon}}"></i> {{titulo}} establecimiento</h5>
+	<a class="an-link" (click)="cancel()" tabIndex="-1">
+		<i class='bx bx-x mp-close text-white'></i>
+	</a>
+</div>
+<!-- {{searching}} -->
+<form [formGroup]="myform" autocomplete="off" style="display: contents;">
+<div class="modal-body bg-eee">
+	<div class="row" *ngIf="!cargado">
+        <div class="col-12 text-center p-3">
+            <div class="spinner-border text-primary" role="status"> 
+            <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="cargado" class="p-2">
+    	<div class="row">
+			<div class="mb-2 required col-12 col-sm-12 col-lg-8">
+				<label for="dfiscal" class="form-label">Distrito fiscal </label>
+				<select id="dfiscal" type="text" class="form-select" formControlName="distrito_fiscal_id" [class.is-invalid]="myform.get('distrito_fiscal_id')?.invalid">
+                    <option value="">- Seleccione -</option>
+                    <option *ngFor="let p of dfiscales" [value]="p.id">{{p.nombre}}</option>
+                </select>
+				<small *ngFor="let error of myform.get('distrito_fiscal_id')?.errors | keyvalue" class="invalid-feedback">
+					<any *ngIf="error.key == 'required'">Este campo es requerido</any>
+				</small>
+			</div>
+			<div class="mb-2 required col-12 col-sm-12 col-lg-4">
+				<label for="testab" class="form-label">Tipo de establecimiento </label>
+				<select id="testab" type="text" class="form-select" formControlName="tipo_establecimiento_id" [class.is-invalid]="myform.get('tipo_establecimiento_id')?.invalid">
+                    <option value="">- Seleccione -</option>
+                    <option *ngFor="let p of testablecimientos" [value]="p.id">{{p.nombre}}</option>
+                </select>
+				<small *ngFor="let error of myform.get('tipo_establecimiento_id')?.errors | keyvalue" class="invalid-feedback">
+					<any *ngIf="error.key == 'required'">Este campo es requerido</any>
+				</small>
+			</div>
+		</div>
+    	<div class="row">
+			<div class="mb-0 required col-12 col-sm-12 col-lg-8">
+				<label for="nombre" class="form-label">Nombre </label>
+				<input id="nombre" type="text" formControlName="nombre" class="form-control text-uppercase" [class.is-invalid]="myform.get('nombre')?.invalid" (keyup)="changeText($event,'nombre')" autofocus="autofocus" />
+				<small class="form-text text-muted mpfn-car-form"> {{myform.value.nombre?.length||'0'}} / 90</small>
+				<small *ngFor="let error of myform.get('nombre')?.errors | keyvalue" class="invalid-feedback">
+					<any *ngIf="error.key == 'required'">Este campo es requerido</any>
+					<any *ngIf="error.key == 'minlength'">Mínimo {{error.value.requiredLength}} caracteres</any>
+					<any *ngIf="error.key == 'maxlength'">Máximo {{error.value.requiredLength}} caracteres</any>
+				</small>
+			</div>
+			<div class="mb-0 required col-12 col-sm-12 col-lg-4">
+				<label for="abreviatura" class="form-label">Abreviatura</label>
+				<input id="abreviatura" type="text" formControlName="abreviatura" class="form-control text-uppercase" [class.is-invalid]="myform.get('abreviatura')?.invalid" (keyup)="changeText($event,'abreviatura')"/>
+				<small class="form-text text-muted mpfn-car-form"> {{myform.value.abreviatura?.length||'0'}} / 40</small>
+				<small *ngFor="let error of myform.get('abreviatura')?.errors | keyvalue" class="invalid-feedback">
+					<any *ngIf="error.key == 'required'">Este campo es requerido</any>
+					<any *ngIf="error.key == 'minlength'">Mínimo {{error.value.requiredLength}} caracteres</any>
+					<any *ngIf="error.key == 'maxlength'">Máximo {{error.value.requiredLength}} caracteres</any>
+				</small>
+			</div>
+			<div class="mb-0 col-12 col-sm-12 col-lg-7">
+				<label for="direccion" class="form-label">Dirección</label>
+				<input id="direccion" type="text" formControlName="direccion" class="form-control text-uppercase" [class.is-invalid]="myform.get('direccion')?.invalid" (keyup)="changeText($event,'direccion')"/>
+				<small class="form-text text-muted mpfn-car-form"> {{myform.value.direccion?.length||'0'}} / 255</small>
+				<small *ngFor="let error of myform.get('direccion')?.errors | keyvalue" class="invalid-feedback">
+					<any *ngIf="error.key == 'minlength'">Mínimo {{error.value.requiredLength}} caracteres</any>
+					<any *ngIf="error.key == 'maxlength'">Máximo {{error.value.requiredLength}} caracteres</any>
+				</small>
+			</div>
+			<div class="mb-2 col-12 col-sm-12 col-lg-5">
+				<label for="ubigeo" class="form-label">Distrito</label>
+				<!-- <input id="ubigeo" type="text" formControlName="direccion" class="form-control text-uppercase" [class.is-invalid]="myform.get('direccion')?.invalid" (keyup)="changeText($event,'direccion')"/> -->
+				<input id="ubigeo" type="search" 
+					class="form-control"
+					formControlName="ubigeo" 
+					[ngbTypeahead]="autoUbigeo" 
+					[resultTemplate]="rtUbigeo"
+					placeholder="Escriba para buscar..."
+					[inputFormatter]="formatUbigeo"
+					(focus)="focus2$.next($any($event).target.value)"
+					(selectItem)="selectedItem($event)"
+					[class.is-invalid]="myform.get('ubigeo')?.invalid"/>
+
+				<small span *ngIf="searching" class="form-text text-muted mpfn-car-form">Buscando...</small>
+				<small span *ngIf="myform.value.ubigeo && ubigeos.length == 0 && !searching && !myform.value.ubigeo?.padre_nombre" class="form-text text-muted mpfn-car-form">No se econtraron registros</small>
+				<small *ngIf="myform.value.ubigeo?.padre_nombre && !searching" class="form-text text-muted mpfn-car-form">{{myform.value.ubigeo?.padre_nombre}} - {{myform.value.ubigeo?.padre_padre_nombre}}</small>
+				<small *ngFor="let error of myform.get('ubigeo')?.errors | keyvalue" class="invalid-feedback">
+					<any *ngIf="error.key == 'require_match'">Seleccione un distrito</any>
+				</small>
+				<ng-template #rtUbigeo let-r="result" let-t="term">
+				  <!-- <img [src]="r.foto_rec" class="mr-1" style="width: 16px"> -->
+				  <i class='bx bx-been-here me-1'></i>
+				  <ngb-highlight [result]="r.nombre" [term]="t"></ngb-highlight>
+				  <span *ngIf="r.padre_nombre"> - {{r.padre_nombre}}</span>
+				  <span *ngIf="r.padre_padre_nombre"> - {{r.padre_padre_nombre}}</span>
+				  <span *ngIf="r.nombre != r.capital"> ({{r.capital}})</span>
+				  
+				</ng-template>
+			</div>
+			<div class="col-12 mb-1 required"><span>Estado</span></div>
+    		<div class="col-12">
+				<div class="form-check form-check-inline" *ngFor="let p of estados">
+				  <input class="form-check-input cursor-pointer" type="radio" formControlName="estado" name="estado" id="radio{{p.codigo}}" [value]="p.codigo">
+				  <label class="form-check-label cursor-pointer" for="radio{{p.codigo}}">{{p.nombre}}</label>
+				</div>
+			</div>
+		</div>
+    </div>
+    
+</div>
+<div class="modal-footer d-flex" *ngIf="cargado">
+	<div *ngIf="saving"><div class="spinner-border spinner-border-sm text-primary" role="status"></div><span class="ms-1 me-1">Guardando...</span></div>
+	<button type="button" (click)="cancel()" class="btn btn-outline-dark" [disabled]="saving">CANCELAR</button>
+	<button type="submit" (click)="saveOrUpdate()" class="btn btn-primary" [disabled]="!myform.valid||saving">{{accion}}</button>
+</div>
+</form>

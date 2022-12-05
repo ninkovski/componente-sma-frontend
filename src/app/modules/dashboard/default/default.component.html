@@ -1,0 +1,71 @@
+<div class="d-flex p-4 pb-1 app-page-title">
+    <div>
+        <div class="p-2 pt-0 pb-0 shadow-sm bg-white page-title-c-icon">
+            <i class="bx bx-home page-title-icon"></i>
+        </div>
+    </div>
+    <div class="ps-3">
+        <h4 class="text-primary mb-0">Tablero</h4>
+        <p class="text-secondary">Indicadores totales por tipos</p>
+    </div>
+</div>
+<div class="p-4 pt-3 pb-0">
+<div class="row" *ngIf="estadisticas">
+	<div class="col-12 col-sm-6 col-lg-4 col-xl-3 pb-3">
+	<div class="shadow-sm h-100 bg-primary text-white p-3 radius-10">
+		<div>
+			<div class="d-flex align-items-center mb-3">
+				<div>
+					<h6 class="mb-0 text-white"><b><i class="bx bx-building-house"></i> Tipos de establecimientos</b></h6>
+				</div>
+			</div>
+			<div class="table-responsive">
+		   <table class="table table-sm text-white border-white">
+			 <tbody>
+				 <tr *ngFor="let p of estadisticas.tiposestablecimiento; let i = index">
+					 <td>{{p.nombre_plural}}</td>
+					 <td align="right" width="60">{{p.total|number}}</td>
+				 </tr>
+			 </tbody>
+			 <tfoot>
+			 	<tr>
+					 <td align="right">TOTAL</td>
+					 <td align="right"><b>{{estadisticas.total_testa|number}}</b></td>
+				 </tr>
+			 </tfoot>
+		 </table>
+		 </div>
+		</div>
+	</div>
+	</div>
+	<div class="col-12 col-sm-6 col-lg-4 col-xl-3 pb-3">
+	<div class="shadow-sm h-100 bg-warning p-3 radius-10">
+		<div>
+			<div class="d-flex align-items-center mb-3">
+				<div>
+					<h6 class="mb-0 text-mpfn"><b><i class="bx bx-dice-4"></i> Tipos de ambientes</b></h6>
+				</div>
+			</div>
+			<div class="table-responsive">
+		   <table class="table table-sm text-dark border-primary">
+			 <tbody>
+				<tr *ngFor="let p of estadisticas.tiposambiente; let i = index">
+					<td>{{p.nombre_plural}}</td>
+					<td align="right" width="60">{{p.total|number}}</td>
+				</tr>
+			 </tbody>
+			 <tfoot>
+			 	<tr>
+					 <td align="right">TOTAL</td>
+					 <td align="right"><b>{{estadisticas.total_tamb|number}}</b></td>
+				 </tr>
+			 </tfoot>
+		 </table>
+		 </div>
+		</div>
+	</div>
+	</div>
+</div>
+</div>
+<mpfn-loading [loading]="cargado"></mpfn-loading>
+

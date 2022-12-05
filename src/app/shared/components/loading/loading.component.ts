@@ -1,0 +1,17 @@
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+
+@Component({
+  selector: 'mpfn-loading',
+  templateUrl: './loading.component.html',
+  styleUrls: ['./loading.component.scss']
+})
+export class LoadingComponent implements OnInit {
+
+  @Input() loading: boolean;
+ 
+  constructor() { }
+
+  ngOnInit(): void {
+  	
+  }
+}

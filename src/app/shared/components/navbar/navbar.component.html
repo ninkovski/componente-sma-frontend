@@ -1,0 +1,59 @@
+<header>
+	<div class="topbar d-flex align-items-center">
+		<nav class="navbar navbar-expand">
+			<div class="mobile-toggle-menu">
+				<i (click)="toggleSidebar()" class='bx bx-menu text-white'></i>
+            </div>	
+			<div class="flex-grow-1">
+			</div>
+			<div class="top-menu ms-auto">
+				<ul class="navbar-nav align-items-center">
+					<li class="nav-item dropdown dropdown-large" style="display: flex;">
+						<!-- <a class="nav-link dropdown-toggle dropdown-toggle-nocaret curs_poin d-md-none d-lg-block" (click)="toggleSidebar()">
+							<i class='bx bx-menu text-primary' ngbTooltip="Menú"></i>
+						</a> -->
+						<a class="nav-link dropdown-toggle dropdown-toggle-nocaret" routerLink="/dashboard">
+							<i class='bx bx-home text-white' ngbTooltip="Página principal"></i>
+						</a>
+						
+						
+					</li>
+					<app-apps></app-apps>
+					<app-contacto></app-contacto>
+					
+				</ul>
+			</div>
+			<app-user-menu></app-user-menu>
+
+<!-- 			<div *ngIf="cargado_user" class="user-box dropdown">
+				<a class="d-flex align-items-center nav-link "
+					ngbTooltip="Cuenta MPFN {{user.correo_ins||user.correo}}">
+					<img [src]="user.foto" class="user-img" alt="user">
+					<div class="user-info ps-3" style="line-height: 16px;">
+						<p class="user-name mb-0">{{user.papellido | titlecase}} {{user.sapellido | titlecase}},
+							{{user.nombres | titlecase}} </p>
+					</div>
+				</a>
+			</div>
+			<a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown"
+				aria-expanded="false"><i class="fa fa-ellipsis-v"></i>
+			</a>
+			<ul class="dropdown-menu dropdown-menu-end">
+				<li><a class="dropdown-item" routerLink="/bandeja"><i
+							class='bx bx-home-circle'></i><span> Inicio</span></a>
+				</li>
+				<li><a class="dropdown-item" routerLink="/user-profile"><i class="bx bx-cog"></i><span> Gestionar tu
+							cuenta MPFN</span></a>
+				</li>
+				<li>
+					<div class="dropdown-divider mb-0"></div>
+				</li>
+				<li><a class="dropdown-item curs_poin" (click)="cerrarSesion()"><i
+							class='bx bx-log-out-circle'></i><span> Cerrar sesión</span></a>
+				</li>
+			</ul> -->
+
+
+		</nav>
+	</div>
+</header>

@@ -1,0 +1,73 @@
+<div class="d-flex p-4 pb-1 app-page-title">
+    <div>
+        <div class="p-2 pt-0 pb-0 shadow-sm bg-white page-title-c-icon">
+            <i class="bx bx-building-house page-title-icon"></i>
+        </div>
+    </div>
+    <div class="ps-3">
+        <h4 class="text-primary mb-0">Tipos de establecimientos</h4>
+        <p class="text-secondary">Listado de los tipos de establecimientos</p>
+    </div>
+</div>
+<div class="p-4 pt-3 pb-0">
+    <div class="d-sm-flex justify-content-between mb-2 gap-3">
+    	<div class="d-flex justify-content-start mb-2">
+    		<button type="button" (click)="actualizar()" class="btn btn-secondary" placement="bottom" ngbTooltip="Actualizar">
+                <i class="bx bx-refresh me-0"></i>
+            </button>
+    		<button type="button" (click)="exportExcel()" class="btn btn-warning ms-1" placement="bottom" ngbTooltip="Descargar">
+                <i class="bx bx-down-arrow-alt me-0"></i>
+            </button>
+            <button *ngIf="perm['tipo_establecimiento.agregar']" type="button" class="btn btn-primary ms-1" (click)="newEdit(null)">
+                <i class="bx bx-plus me-0" placement="bottom" ngbTooltip="Nuevo tipo"></i>
+            </button>
+    	</div>
+        <div class="position-relative">
+        	<div class="input-group">
+            	<input type="text" class="form-control" placeholder="Búsqueda" autocomplete="off" [(ngModel)]="search" (keyup)="listarTime(search)" spellcheck="false">
+            	<span class="input-group-text">
+					<i class="fa fa-search"></i>
+				</span>
+			</div>
+        </div>
+    </div>
+    <div class="table-responsive" id="myTable">
+        <table class="table mb-0 table-hover table-bordered table-sm" style="font-size: 13px;">
+            <thead class="bg-eee">
+                <tr>
+                    <th width="30" align="center">#</th>
+                    <ng-container *ngFor="let p of list_order">
+                    	<th [width]="p.width">{{p.nombre}} <mpfn-order *ngIf="p.order" [column]="p.id" [order]="ordering" (fOrder)="ordenar($event)"></mpfn-order></th>
+                	</ng-container>
+                	<th width="50" nowrap="nowrap" *ngIf="perm['tipo_establecimiento.actualizar']">Editar</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white">
+                <tr *ngFor="let p of listado; let i = index">
+                    <td align="center">{{ i + 1 }}</td>
+                    <td align="center">{{p.codigo}}</td>
+                    <td>{{p.nombre}}</td>
+                    <td>{{p.nombre_plural}}</td>
+                    <td>{{p.abreviatura}}</td>
+                    <td align="center">{{p.orden}}</td>
+                    <td>
+                    	<div *ngIf="p.estado=='1'" class="badge rounded-pill text-success bg-light-success"><i class='bx bxs-circle me-1'></i>Activo</div>
+                    	<div *ngIf="p.estado=='0'" class="badge rounded-pill text-danger bg-light-danger"><i class='bx bxs-circle me-1'></i>Desactivo</div>
+                    </td>
+                    <td align="center" nowrap="nowrap" *ngIf="perm['tipo_establecimiento.actualizar']">
+                      <a class="an-link" (click)="newEdit(p)">Editar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <mpfn-pagination 
+		*ngIf="pagination"
+		[pagination]="pagination" 
+		[list_page_size]="list_page_size"
+		[max_size]="5"
+		(pageSizeChange)="pageSizeChange($event)"
+		(pageChange)="pageChange($event)">
+	</mpfn-pagination>
+</div>
+<mpfn-loading [loading]="cargado"></mpfn-loading>

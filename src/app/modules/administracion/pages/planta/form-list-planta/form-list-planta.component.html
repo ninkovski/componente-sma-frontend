@@ -1,0 +1,88 @@
+<div class="modal-header bg-mpfn">
+	<h5 class="modal-title text-white"><i class="{{icon}}"></i> {{titulo}} Plantas (Pisos, sótanos, etc)</h5>
+	<a class="an-link" (click)="cancel()" tabIndex="-1">
+		<i class='bx bx-x mp-close text-white'></i>
+	</a>
+</div>
+<form [formGroup]="myform" autocomplete="off" style="display: contents;">
+<div class="modal-body bg-eee">
+	<div class="row" *ngIf="!cargado">
+        <div class="col-12 text-center p-3">
+            <div class="spinner-border text-primary" role="status"> 
+            <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="cargado" class="p-2">
+    	<div class="row">
+    		<div>
+    			<p class="mb-0">Distrito fiscal: {{data?.distrito_fiscal_nombre}}</p>
+    			<p class="mb-0">Establecimiento: <b>{{data?.nombre}}</b> ({{data?.direccion}} - {{data?.ubigeo_nombre}})</p>
+    			<p class="mb-0">Plantas: {{myform.get('plantas').controls.length}}</p>
+    		</div>
+		</div>
+		<hr class="mb-0">
+		<div formArrayName="plantas" class="mt-0">
+            <div *ngFor="let pla of myform.get('plantas').controls; let i = index" [formGroupName]="i" class="row pb-1 pt-1 bgpla-{{i % 2}}" [class.pla-desactivo]="pla.value.estado == '0'" style="border-bottom: 1px solid #c6c7c9;">
+				<div class="mb-2 required col-12 col-sm-6 col-lg-3">
+					<label for="tplanta" class="form-label">Tipo de planta </label>
+					<select id="tplanta" type="text" class="form-select" formControlName="tipo_planta_id" [class.is-invalid]="pla.get('tipo_planta_id')?.invalid || (codigos.length == myform.value.plantas.length && codigos[i].dupli)" (ngModelChange)="changeTplanta($event, pla)">
+	                    <option value="">- Seleccione -</option>
+	                    <option *ngFor="let p of tiposplanta" [value]="p.id">{{p.nombre}}</option>
+	                </select>
+					<small *ngFor="let error of pla.get('tipo_planta_id')?.errors | keyvalue" class="invalid-feedback">
+						<any *ngIf="error.key == 'required'">Este campo es requerido</any>
+					</small>
+				</div>
+				<div class="mb-2 col-12 col-sm-6 col-lg-2">
+					<div class="required"  *ngIf="pla.value.tiene_nro == 'SI'">
+						<label for="numero" class="form-label">Número</label>
+						<input id="numero" type="number" formControlName="numero" class="form-control" [class.is-invalid]="pla.get('numero')?.invalid || (codigos.length == myform.value.plantas.length && codigos[i].dupli)" (ngModelChange)="validDupli(myform.value.plantas)"/>
+						<small *ngFor="let error of pla.get('numero')?.errors | keyvalue" class="invalid-feedback">
+							<any *ngIf="error.key == 'required'">Este campo es requerido</any>
+							<any *ngIf="error.key == 'min'">Mínimo {{error.value.min}}</any>
+							<any *ngIf="error.key == 'max'">Máximo {{error.value.max}}</any>
+						</small>
+					</div>
+				</div>
+				<div class="mb-2 col-12 col-sm-6 col-lg-1">
+					<label for="color" class="form-label">Color</label>
+					<input id="color" type="color" formControlName="color" class="form-control form-control-color" [class.is-invalid]="pla.get('color')?.invalid"/>
+					<small *ngFor="let error of pla.get('color')?.errors | keyvalue" class="invalid-feedback">
+						<any *ngIf="error.key == 'maxlength'">Máximo {{error.value.max}}</any>
+					</small>
+				</div>
+				<div class="mb-2 col-12 col-sm-6 col-lg-2">
+					<div class="col-12 mb-1 required"><span>Tiene salida</span></div>
+					<div class="form-check form-check-inline" *ngFor="let p of si_no">
+					  <input class="form-check-input cursor-pointer" type="radio" formControlName="tiene_salida" id="radiots{{p.codigo}}{{i}}" [value]="p.codigo">
+					  <label class="form-check-label cursor-pointer" for="radio{{p.codigo}}{{i}}">{{p.nombre}}</label>
+					</div>
+				</div>
+				<div class="mb-2 col-12 col-sm-6 col-lg-2">
+					<div class="col-12 mb-1 required"><span>Estado</span></div>
+					<div class="form-check form-check-inline" *ngFor="let p of estados">
+					  <input class="form-check-input cursor-pointer" type="radio" formControlName="estado" id="radio{{p.codigo}}{{i}}" [value]="p.codigo">
+					  <label class="form-check-label cursor-pointer" for="radio{{p.codigo}}{{i}}">{{p.nombre}}</label>
+					</div>
+				</div>
+				<div class="mb-2 col-12 col-sm-6 col-lg-2 pt-4">
+					<a class="an-link" (click)="addAmbientes(i, pla)">Ambientes ({{pla.value.ambientes.length}})</a> 
+					<a *ngIf="!pla.value.id" class="an-link ms-2" tabIndex="-1" (click)="delPlanta(i, pla.value)">Eliminar</a>
+				</div>
+            </div>
+            <div *ngIf="duplicidad" class="mb-2">
+	          <span class="text-danger">Hay tipos de planta y/o números duplicados</span>
+	        </div>
+            <div class="pt-2">
+            	<button type="button" (click)="addPlanta()" class="btn btn-outline-primary">+ Agregar</button>
+            </div>
+		</div>
+    </div>
+</div>
+<div class="modal-footer d-flex" *ngIf="cargado">
+	<div *ngIf="saving"><div class="spinner-border spinner-border-sm text-primary" role="status"></div><span class="ms-1 me-1">Guardando...</span></div>
+	<button type="button" (click)="cancel()" class="btn btn-outline-dark" [disabled]="saving">CANCELAR</button>
+	<button type="submit" (click)="saveOrUpdate()" class="btn btn-primary" [disabled]="!myform.valid||saving||duplicidad">{{accion}}</button>
+</div>
+</form>

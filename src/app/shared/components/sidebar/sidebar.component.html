@@ -1,0 +1,100 @@
+<!-- Sidebar Content starts -->
+<div class="sidebar sidebar-wrapper" style="position: fixed;">
+  <div class="sidebar-header">
+    <div>
+      <img src="assets/images/escudo.png" width="35" />
+    </div>
+    <div>
+      <h4 class="logo-text"><img src="assets/images/texto2.png" width="95%" class="ml-10" /></h4>
+    </div>
+    <div class="toggle-icon ms-auto ps-2">
+      <i (click)="toggleSidebar()" class='bx bx-menu text-white'></i>
+    </div>
+  </div>
+
+  <div class="sidebar-app" *ngIf="app" [perfectScrollbar]>
+    <div *ngIf="cargado_app" class="caja_app">
+      <div>
+        <img [src]="app.logo_sm" class="side_logo_app" alt="logo-app">
+      </div>
+      <div style="padding-left: 10px;" class="text-white logo-text" style="letter-spacing: 0px;">
+        <p class="app_siglas mb-0">{{app.siglas}}</p>
+        <p class="app_nombre mb-0">{{app.nombre}}</p>
+        <p *ngIf="app.entidad_nombre" class="app_entidad mb-0">{{app.entidad_nombre}}</p>
+
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <div class="sidebar-content">
+    <ul class="navigation">
+      <!-- First level menu -->
+      <li *ngFor="let p of menus" [ngClass]="[p.clase]" [routerLinkActive]="p.children.length != 0 ? '' : 'active'"
+        [routerLinkActiveOptions]="{exact: true}">
+        <a class="cursor" [routerLink]="p.clase === '' ? [p.routerLink] : null"
+          *ngIf="!p.target; else externalLinkBlock">
+          <i [ngClass]="[p.icon||'fa fa-circle-o']"></i>
+          <span class="menu-title">{{p.title|uppercase}}</span>
+          <span *ngIf="p.badge != '' " [ngClass]="[p.badgeClase]">{{p.badge}}</span>
+        </a>
+        <ng-template #externalLinkBlock>
+          <a class="cursor" [href]="[p.routerLink]" [target]="[p.target]">
+            <i [ngClass]="[p.icon||'fa fa-circle-o']"></i>
+            <span class="menu-title">{{p.title}}</span>
+            <span *ngIf="p.badge != '' " [ngClass]="[p.badgeClase]">{{p.badge}}</span>
+          </a>
+        </ng-template>
+        <!-- Second level menu -->
+        <ul class="menu-content" *ngIf="p.children.length > 0">
+          <li class="cursor" *ngFor="let q of p.children" [routerLinkActive]="q.children.length > 0 ? '' : 'active'"
+            [ngClass]="[q.clase]">
+            <a [routerLink]="q.children.length > 0 ? null : [q.routerLink]"
+              *ngIf="!q.target; else externalSubLinkBlock">
+              <i [ngClass]="[q.icon||'fa fa-circle-o']"></i>
+              <span class="sub-menu-title">{{q.title}}</span>
+              <span *ngIf="q.badge != '' " [ngClass]="[q.badgeClase]">{{q.badge}}</span>
+            </a>
+            <ng-template #externalSubLinkBlock>
+              <a [href]="[q.routerLink]" [target]="[p.target]">
+                <i [ngClass]="[q.icon||'fa fa-circle-o']"></i>
+                <span class="sub-menu-title"> {{q.title}}</span>
+                <span *ngIf="q.badge != '' " [ngClass]="[q.badgeClase]">{{q.badge}}</span>
+              </a>
+            </ng-template>
+            <!-- Third level menu -->
+            <ul class="menu-content" *ngIf="q.children.length > 0">
+              <li *ngFor="let m of q.children" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                [ngClass]="[m.clase]">
+                <a [routerLink]="[m.routerLink]" *ngIf="!m.target; else externalSubSubLinkBlock">
+                  <i [ngClass]="[m.icon||'fa fa-circle-o']"></i>
+                  <span class="sub-menu-title">{{m.title}}</span>
+                  <span *ngIf="m.badge != '' " [ngClass]="[m.badgeClase]">{{m.badge}}</span>
+                </a>
+                <ng-template #externalSubSubLinkBlock>
+                  <a [href]="[m.routerLink]" [target]="[p.target]">
+                    <i [ngClass]="[m.icon||'fa fa-circle-o']"></i>
+                    <span class="sub-menu-title">{{m.title}}</span>
+                    <span *ngIf="m.badge != '' " [ngClass]="[m.badgeClase]">{{m.badge}}</span>
+                  </a>
+                </ng-template>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="sidebar-footer">
+    <ul class="navigation">
+      <li>
+        <a class="text-white curs_poin" (click)="cerrarSesion()">
+          <i class="fa fa-power-off"></i>
+          <span class="menu-title text-white">Cerrar sesión</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+<mpfn-loading-ini [loading]="loading" [msg]="'Cargando aplicación...'"></mpfn-loading-ini>

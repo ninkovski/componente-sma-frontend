@@ -1,0 +1,258 @@
+
+.bg-mpfn{
+	background-color: #002856;
+}
+
+.curs_poin {
+	cursor: pointer;
+}
+
+.cargando_fondo{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0000003d;
+  z-index:40;
+  filter: alpha(opacity=100);
+}
+
+.cargando_valores {
+  position: fixed;
+  top: 40%;
+  right: auto;
+  left: calc(50% - 20px);
+  z-index:50;
+  text-align: center;
+}
+
+.cargando_valores_msg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index:50;
+}
+
+.loading_ini{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #002856;
+  z-index:1000;
+  filter: alpha(opacity=100);
+}
+
+.loading_ini_values {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index:50;
+}
+
+.zIndex998{
+  z-index: 998 !important;
+}
+
+.zIndex999{
+  z-index: 999 !important;
+}
+
+#app-spinner{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background: #002856;
+    z-index: 999999;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.5s, opacity 0.3s linear;
+
+    &.hide{
+        visibility: hidden;
+        opacity: 0; 
+    }
+	h2{
+        margin-top: 0px;
+        color: #ff9800;
+        // letter-spacing: 0.1em;
+        opacity: 0;
+        font-size: 25px;
+        text-transform: uppercase;
+        -moz-animation: loading-text-opacity 2s linear 0s infinite normal;
+        -o-animation: loading-text-opacity 2s linear 0s infinite normal;
+        -webkit-animation: loading-text-opacity 2s linear 0s infinite normal;
+        animation: loading-text-opacity 2s linear 0s infinite normal;
+    }
+}
+
+@keyframes loading-text-opacity {
+    0%  {opacity: 0}
+    20% {opacity: 0}
+    50% {opacity: 1}
+    100%{opacity: 0}
+}
+@-moz-keyframes loading-text-opacity {
+    0%  {opacity: 0}
+    20% {opacity: 0}
+    50% {opacity: 1}
+    100%{opacity: 0}
+}
+@-webkit-keyframes loading-text-opacity {
+    0%  {opacity: 0}
+    20% {opacity: 0}
+    50% {opacity: 1}
+    100%{opacity: 0}
+}
+@-o-keyframes loading-text-opacity {
+    0%  {opacity: 0}
+    20% {opacity: 0}
+    50% {opacity: 1}
+    100%{opacity: 0}
+}
+
+a.an-link { 
+  // color: #3c80f6;
+  text-decoration: none;
+}
+
+a.an-link:hover { 
+  cursor: pointer;
+  text-decoration: underline;
+  color: #1E90FF;
+}
+
+a.an-link:active {
+  color: #1565c0;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.mp-close{
+	font-size: 26px;
+    margin-top: -7px;
+    margin-bottom: -7px;
+    cursor: pointer;
+}
+
+.avatar_sn-foto{
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+}
+
+.required{
+
+}
+
+.required label{
+
+}
+
+.required label:after {
+    content: " *";
+    color: #dc3545;
+}
+
+.required-label:after {
+    content: " *";
+    color: #dc3545;
+}
+
+.bg-eee {
+    background: #eee;
+}
+
+.required span:after {
+    content: " *";
+    color: #dc3545;
+}
+
+.bg-fafafa {
+    background: #fafafa;
+}
+
+
+// Modificación del label Form
+.form-label {
+    margin-bottom: 0.3rem !important;
+    margin-left: 0.2rem !important;
+}
+
+.mpfn-bclose{
+  position: absolute;
+  top: 0px;
+  right: 5px;
+  height: 90%;
+}
+
+.mpfn-car-form{
+  /*right: 25px;
+  position: absolute;
+  margin-bottom: 2px;*/
+  float: right;
+}
+
+.text-mpfn{
+  color: #002856;
+}
+
+.app-page-title{
+  background: rgba(255, 255, 255, 0.45);
+  border-bottom: 1px solid #dddfe0;
+}
+
+.page-title-icon{
+  font-size: 36px;    color: #0f2c52ab;
+}
+
+.page-title-c-icon{
+  height: 52px;
+  align-items: center;
+  display: flex;
+}
+
+.bg-modal-super{
+  background-color: #00000040;
+}
+
+.txt-10{
+  font-size: 10px;
+}
+
+.txt-11{
+  font-size: 11px;
+}
+
+.txt-12{
+  font-size: 12px;
+}
+
+.txt-13{
+  font-size: 13px;
+}
+
+.txt-14{
+  font-size: 14px;
+}
+
+.sal-linea{
+  display: block;
+}

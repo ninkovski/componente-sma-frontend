@@ -1,0 +1,61 @@
+<li class="nav-item dropdown dropdown-large">
+	<a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#"
+		role="button" data-bs-toggle="dropdown" aria-expanded="false" ngbTooltip="Contáctanos">
+		<i class='bx bx-support text-white'></i>
+	</a>
+	<div class="dropdown-menu dropdown-menu-end">
+		<a href="#" (click)="$event.preventDefault()">
+			<div class="msg-header">
+				<p class="msg-header-title">Contáctanos</p>
+			</div>
+		</a>
+		<div class="header-notifications-list" [perfectScrollbar]>
+			<a class="dropdown-item" href="#" (click)="$event.preventDefault()">
+				<div class="d-flex align-items-center">
+					<div class="notify bg-light-primary text-primary"><i class="bx bx-group"></i>
+					</div>
+					<div class="flex-grow-1">
+						<h6 class="msg-name">Oficina de soporte - OSOP</h6>
+						<p class="msg-info">317-1000 anexo 1010</p>
+						<p class="msg-info">osop@mpfn.gob.pe</p>
+					</div>
+				</div>
+			</a>
+			<a class="dropdown-item" href="#" (click)="$event.preventDefault()">
+				<div class="d-flex align-items-center">
+					<div class="notify bg-light-danger text-danger"><i class="bx bx-group"></i>
+					</div>
+					<div class="flex-grow-1">
+						<h6 class="msg-name">Oficina de redes y comunicaciones</h6>
+						<p class="msg-info">317-1000 anexo 1054</p>
+						<p class="msg-info">redes@mpfn.gob.pe</p>
+					</div>
+				</div>
+			</a>
+			<a class="dropdown-item" href="#" (click)="$event.preventDefault()">
+				<div class="d-flex align-items-center">
+					<div class="notify bg-light-warning text-warning"><i class="bx bx-send"></i>
+					</div>
+					<div class="flex-grow-1">
+						<h6 class="msg-name">Oficina de créditos y cobranza</h6>
+						<p class="msg-info">317-1000 anexo 1012</p>
+						<p class="msg-info">creditos@mpfn.gob.pe</p>
+					</div>
+				</div>
+			</a>
+			<a class="dropdown-item" href="#" (click)="$event.preventDefault()">
+				<div class="d-flex align-items-center">
+					<div class="notify bg-light-success text-success"><i class="bx bx-file"></i>
+					</div>
+					<div class="flex-grow-1">
+						<h6 class="msg-name">Central telefónica MPFN</h6>
+						<p class="msg-info">(01) 625 - 5555</p>
+					</div>
+				</div>
+			</a>
+		</div>
+		<a href="#" (click)="$event.preventDefault()">
+			<div class="text-center msg-footer">Ministerio Público - Fiscalía de la Nación</div>
+		</a>
+	</div>
+</li>

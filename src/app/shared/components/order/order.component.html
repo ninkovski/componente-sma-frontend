@@ -1,0 +1,6 @@
+<i class="fa fa-sort-down order orders" *ngIf="column == order && !guion" (click)="onOrder()"></i>
+<i class="fa fa-sort-up order orders" *ngIf="column == order && guion" (click)="onOrderDesc()"></i>
+<i class="fa fa-sort order" *ngIf="column != order" (click)="onOrderNew()"></i>
+<!-- <fa-icon [icon]="faSortDown"  class="order orders" (click)="onOrden()"></fa-icon> -->
+<!-- <fa-icon [icon]="faSortUp" *ngIf="column == order && guion" class="order orders" (click)="onOrdenDesc()"></fa-icon> -->
+<!-- <fa-icon *ngIf="column != order" class="order" (click)="onOrdenNuevo()" [icon]="faSort" size="'40px'"></fa-icon> -->

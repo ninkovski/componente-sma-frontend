@@ -1,0 +1,110 @@
+<div class="modal-header bg-mpfn">
+	<h5 class="modal-title text-white"><i class="{{icon}}"></i> {{titulo}} Ambientes (Oficinas, almacenes, Laboratorios, etc)</h5>
+	<a class="an-link" (click)="cancel()" tabIndex="-1">
+		<i class='bx bx-x mp-close text-white'></i>
+	</a>
+</div>
+<form [formGroup]="myform" autocomplete="off" style="display: contents;">
+<div class="modal-body bg-eee">
+	<div class="row" *ngIf="!cargado">
+        <div class="col-12 text-center p-3">
+            <div class="spinner-border text-primary" role="status"> 
+            <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="cargado" class="p-2">
+    	<div class="row">
+    		<div>
+    			<p class="mb-0">Distrito fiscal: {{data?.establecimiento?.distrito_fiscal_nombre}}</p>
+    			<p class="mb-0">Establecimiento: <b>{{data?.establecimiento?.nombre}}</b> ({{data?.establecimiento?.direccion}} - {{data?.establecimiento?.ubigeo_nombre}})</p>
+    			<p class="mb-0">Planta: <b>{{data?.planta?.tipo_planta_nombre}} {{data?.planta?.numero}}</b></p>
+    			<p class="mb-0">Ambientes: {{myform.get('ambientes').controls.length}}</p>
+    		</div>
+		</div>
+		<hr class="mb-0">
+		<div formArrayName="ambientes">
+            <div *ngFor="let amb of myform.get('ambientes').controls; let i = index" [formGroupName]="i" class="row pb-1 pt-1 bgamb-{{i % 2}}" [class.amb-desactivo]="amb.value.estado == '0'" style="border-bottom: 1px solid #c6c7c9;">
+				<div class="mb-2 required col-12 col-sm-6 col-lg-3">
+					<label for="tambiente" class="form-label">Tipo de ambiente </label>
+					<select id="tambiente" type="text" class="form-select" formControlName="tipo_ambiente_id" [class.is-invalid]="amb.get('tipo_ambiente_id')?.invalid || (codigos.length == myform.value.ambientes.length && codigos[i].dupli)" (ngModelChange)="validDupli(myform.value.ambientes)">
+	                    <option value="">- Seleccione -</option>
+	                    <option *ngFor="let p of tiposambiente" [value]="p.id">{{p.nombre}}</option>
+	                </select>
+					<small *ngFor="let error of amb.get('tipo_ambiente_id')?.errors | keyvalue" class="invalid-feedback">
+						<any *ngIf="error.key == 'required'">Este campo es requerido</any>
+					</small>
+				</div>
+				<div class="mb-2 col-12 col-sm-6 col-lg-2">
+					<label for="numero" class="form-label">Número</label>
+					<input id="numero" type="text" formControlName="numero" class="form-control text-uppercase" [class.is-invalid]="amb.get('numero')?.invalid || (codigos.length == myform.value.ambientes.length && codigos[i].dupli)" (keyup)="changeNumero(myform.value.ambientes, $event, amb,'numero')"/>
+					<small *ngFor="let error of amb.get('numero')?.errors | keyvalue" class="invalid-feedback">
+						<any *ngIf="error.key == 'maxlength'">Máximo {{error.value.requiredLength}} caracteres</any>
+					</small>
+				</div>
+				<div class="mb-2 col-12 col-sm-6 col-lg-7">
+					<label for="color" class="form-label">Nombre</label>
+					<input id="color" type="text" formControlName="nombre" class="form-control text-uppercase" [class.is-invalid]="amb.get('nombre')?.invalid" (keyup)="changeText($event, amb,'nombre')"/>
+					<small *ngFor="let error of amb.get('nombre')?.errors | keyvalue" class="invalid-feedback">
+						<any *ngIf="error.key == 'maxlength'">Máximo {{error.value.requiredLength}} caracteres</any>
+					</small>
+				</div>
+				<div class="mb-2 col-12 col-sm-6 col-lg-2">
+					<label for="aforo" class="form-label">Aforo</label>
+					<input id="aforo" type="number" formControlName="aforo" class="form-control" [class.is-invalid]="amb.get('aforo')?.invalid"/>
+					<small *ngFor="let error of amb.get('aforo')?.errors | keyvalue" class="invalid-feedback">
+						<any *ngIf="error.key == 'min'">Mínimo {{error.value.min}}</any>
+						<any *ngIf="error.key == 'max'">Máximo {{error.value.max}}</any>
+					</small>
+				</div>
+				<div class="mb-2 col-12 col-sm-6 col-lg-2">
+					<label for="area_mts2" class="form-label">Área Mts2</label>
+					<input id="area_mts2" type="number" formControlName="area_mts2" class="form-control" [class.is-invalid]="amb.get('area_mts2')?.invalid"/>
+					<small *ngFor="let error of amb.get('area_mts2')?.errors | keyvalue" class="invalid-feedback">
+						<any *ngIf="error.key == 'min'">Mínimo {{error.value.min}}</any>
+						<any *ngIf="error.key == 'max'">Máximo {{error.value.max}}</any>
+					</small>
+				</div>
+				<div class="mb-2 col-12 col-sm-6 col-lg-2">
+					<label for="puertas" class="form-label">Puertas</label>
+					<input id="puertas" type="number" formControlName="puertas" class="form-control" [class.is-invalid]="amb.get('puertas')?.invalid"/>
+					<small *ngFor="let error of amb.get('puertas')?.errors | keyvalue" class="invalid-feedback">
+						<any *ngIf="error.key == 'min'">Mínimo {{error.value.min}}</any>
+						<any *ngIf="error.key == 'max'">Máximo {{error.value.max}}</any>
+					</small>
+				</div>
+				<div class="mb-2 col-12 col-sm-6 col-lg-2">
+					<label for="orden" class="form-label">Orden</label>
+					<input id="orden" type="number" formControlName="orden" class="form-control" [class.is-invalid]="amb.get('orden')?.invalid"/>
+					<small *ngFor="let error of amb.get('orden')?.errors | keyvalue" class="invalid-feedback">
+						<any *ngIf="error.key == 'required'">Este campo es requerido</any>
+						<any *ngIf="error.key == 'min'">Mínimo {{error.value.min}}</any>
+						<any *ngIf="error.key == 'max'">Máximo {{error.value.max}}</any>
+					</small>
+				</div>
+				<div class="mb-2 col-12 col-sm-6 col-lg-3">
+					<div class="col-12 mb-1 required"><span>Estado</span></div>
+					<div class="form-check form-check-inline" *ngFor="let p of estados">
+					  <input class="form-check-input cursor-pointer" type="radio" formControlName="estado" id="radioa{{p.codigo}}{{i}}" [value]="p.codigo">
+					  <label class="form-check-label cursor-pointer" for="radioa{{p.codigo}}{{i}}">{{p.nombre}}</label>
+					</div>
+				</div>
+				<div class="mb-2 col-12 col-sm-6 col-lg-1 pt-4">
+					<a *ngIf="!amb.value.id" class="an-link ms-2" tabIndex="-1" (click)="delAmbiente(i, amb.value)">Eliminar</a>
+				</div>
+            </div>
+            <div *ngIf="duplicidad" class="mb-2">
+	          <span class="text-danger">Hay tipos de ambiente y/o números duplicados</span>
+	        </div>
+            <div class="pt-2">
+            	<button type="button" (click)="addAmbiente()" class="btn btn-outline-primary">+ Agregar</button>
+            </div>
+		</div>
+    </div>
+</div>
+<div class="modal-footer d-flex" *ngIf="cargado">
+	<div *ngIf="saving"><div class="spinner-border spinner-border-sm text-primary" role="status"></div><span class="ms-1 me-1">Guardando...</span></div>
+	<button type="button" (click)="cancel()" class="btn btn-outline-dark" [disabled]="saving">CANCELAR</button>
+	<button type="submit" (click)="saveOrUpdate()" class="btn btn-primary" [disabled]="!myform.valid||saving||duplicidad">{{accion}}</button>
+</div>
+</form>

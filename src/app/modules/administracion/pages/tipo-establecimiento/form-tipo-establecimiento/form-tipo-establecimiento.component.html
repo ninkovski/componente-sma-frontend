@@ -1,0 +1,72 @@
+<div class="modal-header bg-mpfn">
+	<h5 class="modal-title text-white"><i class="{{icon}}"></i> {{titulo}} tipo de establecimiento</h5>
+	<a class="an-link" (click)="cancel()" tabIndex="-1">
+		<i class='bx bx-x mp-close text-white'></i>
+	</a>
+</div>
+<form [formGroup]="myform" autocomplete="off" style="display: contents;">
+<div class="modal-body bg-eee">
+	<div class="row" *ngIf="!cargado">
+        <div class="col-12 text-center p-3">
+            <div class="spinner-border text-primary" role="status"> 
+            <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="cargado" class="p-2">
+    	<div class="row">
+			<div class="mb-2 required col-12">
+				<label for="nombre" class="form-label">Nombre </label>
+				<input id="nombre" type="text" formControlName="nombre" class="form-control text-uppercase" [class.is-invalid]="myform.get('nombre')?.invalid" (keyup)="changeText($event,'nombre')" autofocus="autofocus" />
+				<small class="form-text text-muted mpfn-car-form"> {{myform.value.nombre?.length||'0'}} / 80</small>
+				<small *ngFor="let error of myform.get('nombre')?.errors | keyvalue" class="invalid-feedback">
+					<any *ngIf="error.key == 'required'">Este campo es requerido</any>
+					<any *ngIf="error.key == 'minlength'">Mínimo {{error.value.requiredLength}} caracteres</any>
+					<any *ngIf="error.key == 'maxlength'">Máximo {{error.value.requiredLength}} caracteres</any>
+				</small>
+			</div>
+			<div class="mb-2 required col-12">
+				<label for="nombre_plural" class="form-label">Nombre plural</label>
+				<input id="nombre_plural" type="text" formControlName="nombre_plural" class="form-control text-uppercase" [class.is-invalid]="myform.get('nombre_plural')?.invalid" (keyup)="changeText($event,'nombre_plural')"/>
+				<small class="form-text text-muted mpfn-car-form"> {{myform.value.nombre_plural?.length||'0'}} / 90</small>
+				<small *ngFor="let error of myform.get('nombre_plural')?.errors | keyvalue" class="invalid-feedback">
+					<any *ngIf="error.key == 'required'">Este campo es requerido</any>
+					<any *ngIf="error.key == 'minlength'">Mínimo {{error.value.requiredLength}} caracteres</any>
+					<any *ngIf="error.key == 'maxlength'">Máximo {{error.value.requiredLength}} caracteres</any>
+				</small>
+			</div>
+			<div class="mb-2 required col-12">
+				<label for="abreviatura" class="form-label">Abreviatura</label>
+				<input id="abreviatura" type="text" formControlName="abreviatura" class="form-control text-uppercase" [class.is-invalid]="myform.get('abreviatura')?.invalid" (keyup)="changeText($event,'abreviatura')"/>
+				<small class="form-text text-muted mpfn-car-form"> {{myform.value.abreviatura?.length||'0'}} / 12</small>
+				<small *ngFor="let error of myform.get('abreviatura')?.errors | keyvalue" class="invalid-feedback">
+					<any *ngIf="error.key == 'required'">Este campo es requerido</any>
+					<any *ngIf="error.key == 'minlength'">Mínimo {{error.value.requiredLength}} caracteres</any>
+					<any *ngIf="error.key == 'maxlength'">Máximo {{error.value.requiredLength}} caracteres</any>
+				</small>
+			</div>
+			<div class="mb-2 required col-12">
+				<label for="orden" class="form-label">Orden</label>
+				<input id="orden" type="number" formControlName="orden" class="form-control text-uppercase" [class.is-invalid]="myform.get('orden')?.invalid"/>
+				<small *ngFor="let error of myform.get('orden')?.errors | keyvalue" class="invalid-feedback">
+					<any *ngIf="error.key == 'required'">Este campo es requerido</any>
+					<any *ngIf="error.key == 'min'">Mínimo {{error.value.min}}</any>
+					<any *ngIf="error.key == 'max'">Máximo {{error.value.max}}</any>
+				</small>
+			</div>
+			<div class="col-12 mb-1 required"><span>Estado</span></div>
+    		<div class="col-12">
+				<div class="form-check form-check-inline" *ngFor="let p of estados">
+				  <input class="form-check-input cursor-pointer" type="radio" formControlName="estado" name="estado" id="radio{{p.codigo}}" [value]="p.codigo">
+				  <label class="form-check-label cursor-pointer" for="radio{{p.codigo}}">{{p.nombre}}</label>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+<div class="modal-footer d-flex" *ngIf="cargado">
+	<div *ngIf="saving"><div class="spinner-border spinner-border-sm text-primary" role="status"></div><span class="ms-1 me-1">Guardando...</span></div>
+	<button type="button" (click)="cancel()" class="btn btn-outline-dark" [disabled]="saving">CANCELAR</button>
+	<button type="submit" (click)="saveOrUpdate()" class="btn btn-primary" [disabled]="!myform.valid||saving">{{accion}}</button>
+</div>
+</form>

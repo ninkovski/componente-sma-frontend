@@ -1,0 +1,82 @@
+<div class="modal-header bg-mpfn">
+	<h5 class="modal-title text-white"><i class="{{icon}}"></i> {{titulo}} establecimiento</h5>
+	<a class="an-link" (click)="cancel()" tabIndex="-1">
+		<i class='bx bx-x mp-close text-white'></i>
+	</a>
+</div>
+<!-- {{searching}} -->
+<form [formGroup]="myform" autocomplete="off" style="display: contents;">
+<div class="modal-body bg-eee">
+	<div class="row" *ngIf="!cargado">
+        <div class="col-12 text-center p-3">
+            <div class="spinner-border text-primary" role="status"> 
+            <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="cargado" class="p-2">
+    	<div class="row">
+			<div class="mb-2 col-12 col-sm-12 col-lg-12">
+				<label for="dfiscal" class="form-label text-secondary">Distrito fiscal </label>
+				<select id="dfiscal" type="text" class="form-select" formControlName="distrito_fiscal_id" [class.is-invalid]="myform.get('distrito_fiscal_id')?.invalid" (change)="changeDfiscal($event)">
+                    <option value="T">- Todos -</option>
+                    <option *ngFor="let p of dfiscales" [value]="p.id">{{p.nombre}}</option>
+                </select>
+			</div>
+			<div class="mb-2 col-12 col-sm-12 col-lg-12">
+				<label for="establecimiento" class="form-label required-label text-secondary">Establecimiento</label>
+				<input id="establecimiento" type="search" 
+					class="form-control"
+					formControlName="establecimiento" 
+					[ngbTypeahead]="autoEstablecimiento" 
+					[resultTemplate]="rtEstablecimiento"
+					placeholder="Escriba para buscar..."
+					[inputFormatter]="formatEstablecimiento"
+					(focus)="focus2$.next($any($event).target.value)"
+					(selectItem)="selectedEstab($event)"
+					[class.is-invalid]="myform.get('establecimiento')?.invalid"
+					required/>
+
+				<small *ngIf="searching" class="form-text text-muted mpfn-car-form">Buscando...</small>
+				<small *ngIf="!myform.value.establecimiento?.id && establecimientos.length == 0 && !searching" class="form-text text-muted mpfn-car-form">No se econtraron registros</small>
+				
+				<small *ngIf="myform.value.establecimiento?.ubigeo_nombre && !searching" class="form-text text-muted mpfn-car-form">{{myform.value.establecimiento?.direccion}} - {{myform.value.establecimiento?.ubigeo_nombre}}</small>
+
+				<small *ngFor="let error of myform.get('establecimiento')?.errors | keyvalue" class="invalid-feedback">
+					<any *ngIf="error.key == 'require_match'">Seleccione un establecimiento</any>
+					<any *ngIf="error.key == 'required'">Este campo es requerido</any>
+				</small>
+				<!-- r.tipo_establecimiento_nombre+': '+r.nombre -->
+				<ng-template #rtEstablecimiento let-r="result" let-t="term">
+				  <!-- <img [src]="r.foto_rec" class="mr-1" style="width: 16px"> -->
+				  <ngb-highlight [result]="r.nombre" [term]="t"></ngb-highlight>
+				  <span *ngIf="r.direccion" class="txt-11 sal-linea"><i class='bx bx-been-here me-1'></i> {{r.direccion}}</span>
+				  <span *ngIf="r.ubigeo_nombre" class="txt-11 sal-linea">{{r.ubigeo_nombre}}</span>
+				  
+				</ng-template>
+			</div>
+			<div class="mb-2 col-12 col-sm-12 col-lg-12" *ngIf="plantas.length > 0">
+				<label for="planta_id" class="form-label text-secondary">Planta </label>
+				<select id="planta_id" type="text" class="form-select" formControlName="planta_id" (ngModelChange)="selectedPlanta($event)">
+                   <option *ngFor="let p of plantas" [value]="p.id">{{p.nombre}}</option>
+                </select>
+			</div>
+			<div class="col-12 mb-1" *ngIf="ambientes.length > 0"><span class="text-secondary">Ambiente</span></div>
+    		<div class="col-12" *ngIf="ambientes.length > 0">
+    			<div class="bg-white p-1 border rounded ps-2 pt-2">
+					<div class="form-check" *ngFor="let p of ambientes">
+					  <input class="form-check-input cursor-pointer" type="radio" formControlName="ambiente_id" id="radioAmb{{p.id}}" [value]="p.id" (ngModelChange)="selectedAmbiente($event)">
+					  <label class="form-check-label cursor-pointer" for="radioAmb{{p.id}}">{{p.tipo_ambiente_nombre}}<span *ngIf="p.numero">: {{p.numero}}</span><span *ngIf="p.nombre" class="text-secondary"> - {{p.nombre}}</span></label>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+    
+</div>
+<div class="modal-footer d-flex" *ngIf="cargado">
+	<div *ngIf="saving"><div class="spinner-border spinner-border-sm text-primary" role="status"></div><span class="ms-1 me-1">Guardando...</span></div>
+	<button type="button" (click)="cancel()" class="btn btn-outline-dark" [disabled]="saving">CANCELAR</button>
+	<button type="submit" (click)="saveOrUpdate()" class="btn btn-primary" [disabled]="!myform.valid||saving">{{accion}}</button>
+</div>
+</form>
