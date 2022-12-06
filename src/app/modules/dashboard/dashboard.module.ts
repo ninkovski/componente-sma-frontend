@@ -9,18 +9,17 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { DefaultComponent } from './default/default.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ComponentsModule } from '../../shared/components/components.module';
+import { PrincipalComponent } from './principal/principal.component';
 
 @NgModule({
-  declarations: [
-     DefaultComponent
-  ],
+  declarations: [DefaultComponent, PrincipalComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     ComponentsModule,
     PerfectScrollbarModule,
     HighchartsChartModule,
-    NgbModule
-  ]
+    NgbModule,
+  ],
 })
-export class DashboardModule { }
+export class DashboardModule {}

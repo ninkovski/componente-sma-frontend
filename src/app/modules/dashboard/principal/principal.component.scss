@@ -1,0 +1,34 @@
+.body{
+  padding-top: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.contenedor{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  text-align: justify;
+
+}
+.cuerpo-contenedor{
+  justify-content: center;
+  display: flex;
+  gap: 10px;
+
+}
+.mini-contenedor{
+  display: flex;
+  flex-direction: row-reverse ;
+  flex-wrap: nowrap;
+  max-width: 600px;
+  max-height: auto;
+  align-items: center
+}
+
+.card-img-top{
+  max-height: 180px;
+
+}
+.espaciador{
+  gap: 20px;
+}

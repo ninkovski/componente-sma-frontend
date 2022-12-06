@@ -6,7 +6,7 @@ import { Error404Component } from './shared/components/error/error404/error404.c
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'tablero',
+    redirectTo: 'dashboard',
     pathMatch: 'full',
   },
   {
@@ -20,28 +20,19 @@ const routes: Routes = [
     data: { title: 'Principal' },
     children: [
       {
-        path: 'tablero',
+        path: 'dashboard',
         loadChildren: () =>
           import('./modules/dashboard/dashboard.module').then(
             (m) => m.DashboardModule
           ),
       },
       {
-        path: 'administracion',
+        path: 'reportes',
         loadChildren: () =>
-          import('./modules/administracion/administracion.module').then(
-            (m) => m.AdministracionModule
+          import('./modules/reportes/reportes.module').then(
+            (m) => m.ReportesModule
           ),
       },
-      /*{path: 'InicioComponent',loadChildren:  () => import('./modules/dashboard/inicio.module').then(m => m.InicioModule)},
-      {path: 'Alertas',loadChildren:          () => import('./modules/reportes/reportes.module').then(m => m.AlertasModule)},
-      {path: 'Reportes',loadChildren:         () => import('./modules/alertas/alertas.module').then(m => m.ReportesModule)},
-      {path: 'Dashboard',loadChildren:        () => import('./modules/dashboard/dashboard.module').then(m => m.DashboarModule)},*/
-      /*{ path: 'Login', component: LoginComponent },
-      { path: 'Menu', component: InicioComponent },
-      { path: 'Menu/Alertas', component: AlertasComponent },
-      { path: 'Menu/Reportes', component: ReportesComponent },
-      { path: 'Menu/Dashboard', component: DashboardComponent },*/
     ],
   },
   { path: '**', component: Error404Component },

@@ -1,3 +1,4 @@
+import { PrincipalComponent } from './principal/principal.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -10,6 +11,11 @@ const routes: Routes = [
     children: [
       { path: '', component: InicioComponent, data: { title: 'Inicio' } },
       { path: 'Inicio', component: InicioComponent, data: { title: 'Inicio' } },
+      {
+        path: 'principal',
+        component: PrincipalComponent,
+        data: { title: 'principal' },
+      },
     ],
   },
 ];

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { OnInit, Component, ViewChild } from '@angular/core';
+import { Pagination } from 'src/app/shared/interfaces/pagination.interface';
 
 import { RespuestaAlertas } from '../../interfaces/respuesta-alertas';
 @Component({
