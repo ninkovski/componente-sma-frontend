@@ -1,102 +1,105 @@
 <div class="d-flex p-4 pb-1 app-page-title">
-    <div>
-        <div class="p-2 pt-0 pb-0 shadow-sm bg-white page-title-c-icon">
-            <i class="bx bx-home-smile page-title-icon"></i>
-        </div>
+  <div>
+    <div class="p-2 pt-0 pb-0 shadow-sm bg-white page-title-c-icon">
+      <i class="bx bx-home-smile page-title-icon"></i>
     </div>
-    <div class="ps-3">
-        <h4 class="text-primary mb-0">Registro de Acciones y Medidas.</h4>
-        <p class="text-secondary">Lista de alertas agrupadas por Agraviado e Imputado</p>
-    </div>
+  </div>
+  <div class="ps-3">
+    <h4 class="text-primary mb-0">Registro de Acciones y Medidas.</h4>
+    <p class="text-secondary">Lista de alertas agrupadas por Agraviado e Imputado</p>
+  </div>
 </div>
 
 <div class="row p-3">
-    <div class="col-sm-1">
-        <div class="form-group">
-            <input [(ngModel)]="fecha_desde" class="form-control form-control-sm" type="date" />
-        </div>
+  <div class="col-sm-1">
+    <div class="form-group">
+      <input [(ngModel)]="fecha_desde" class="form-control form-control-sm" type="date" />
     </div>
-    <div class="col-sm-1">
-        <div class="form-group">
-            <input [(ngModel)]="fecha_hasta" class="form-control form-control-sm" type="date" />
-        </div>
+  </div>
+  <div class="col-sm-1">
+    <div class="form-group">
+      <input [(ngModel)]="fecha_hasta" class="form-control form-control-sm" type="date" />
     </div>
-    <div class="col-sm-1">
-        <div class="form-group">
-            <button type="button" class="btn btn-primary btn-sm" (click)="getAlertas()">Consultar</button>
-        </div>
+  </div>
+  <div class="col-sm-1">
+    <div class="form-group">
+      <button type="button" class="btn btn-primary btn-sm" (click)="getAlertas()">Consultar</button>
     </div>
+  </div>
 </div>
 
 <table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Fiscal</th>
-            <th scope="col">Delito</th>
-            <th scope="col">Juridiccion</th>
-            <th scope="col">Fiscalia</th>
-            <th scope="col">Caso</th>
-            <th scope="col">Fecha de ingreso</th>
-            <th scope="col">Agraviado</th>
-            <th scope="col">Imputado</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Accion/Medida</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let elemento of dataPagination">
-            <th scope="row">{{ elemento.id | number }}</th>
-            <td>{{ elemento.nombresFiscal }}</td>
-            <td>{{ elemento.detalleDelito }}</td>
-            <td>{{ elemento.juridiccion }}</td>
-            <td>{{ elemento.dependenciaMPub }}</td>
-            <td>{{ elemento.caso }}</td>
-            <td>{{ elemento.fechaIngreso }}</td>
-            <td>{{ elemento.nombreAgraviado }}</td>
-            <td>{{ elemento.nombreImputado }}</td>
-            <td>
-                <i *ngIf="elemento.idEstado == 1" class="bi bi-circle-fill" style="color: #1717FF;"></i>
-            </td>
-            <td>
-                <button type="button" class="btn btn-primary btn-sm" (click)="openModal('accion', elemento.idAlerta)">Accion</button>
-                <button type="button" class="btn btn-success btn-sm" (click)="openModal('Medida', elemento.idAlerta)">Medida</button>
-            </td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Fiscal</th>
+      <th scope="col">Delito</th>
+      <th scope="col">Juridiccion</th>
+      <th scope="col">Fiscalia</th>
+      <th scope="col">Caso</th>
+      <th scope="col">Fecha de ingreso</th>
+      <th scope="col">Agraviado</th>
+      <th scope="col">Imputado</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Accion/Medida</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let elemento of dataPagination">
+      <th scope="row">{{ elemento.id | number }}</th>
+      <td>{{ elemento.nombresFiscal }}</td>
+      <td>{{ elemento.detalleDelito }}</td>
+      <td>{{ elemento.juridiccion }}</td>
+      <td>{{ elemento.dependenciaMPub }}</td>
+      <td>{{ elemento.caso }}</td>
+      <td>{{ elemento.fechaIngreso }}</td>
+      <td>{{ elemento.nombreAgraviado }}</td>
+      <td>{{ elemento.nombreImputado }}</td>
+      <td>
+        <i *ngIf="elemento.idEstado == 1" class="bi bi-circle-fill" style="color: #1717FF;"></i>
+      </td>
+      <td>
+        <button type="button" class="btn btn-primary btn-sm"
+          (click)="openModal('accion', elemento.idAlerta)">Accion</button>
+        <button type="button" class="btn btn-success btn-sm"
+          (click)="openModal('Medida', elemento.idAlerta)">Medida</button>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 <div class="d-flex justify-content-between p-2">
-    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-        (pageChange)="refreshPagination()">
-    </ngb-pagination>
+  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+    (pageChange)="refreshPagination()">
+  </ngb-pagination>
 
-    <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshPagination()">
-        <option [ngValue]="5">5 filas por pagina</option>
-        <option [ngValue]="15">15 filas por pagina</option>
-        <option [ngValue]="30">30 filas por pagina</option>
-    </select>
+  <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshPagination()">
+    <option [ngValue]="5">5 filas por pagina</option>
+    <option [ngValue]="15">15 filas por pagina</option>
+    <option [ngValue]="30">30 filas por pagina</option>
+  </select>
 </div>
 
 <div class="modal" tabindex="-1" role="dialog" [style.display]="dataModal.display">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="form-group pb-3">
-                    <label *ngIf="dataModal.esAccion" for="select-caption">Tipo de accion</label>
-                    <label *ngIf="!dataModal.esAccion" for="select-caption">Tipo de medida</label>
-                    <select [(ngModel)]="dataModal.selectId" class="form-control form-control-sm" id="select-caption">
-                        <option [ngValue]="0">Seleccionar...</option>
-                        <option *ngFor="let option of dataModal.selectList" [ngValue]="option.id">{{ option.descripcion }}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <textarea [(ngModel)]="dataModal.detalle" class="form-control form-control-sm" cdkAutosizeMinRows="5"></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" (click)="registerAccionMedida()">Registrar</button>
-            </div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="form-group pb-3">
+          <label *ngIf="dataModal.esAccion" for="select-caption">Tipo de accion</label>
+          <label *ngIf="!dataModal.esAccion" for="select-caption">Tipo de medida</label>
+          <select [(ngModel)]="dataModal.selectId" class="form-control form-control-sm" id="select-caption">
+            <option [ngValue]="0">Seleccionar...</option>
+            <option *ngFor="let option of dataModal.selectList" [ngValue]="option.id">{{ option.descripcion }}</option>
+          </select>
         </div>
+        <div class="form-group">
+          <textarea [(ngModel)]="dataModal.detalle" class="form-control form-control-sm"
+            cdkAutosizeMinRows="5"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="registerAccionMedida()">Registrar</button>
+      </div>
     </div>
+  </div>
 </div>

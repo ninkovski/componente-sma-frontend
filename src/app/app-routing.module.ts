@@ -31,16 +31,18 @@ const routes: Routes = [
         loadChildren: () =>
           import('./modules/reportes/reportes.module').then(
             (m) => m.ReportesModule
-          )
+          ),
       },
       {
-        path: "alertas",
-        loadChildren: () => import("./modules/alerta/alerta.module").then((m) => m.AlertaModule)
+        path: 'alertas',
+        loadChildren: () =>
+          import('./modules/alerta/alerta.module').then((m) => m.AlertaModule),
       },
       {
-        path: "reca-list",
-        loadChildren: () => import("./modules/reca/reca.module").then((m) => m.RecaModule)
-      }
+        path: 'reca-list',
+        loadChildren: () =>
+          import('./modules/reca/reca.module').then((m) => m.RecaModule),
+      },
     ],
   },
   { path: '**', component: Error404Component },
@@ -50,7 +52,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       preloadingStrategy: PreloadAllModules, // <- comment this line for activate lazy load
-      useHash: false
+      useHash: true,
     }),
   ],
   exports: [RouterModule],

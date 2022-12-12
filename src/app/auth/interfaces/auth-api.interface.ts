@@ -61,7 +61,7 @@ export interface MenuJerarquico {
     icon:       string;
     routerLink: null | string;
     target:     null | string;
-    clase:      string;
+    clase:      Clase;
     badge:      string;
     badgeClase: string;
     children:   MenuJerarquico[];

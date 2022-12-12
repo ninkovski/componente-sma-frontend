@@ -6,8 +6,16 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      { path: '', component: AlertaAccionMedidaComponent, data: { title: 'Alertas' } },
-      { path: 'alertas', component: AlertaAccionMedidaComponent, data: { title: "Alertas, registro de accion y medida" } },
+      {
+        path: '',
+        component: AlertaAccionMedidaComponent,
+        data: { title: 'Alertas' },
+      },
+      {
+        path: 'acciones',
+        component: AlertaAccionMedidaComponent,
+        data: { title: 'Alertas, registro de accion y medida' },
+      },
     ],
   },
 ];

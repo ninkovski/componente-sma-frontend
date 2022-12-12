@@ -5,11 +5,10 @@
     </div>
   </div>
   <div class="ps-3">
-    <h4 class="text-primary mb-0">Registro de alertas procesadas.</h4>
-    <p class="text-secondary">Lista de alertas agrupadas por Agraviado e Imputado</p>
+    <h4 class="text-primary mb-0">Ubicaciones de las dependencias</h4>
+    <p class="text-secondary">Ubicación de dependencias por establecimientos, plantas y ambientes</p>
   </div>
 </div>
-
 <div class="row p-3">
   <div class="col-sm-1">
     <div class="form-group">
@@ -27,7 +26,6 @@
     </div>
   </div>
 </div>
-
 <table class="table table-striped">
   <thead>
     <tr>
@@ -40,6 +38,7 @@
       <th scope="col">Fecha de ingreso</th>
       <th scope="col">Agraviado</th>
       <th scope="col">Imputado</th>
+      <th scope="col">Estado</th>
     </tr>
   </thead>
   <tbody>
@@ -53,18 +52,18 @@
       <td>{{ elemento.fechaIngreso }}</td>
       <td>{{ elemento.nombreAgraviado }}</td>
       <td>{{ elemento.nombreImputado }}</td>
+      <td>
+        <i *ngIf="elemento.idEstado == 1" class="bi bi-circle-fill" style="color: #1717FF;"></i>
+      </td>
+
     </tr>
   </tbody>
 </table>
 
 <div class="d-flex justify-content-between p-2">
-  <ngb-pagination
-		[collectionSize]="collectionSize"
-		[(page)]="page"
-		[pageSize]="pageSize"
-		(pageChange)="refreshPagination()"
-	>
-	</ngb-pagination>
+  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+    (pageChange)="refreshPagination()">
+  </ngb-pagination>
 
   <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshPagination()">
     <option [ngValue]="5">5 filas por pagina</option>
@@ -72,3 +71,60 @@
     <option [ngValue]="30">30 filas por pagina</option>
   </select>
 </div>
+
+<!--<div class="p-4 pt-3 pb-0">
+
+</div>
+<div class="table-responsive" id="myTable">
+  <table class="table mb-0 table-hover table-bordered table-sm" style="font-size: 12px;">
+    <thead class="bg-eee">
+      <tr>
+        <th width="30" align="center">#</th>
+        <ng-container *ngFor="let p of list_order">
+          <th [width]="p.width">{{p.nombre}} <mpfn-order *ngIf="p.order" [column]="p.id" [order]="ordering"
+              (fOrder)="ordenar($event)"></mpfn-order>
+          </th>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody class="bg-white">
+      <tr *ngFor="let p of listado; let i = index">
+       <td align="center">{{ i + 1 }}</td>
+        <td>{{p.idAlerta}}</td>
+
+        <td>{{p.juridiccion}}</td>
+        <td>{{p.dependenciaMPub}}</td>
+       <td>{{p.dependenciaPol}}</td>
+        <td>{{p.caso}}</td>
+        <td align="center">{{p.fechaIngreso}}</td>
+        <td>{{p.nombreAgraviado}}</td>
+        <td>{{p.nombreImputado}}</td>
+         <td>{{p.sexo}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-between p-2">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+      (pageChange)="refreshPagination()">
+    </ngb-pagination>
+
+    <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshPagination()">
+      <option [ngValue]="5">5 filas por pagina</option>
+      <option [ngValue]="15">15 filas por pagina</option>
+      <option [ngValue]="30">30 filas por pagina</option>
+    </select>
+  </div>
+</div>
+<mpfn-pagination *ngIf="pagination" [pagination]="pagination" [list_page_size]="list_page_size" [max_size]="5"
+  (pageSizeChange)="pageSizeChange($event)" (pageChange)="pageChange($event)">
+</mpfn-pagination>*/
+ </div>
+
+  @Input() pagination: any;
+  @Input() list_page_size: any;
+  @Input() max_size: any;
+
+  @Output() pageSizeChange = new EventEmitter<string>();
+  @Output() pageChange = new EventEmitter<string>();
+<mpfn-loading [loading]="cargado"></mpfn-loading> -->
