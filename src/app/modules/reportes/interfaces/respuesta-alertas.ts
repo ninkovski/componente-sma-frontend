@@ -1,4 +1,5 @@
 export interface RespuestaAlertas {
+  id?: number;
   idAlerta: number;
   juridiccion?: string;
   dependenciaMPub?: string;
@@ -8,4 +9,5 @@ export interface RespuestaAlertas {
   nombreAgraviado?: string;
   nombreImputado?: string;
   sexo?: string;
+  idEstado: number;
 }

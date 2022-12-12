@@ -5,101 +5,70 @@
     </div>
   </div>
   <div class="ps-3">
-    <h4 class="text-primary mb-0">Ubicaciones de las dependencias</h4>
-    <p class="text-secondary">Ubicación de dependencias por establecimientos, plantas y ambientes</p>
+    <h4 class="text-primary mb-0">Registro de alertas procesadas.</h4>
+    <p class="text-secondary">Lista de alertas agrupadas por Agraviado e Imputado</p>
   </div>
 </div>
-<!-- <div class="p-4 pt-3 pb-0">
-  <div class="d-sm-flex justify-content-between mb-3 gap-3">
-    <div class="justify-content-start mb-2">
-      <div>
-        <button type="button" (click)="actualizar()" class="btn btn-secondary" placement="bottom"
-          ngbTooltip="Actualizar">
-          <i class="bx bx-refresh me-0"></i>
-        </button>
-        <button type="button" (click)="exportExcel()" class="btn btn-warning ms-1" placement="bottom"
-          ngbTooltip="Descargar">
-          <i class="bx bx-down-arrow-alt me-0"></i>
-        </button>
-      </div>
-    </div>
-    <div class="d-sm-flex justify-content-end">
-      <div class="me-sm-1">
-        <div class="input-group">
-          <label for="search" class="form-label text-secondary">Buscar</label>
-          <div class="input-group">
-            <span class="input-group-text bg-transparent"><i class='fa fa-search'></i></span>
-            <input type="text" class="form-control border-start-0" id="search" placeholder="Buscar" [(ngModel)]="search"
-              (keyup)="listarTime(search)" autocomplete="off" />
-          </div>
-        </div>
-      </div>
-      <div class="me-sm-1">
-        <div class="input-group">
-          <label for="dfiscal" class="form-label text-secondary">Distrito fiscal</label>
-          <div class="input-group">
-            <span class="input-group-text bg-transparent"><i class='bx bx-been-here'></i></span>
-            <select type="text" class="form-select" [(ngModel)]="distrito_fiscal_id" (change)="changeDfiscal($event)"
-              id="dfiscal">
-              <option value="T">Todos</option>
-              <option *ngFor="let p of dfiscales" [value]="p.id">{{p.abreviatura}}</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="input-group">
-          <label for="dfiscal" class="form-label text-secondary">Estado</label>
-          <div class="input-group">
-            <span class="input-group-text bg-transparent"><i class='bx bx-been-here'></i></span>
-            <select type="text" class="form-select" [(ngModel)]="estado" (change)="listarPor()" id="dfiscal">
-              <option value="T">Todos</option>
-              <option *ngFor="let p of estados" [value]="p.id">{{p.nombre}}</option>
-            </select>
-          </div>
-        </div>
-      </div>
 
+<div class="row p-3">
+  <div class="col-sm-1">
+    <div class="form-group">
+      <input [(ngModel)]="fecha_desde" class="form-control form-control-sm" type="date" />
     </div>
   </div>
-  <div class="table-responsive" id="myTable">
-    <table class="table mb-0 table-hover table-bordered table-sm" style="font-size: 12px;">
-      <thead class="bg-eee">
-        <tr>
-          <th width="30" align="center">#</th>
-          <ng-container *ngFor="let p of list_order">
-            <th [width]="p.width">{{p.nombre}} <mpfn-order *ngIf="p.order" [column]="p.id" [order]="ordering"
-                (fOrder)="ordenar($event)"></mpfn-order>
-            </th>
-          </ng-container>
-        </tr>
-      </thead>
-      <tbody class="bg-white">
-        <tr *ngFor="let p of listado; let i = index">
-          <td align="center">{{ i + 1 }}</td>
-          <td>{{p.distrito_fiscal_nombre}}</td>
-          <td align="center">{{p.codigo}}</td>
-          <td>{{p.nombre}}</td>
-          <td>{{p.abreviatura}}</td>
-          <td>{{p.ubigeo_nombre}}</td>
-          <td align="center" nowrap="nowrap">
-            <span *ngIf="!perm['dependencia_ubicacion.agregar']">Ubicaciones ({{p.ubicaciones}})</span>
-            <a *ngIf="perm['dependencia_ubicacion.agregar']" class="an-link" (click)="addUbicaciones(p)">Ubicaciones
-              ({{p.ubicaciones}})</a>
-          </td>
-          <td>
-            <div *ngIf="p.estado=='1'" class="badge rounded-pill text-success bg-light-success"><i
-                class='bx bxs-circle me-1'></i>Activo</div>
-            <div *ngIf="p.estado=='0'" class="badge rounded-pill text-danger bg-light-danger"><i
-                class='bx bxs-circle me-1'></i>Desactivo</div>
-          </td>
-
-        </tr>
-      </tbody>
-    </table>
+  <div class="col-sm-1">
+    <div class="form-group">
+      <input [(ngModel)]="fecha_hasta" class="form-control form-control-sm" type="date" />
+    </div>
   </div>
-  <mpfn-pagination *ngIf="pagination" [pagination]="pagination" [list_page_size]="list_page_size" [max_size]="5"
-    (pageSizeChange)="pageSizeChange($event)" (pageChange)="pageChange($event)">
-  </mpfn-pagination>
-</div> -->
-<!-- <mpfn-loading [loading]="cargado"></mpfn-loading> -->
+  <div class="col-sm-1">
+    <div class="form-group">
+      <button type="button" class="btn btn-primary btn-sm" (click)="getAlertas()">Consultar</button>
+    </div>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Fiscal</th>
+      <th scope="col">Delito</th>
+      <th scope="col">Juridiccion</th>
+      <th scope="col">Fiscalia</th>
+      <th scope="col">Caso</th>
+      <th scope="col">Fecha de ingreso</th>
+      <th scope="col">Agraviado</th>
+      <th scope="col">Imputado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let elemento of dataPagination">
+      <th scope="row">{{ elemento.id | number }}</th>
+      <td>{{ elemento.nombresFiscal }}</td>
+      <td>{{ elemento.detalleDelito }}</td>
+      <td>{{ elemento.juridiccion }}</td>
+      <td>{{ elemento.dependenciaMPub }}</td>
+      <td>{{ elemento.caso }}</td>
+      <td>{{ elemento.fechaIngreso }}</td>
+      <td>{{ elemento.nombreAgraviado }}</td>
+      <td>{{ elemento.nombreImputado }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-between p-2">
+  <ngb-pagination
+		[collectionSize]="collectionSize"
+		[(page)]="page"
+		[pageSize]="pageSize"
+		(pageChange)="refreshPagination()"
+	>
+	</ngb-pagination>
+
+  <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshPagination()">
+    <option [ngValue]="5">5 filas por pagina</option>
+    <option [ngValue]="15">15 filas por pagina</option>
+    <option [ngValue]="30">30 filas por pagina</option>
+  </select>
+</div>
