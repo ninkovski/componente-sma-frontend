@@ -1,24 +1,25 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { RespuestaAlertas } from '../../interfaces/respuesta-alertas';
+import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { AlertaInterface } from '../../interfaces/alerta-interface';
 
 @Component({
-  selector: 'app-alerta',
-  templateUrl: './alerta.component.html',
-  styleUrls: ['./alerta.component.scss'],
+  selector: 'app-reca-list',
+  templateUrl: './reca-list.component.html',
+  styleUrls: ['./reca-list.component.scss']
 })
-export class AlertaComponent {
-  data: RespuestaAlertas[] = [];
+export class RecaListComponent implements OnInit {
+  data: AlertaInterface[] = [];
   page = 1;
   pageSize = 30;
   collectionSize = 0;
-  dataPagination: RespuestaAlertas[];
+  dataPagination: AlertaInterface[];
   fecha_desde: Date;
   fecha_hasta: Date;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) { }
 
+  ngOnInit(): void {
   }
 
   getAlertas() {
