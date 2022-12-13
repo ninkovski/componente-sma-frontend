@@ -13,10 +13,12 @@
 <div class="row p-3">
     <div class="col-sm-1">
         <div class="form-group">
-            <button type="button" class="btn btn-primary btn-sm">Guardar</button>
+            <button type="button" class="btn btn-primary btn-sm" (click)="onClickRegister()">Guardar</button>
         </div>
     </div>
 </div>
+
+<!-- [(ngModel)]="modelFicha." -->
 
 <div class="container pt-3">
     <div class="accordion" id="accordionExample">
@@ -35,19 +37,19 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>1.1 Distrito fiscal</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.genDistJudicial" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>1.2 UDAVIT y UAIVIT</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.genUdavitUavit" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>1.3 N de Ficha</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.genNumFicha" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
@@ -55,27 +57,27 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>1.4 Año/mes/dia</label>
-                                <input type="date" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.genFecFicha" type="date" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>1.5 Victima ¿beneficiaria del programa?</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.genBeneficiaria" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label>Fecha incorporacion</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.genBeneficiariaFecha" type="date" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-2">
                             <div class="form-group">
                                 <label>Carpeta de asistencia</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.genNumCarpetaAsist" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
@@ -83,19 +85,19 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>1.6 Equipo a cargo - Abogado</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.genNombreAbogago" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>1.6 Equipo a cargo - Trabajadora social</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.genTSocial" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>1.6 Equipo a cargo - Psicologo</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.genPsicologo" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
@@ -103,21 +105,21 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>1.7 ¿Se tomo conocimiento del hecho?</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.genMedioDeComuni" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>1.7.1 Nombre del medio</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.genNombreMedio" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>1.7.2 Fecha de publicacion en el medio</label>
-                                <input type="date" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.genFecPublic" type="date" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
@@ -138,13 +140,15 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.1 Nombres y apellidos</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victNomApell" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.2 Nacionalidad</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <select [(ngModel)]="modelFicha.victIdTbNacionalidad" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -152,41 +156,41 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.3.1 Tipo de documento</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victTipDocu" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.3.2 Numero de documento</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victNDni" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <!-- <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.4 Lugar de nacimiento</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha." type="text" class="form-control form-control-sm">
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="row pb-3">
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.5 Fecha de nacimiento</label>
-                                <input type="date" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victFecNacimiento" type="date" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.6.1 Telefono fijo</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victTelfFijo" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.6.2 Telefono celular</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victCelular" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
@@ -194,19 +198,21 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.7 Correo electronico</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victEmail" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.8 Domicilio</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victDominicilio" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.9 Idioma o lengua materna</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <select [(ngModel)]="modelFicha.victIdioma" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -214,7 +220,9 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.10 Etnia o grupo</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <select [(ngModel)]="modelFicha.victEtnia" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -222,23 +230,23 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.11 Total de hijos</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victHjos" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.12 ¿Esta gestando?</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victGestando" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.12.1 Numero de meses</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victGestandoMeses" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
@@ -246,24 +254,24 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.13 Estado civil</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victEstadoCivil" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.14 Nivel educativo</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victNEducativo" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.15 ¿Cuenta con trabajo remunerado?</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victTrabaja" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
@@ -272,21 +280,21 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.15.1 Ocupacion</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victOcupacion" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.15.2 Centro de trabajo</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victCentroTrab" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.15.3 ¿Monto de la remuneracion?</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victRemuneracion" type="number" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
@@ -294,40 +302,40 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.16 ¿Presenta discapacidad?</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victDiscapacidad" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <!-- <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.16.1 Tipo de discapacidad</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha." class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="row pb-3">
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.17 ¿Acceso a sistema de salud?</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victAccSalud" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.17.1 Precise</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victAccSaludDetalle" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>2.18 Relacion de la victima con la persona agresora</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victRelaAgresora" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
@@ -349,13 +357,15 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.1 Nombres y apellidos</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victDepNomApell" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.2 Nacionalidad</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <select [(ngModel)]="modelFicha.victDepNacionalidad" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -363,21 +373,21 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.3.1 Tipo de documento</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victDepTipDocumento" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.3.2 Numero de documento</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victDepNDni" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.4 Edad (en años cumplidos)</label>
-                                <input type="number" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victDepEdad" type="number" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
@@ -385,22 +395,22 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.5 Domicilio</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victDepDomicilio" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.6 Nivel educativo</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victDepNivelEd" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.7 ¿Estudia actualmente?</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victDepEstu" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
@@ -409,21 +419,21 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.7.1 Tipo de institucion</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victDepEstuTip" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.7.2 Centro de estudios</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victDepNomEdu" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.7.3 Año que cursa</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victDepEstuAno" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
@@ -431,21 +441,23 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.8 ¿Cuenta con trabajo remunerado?</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victDepTrabaja" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.8.1 Precisa la ocupacion</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <select [(ngModel)]="modelFicha.victDepOcupacion" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.8.2 Centro de trabajo</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victDepCentTrabajo" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
@@ -453,24 +465,24 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.9 ¿La victima presenta alguna discapacidad?</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victDepDiscapacidad" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.9.1 Tipo de discapacidad</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victDepDiscapacidadDes" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.10 Vinculo de la victima dependiente con la victima directa</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victDepRelaDirect" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
@@ -492,13 +504,15 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.1 Nombres y apellidos</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victDep2NomApell" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.2 Nacionalidad</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <select [(ngModel)]="modelFicha.victDep2Nacionalidad" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -506,21 +520,21 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.3.1 Tipo de documento</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victDep2TipDocumento" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.3.2 Numero de documento</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victDep2NDni" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.4 Edad (en años cumplidos)</label>
-                                <input type="number" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victDep2Edad" type="number" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
@@ -528,22 +542,22 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.5 Domicilio</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victDep2Domicilio" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.6 Nivel educativo</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victDep2NivelEdu" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.7 ¿Estudia actualmente?</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victDep2Estu" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
@@ -552,21 +566,21 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.7.1 Tipo de institucion</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victDep2EstuTip" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.7.2 Centro de estudios</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victDep2NomEdu" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.7.3 Año que cursa</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victDep2EstuAno" type="number" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
@@ -574,21 +588,21 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.8 ¿Cuenta con trabajo remunerado?</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victDep2Trabaja" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.8.1 Precisa la ocupacion</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victDep2Ocupacion" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.8.2 Centro de trabajo</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input [(ngModel)]="modelFicha.victDep2CentTrabajo" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
@@ -596,24 +610,24 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.9 ¿La victima presenta alguna discapacidad?</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victDep2Discapacidad" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.9.1 Tipo de discapacidad</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victDep2DiscapacidadDes" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>3.10 Vinculo de la victima dependiente con la victima directa</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                <select [(ngModel)]="modelFicha.victDep2RelaDirec" class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
@@ -621,7 +635,7 @@
                 </div>
             </div>
         </div>
-        <div class="card">
+        <!-- <div class="card">
             <div class="card-header" id="headingThree">
                 <h5 class="mb-0">
                     <button class="btn btn-link collapsed" type="button">
@@ -650,7 +664,7 @@
                             <div class="form-group">
                                 <label>4.3.1 Tipo de documento</label>
                                 <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
@@ -684,7 +698,7 @@
                             <div class="form-group">
                                 <label>4.7 Nivel educativo</label>
                                 <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
@@ -694,7 +708,7 @@
                             <div class="form-group">
                                 <label>4.9 Situacion de la persona agresora</label>
                                 <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
@@ -719,8 +733,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card">
+        </div> -->
+        <!-- <div class="card">
             <div class="card-header" id="headingThree">
                 <h5 class="mb-0">
                     <button class="btn btn-link collapsed" type="button">
@@ -741,7 +755,7 @@
                             <div class="form-group">
                                 <label>5.2 Lugar de la ocurrencia</label>
                                 <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
@@ -757,7 +771,7 @@
                             <div class="form-group">
                                 <label>5.4 Presuntos moviles</label>
                                 <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
@@ -770,8 +784,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card">
+        </div> -->
+        <!-- <div class="card">
             <div class="card-header" id="headingThree">
                 <h5 class="mb-0">
                     <button class="btn btn-link collapsed" type="button">
@@ -806,7 +820,7 @@
                             <div class="form-group">
                                 <label>5.9 Delito</label>
                                 <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
@@ -822,7 +836,7 @@
                             <div class="form-group">
                                 <label>5.10 Estado procesal del caso</label>
                                 <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
@@ -835,8 +849,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card">
+        </div> -->
+        <!-- <div class="card">
             <div class="card-header" id="headingThree">
                 <h5 class="mb-0">
                     <button class="btn btn-link collapsed" type="button">
@@ -871,7 +885,7 @@
                             <div class="form-group">
                                 <label>5.14 Medidas de proteccion dictadas</label>
                                 <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
@@ -879,14 +893,14 @@
                             <div class="form-group">
                                 <label>5.15 Tipo de violencia</label>
                                 <select class="form-control form-control-sm">
-                                    <option>Small select</option>
+                                    <option [ngValue]="0">Seleccione...</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="card">
             <div class="card-header" id="headingThree">
                 <h5 class="mb-0">
@@ -900,117 +914,99 @@
                     <div class="row pb-3">
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label>6.1 Numero de asistencias brindadas</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
-                                </select>
+                                <label>6.1 Numero de asistencias brindadas - Legal</label>
+                                <input [(ngModel)]="modelFicha.asistLegal" type="number" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label>6.2 Numero de informes multidiciplinarios</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <label>6.1 Numero de asistencias brindadas - Social</label>
+                                <input [(ngModel)]="modelFicha.asistSocial" type="number" class="form-control form-control-sm">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label>6.3 Asistencia legal</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <label>6.1 Numero de asistencias brindadas - Psicologica</label>
+                                <input [(ngModel)]="modelFicha.asistPsicologica" type="number" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
                     <div class="row pb-3">
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label>6.4 Asistencia psicologica</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
-                                </select>
+                                <label>6.2 Numero de informes multidiciplinarios</label>
+                                <input [(ngModel)]="modelFicha.asistInforEmit" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>6.3 Asistencia legal</label>
+                                <input [(ngModel)]="modelFicha.asistAsistLegaDet" type="text" class="form-control form-control-sm">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>6.4 Asistencia psicologica</label>
+                                <input [(ngModel)]="modelFicha.asistPsicologicaDet" type="text" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pb-3">
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label>6.5 Asistencia social</label>
-                                <input type="text" class="form-control form-control-sm">
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label>6.6 Identificacion de los factores de riesgo</label>
-                                <select class="form-control form-control-sm">
-                                    <option>Small select</option>
-                                </select>
+                                <input [(ngModel)]="modelFicha.asistSocialDet" type="text" class="form-control form-control-sm">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-<!-- <div class="container pt-3">
-    <div class="accordion" id="accordionExample">
-        <div class="card">
-            <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                        aria-expanded="true" aria-controls="collapseOne">
-                        Collapsible Group Item #1
-                    </button>
-                </h5>
-            </div>
-
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                    shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header" id="headingTwo">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
-                        aria-expanded="false" aria-controls="collapseTwo">
-                        Collapsible Group Item #2
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                    shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
-            </div>
-        </div>
         <div class="card">
             <div class="card-header" id="headingThree">
                 <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
-                        aria-expanded="false" aria-controls="collapseThree">
-                        Collapsible Group Item #3
+                    <button class="btn btn-link collapsed" type="button">
+                        SECCION VII: APRECIACION DE LA VICTIMA RESPECTO AL SISTEMA DE JUSTICIA
                     </button>
                 </h5>
             </div>
             <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
-                <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                    moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                    shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                    aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Apreciacion</th>
+                                <th scope="col">Marcaje</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">7.1 Atribuye actos de corrupcion al resultado del estado de sus casos.</th>
+                                <td><input [(ngModel)]="modelFicha.aprePregunt1" type="number" class="form-control form-control-sm"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">7.2 Manifiesta haber tenido percanses con el fiscal o el asistente de funcion fiscal</th>
+                                <td><input [(ngModel)]="modelFicha.aprePregunt2" type="number" class="form-control form-control-sm"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">7.3 Señala haber sido discriminada por los operadores de justicia.</th>
+                                <td><input [(ngModel)]="modelFicha.aprePregunt3" type="number" class="form-control form-control-sm"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">7.4 Refiere que la fecha de sus declaraciones ha sido reprogramada en varias oportunidades.</th>
+                                <td><input [(ngModel)]="modelFicha.aprePregunt4" type="number" class="form-control form-control-sm"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">7.5 Indica que loss operadores de justicia han emitido comentarios que atentan contra su integridad.</th>
+                                <td><input [(ngModel)]="modelFicha.aprePregunt5" type="number" class="form-control form-control-sm"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">7.6 Esta conforme con la atencion recibida por parte de los operadores de justicia.</th>
+                                <td><input [(ngModel)]="modelFicha.aprePregunt6" type="number" class="form-control form-control-sm"></td>
+                            </tr>
+                        </tbody>
+                    </table>
             </div>
         </div>
     </div>
-</div> -->
+</div>
