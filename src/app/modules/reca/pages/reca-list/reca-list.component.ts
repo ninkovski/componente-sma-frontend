@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { AlertaInterface } from '../../interfaces/alerta-interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reca-list',
   templateUrl: './reca-list.component.html',
-  styleUrls: ['./reca-list.component.scss']
+  styleUrls: ['./reca-list.component.scss'],
 })
 export class RecaListComponent implements OnInit {
   data: AlertaInterface[] = [];
@@ -17,14 +18,19 @@ export class RecaListComponent implements OnInit {
   fecha_desde: Date;
   fecha_hasta: Date;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   getAlertas() {
-    const fechaDesde = new DatePipe('en-US').transform(this.fecha_desde, 'dd/MM/yyyy');
-    const fechaHasta = new DatePipe('en-US').transform(this.fecha_hasta, 'dd/MM/yyyy')
+    const fechaDesde = new DatePipe('en-US').transform(
+      this.fecha_desde,
+      'dd/MM/yyyy'
+    );
+    const fechaHasta = new DatePipe('en-US').transform(
+      this.fecha_hasta,
+      'dd/MM/yyyy'
+    );
 
     var filtro_fecha = `?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`;
 
@@ -38,9 +44,14 @@ export class RecaListComponent implements OnInit {
   }
 
   refreshPagination() {
-    this.dataPagination = this.data.map((elemento, i) => ({ id: i + 1, ...elemento })).slice(
-      (this.page - 1) * this.pageSize,
-      (this.page - 1) * this.pageSize + this.pageSize,
-    );
+    this.dataPagination = this.data
+      .map((elemento, i) => ({ id: i + 1, ...elemento }))
+      .slice(
+        (this.page - 1) * this.pageSize,
+        (this.page - 1) * this.pageSize + this.pageSize
+      );
+  }
+  Registrar() {
+    this.router.navigate(['/reca-list/reca-register']);
   }
 }
