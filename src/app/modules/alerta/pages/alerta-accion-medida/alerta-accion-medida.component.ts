@@ -7,37 +7,39 @@ import { SelectInterface } from '../../interfaces/select-interface';
 @Component({
   selector: 'app-alerta-accion-medida',
   templateUrl: './alerta-accion-medida.component.html',
-  styleUrls: ['./alerta-accion-medida.component.scss']
+  styleUrls: ['./alerta-accion-medida.component.scss'],
 })
 export class AlertaAccionMedidaComponent implements OnInit {
   data: RespuestaAlertas[] = [];
   dataAccion: SelectInterface[] = [];
   dataMedida: SelectInterface[] = [];
   dataModal: {
-    display: string,
-    esAccion: boolean,
-    alertaId: number,
-    selectId: number,
-    selectList: SelectInterface[],
-    detalle: string
+    display: string;
+    esAccion: boolean;
+    alertaId: number;
+    selectId: number;
+    selectList: SelectInterface[];
+    detalle: string;
   } = {
-    display: "none",
+    display: 'none',
     esAccion: false,
     alertaId: 0,
     selectId: 0,
     selectList: [],
-    detalle: ""
+    detalle: '',
   };
   page = 1;
-  pageSize = 30;
+  pageSize = 5;
   collectionSize = 0;
   dataPagination: RespuestaAlertas[];
   fecha_desde: Date;
   fecha_hasta: Date;
 
   constructor(private http: HttpClient) {
-    this.dataModal.display = "none";
+    this.dataModal.display = 'none';
+  }
 
+  ngOnInit(): void {
     this.http
       .get('http://localhost:8082/api-integrador/alertas/accion')
       .subscribe((respuesta: any) => {
@@ -63,15 +65,18 @@ export class AlertaAccionMedidaComponent implements OnInit {
           });
         }
       });
-  }
-
-  ngOnInit(): void {
-
+    this.getAlertas();
   }
 
   getAlertas() {
-    const fechaDesde = new DatePipe('en-US').transform(this.fecha_desde, 'dd/MM/yyyy');
-    const fechaHasta = new DatePipe('en-US').transform(this.fecha_hasta, 'dd/MM/yyyy')
+    const fechaDesde = new DatePipe('en-US').transform(
+      this.fecha_desde,
+      'dd/MM/yyyy'
+    );
+    const fechaHasta = new DatePipe('en-US').transform(
+      this.fecha_hasta,
+      'dd/MM/yyyy'
+    );
 
     var filtro_fecha = `?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`;
 
@@ -85,16 +90,18 @@ export class AlertaAccionMedidaComponent implements OnInit {
   }
 
   refreshPagination() {
-    this.dataPagination = this.data.map((elemento, i) => ({ id: i + 1, ...elemento })).slice(
-      (this.page - 1) * this.pageSize,
-      (this.page - 1) * this.pageSize + this.pageSize,
-    );
+    this.dataPagination = this.data
+      .map((elemento, i) => ({ id: i + 1, ...elemento }))
+      .slice(
+        (this.page - 1) * this.pageSize,
+        (this.page - 1) * this.pageSize + this.pageSize
+      );
   }
 
   openModal(tipo: string, alertaId: number) {
-    this.dataModal.display = "block";
+    this.dataModal.display = 'block';
 
-    if (tipo == "accion") {
+    if (tipo == 'accion') {
       this.dataModal.esAccion = true;
       this.dataModal.selectList = this.dataAccion;
     } else {
@@ -104,7 +111,7 @@ export class AlertaAccionMedidaComponent implements OnInit {
 
     this.dataModal.selectId = 0;
     this.dataModal.alertaId = alertaId;
-    this.dataModal.detalle = "";
+    this.dataModal.detalle = '';
   }
 
   registerAccionMedida() {
@@ -112,7 +119,7 @@ export class AlertaAccionMedidaComponent implements OnInit {
     var data = null;
 
     if (this.dataModal.selectId == 0) {
-      alert("Seleccione el tipo.");
+      alert('Seleccione el tipo.');
     } else {
       if (this.dataModal.esAccion == true) {
         data = {
@@ -137,10 +144,13 @@ export class AlertaAccionMedidaComponent implements OnInit {
       }
 
       this.http
-        .post('http://localhost:8082/api-integrador/alertas/accion-proteccion', data)
+        .post(
+          'http://localhost:8082/api-integrador/alertas/accion-proteccion',
+          data
+        )
         .subscribe((respuesta: any) => {
-          alert("Se grabo con exito.");
-          this.dataModal.display = "none";
+          alert('Se grabo con exito.');
+          this.dataModal.display = 'none';
         });
     }
   }

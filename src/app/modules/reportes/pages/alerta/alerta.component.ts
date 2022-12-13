@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { RespuestaAlertas } from '../../interfaces/respuesta-alertas';
-
+import { DownloadService } from 'src/app/shared/services/download.service';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 @Component({
   selector: 'app-alerta',
   templateUrl: './alerta.component.html',
@@ -29,9 +31,11 @@ export class AlertaComponent implements OnInit {
   fecha_desde: Date;
   fecha_hasta: Date;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private download: DownloadService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAlertas();
+  }
 
   getAlertas() {
     const fechaDesde = new DatePipe('en-US').transform(
@@ -60,5 +64,38 @@ export class AlertaComponent implements OnInit {
         (this.page - 1) * this.pageSize,
         (this.page - 1) * this.pageSize + this.pageSize
       );
+  }
+  exportExcel() {
+    this.download.exportExcel(
+      document.getElementById('myReporte'),
+      'Alertas',
+      'DATA'
+    );
+  }
+  downloadPdf() {
+    const doc = new jsPDF();
+    autoTable(doc, {
+      html: '#myReporte',
+      body: [
+        [
+          {
+            content: 'Text',
+            colSpan: 2,
+            rowSpan: 2,
+            styles: { halign: 'center' },
+          },
+        ],
+      ],
+    });
+    // let date: Date = new Date();
+    // doc.autoTable({ html: '#myReporte' });
+    doc.save('Alertas.pdf');
+    // doc.save(
+    //   'Reporte de Alertas ' +
+    //     this.dataPagination.length +
+    //     ' registros, descargado ' +
+    //     date.toLocaleString() +
+    //     ' .pdf'
+    // );
   }
 }

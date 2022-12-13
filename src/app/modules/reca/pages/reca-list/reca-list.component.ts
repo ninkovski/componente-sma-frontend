@@ -20,7 +20,9 @@ export class RecaListComponent implements OnInit {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getAlertas();
+  }
 
   getAlertas() {
     const fechaDesde = new DatePipe('en-US').transform(
