@@ -65,8 +65,8 @@
                 <label>1.5 Victima ¿beneficiaria del programa?</label>
                 <select [(ngModel)]="modelFicha.genBeneficiaria" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of siNoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Si</option>
+                  <option [ngValue]="2">No</option>
                 </select>
               </div>
             </div>
@@ -109,8 +109,8 @@
                 <label>1.7 ¿Se tomo conocimiento del hecho?</label>
                 <select [(ngModel)]="modelFicha.genMedioDeComuni" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of siNoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Si</option>
+                  <option [ngValue]="2">No</option>
                 </select>
               </div>
             </div>
@@ -158,6 +158,17 @@
                 <label>2.2 Nacionalidad</label>
                 <select [(ngModel)]="modelFicha.victIdTbNacionalidad" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccione...</option>
+                  <option [ngValue]="1">Peru</option>
+                  <option [ngValue]="2">Venezuela</option>
+                  <option [ngValue]="3">Colombia</option>
+                  <option [ngValue]="4">Ecuador</option>
+                  <option [ngValue]="5">Brasil</option>
+                  <option [ngValue]="6">Argentina</option>
+                  <option [ngValue]="7">Bolivia</option>
+                  <option [ngValue]="8">Chile</option>
+                  <option [ngValue]="9">Canada</option>
+                  <option [ngValue]="10">Cuba</option>
+                  <option [ngValue]="11">Espana</option>
                 </select>
               </div>
             </div>
@@ -168,8 +179,10 @@
                 <label>2.3.1 Tipo de documento</label>
                 <select [(ngModel)]="modelFicha.victTipDocu" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of tipoDocumentoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">DNI</option>
+                  <option [ngValue]="2">Carnet de extranjeria</option>
+                  <option [ngValue]="3">Pasaporte</option>
+                  <option [ngValue]="4">PPT</option>
                 </select>
               </div>
             </div>
@@ -224,6 +237,12 @@
                 <label>2.9 Idioma o lengua materna</label>
                 <select [(ngModel)]="modelFicha.victIdioma" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccione...</option>
+                  <option [ngValue]="1">Espanol</option>
+                  <option [ngValue]="2">Ingles</option>
+                  <option [ngValue]="3">Portugues</option>
+                  <option [ngValue]="4">Italiano</option>
+                  <option [ngValue]="5">Arabe</option>
+                  <option [ngValue]="6">Frances</option>
                 </select>
               </div>
             </div>
@@ -234,8 +253,16 @@
                 <label>2.10 Etnia o grupo</label>
                 <select [(ngModel)]="modelFicha.victEtnia" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of etniasCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Asháninka</option>
+                  <option [ngValue]="2">Atiri</option>
+                  <option [ngValue]="3">Aymara</option>
+                  <option [ngValue]="4">Aborígenes australianos</option>
+                  <option [ngValue]="5">Caucásicos</option>
+                  <option [ngValue]="6">Quechua</option>
+                  <option [ngValue]="7">Piro</option>
+                  <option [ngValue]="8">Jibaro</option>
+                  <option [ngValue]="9">Yaminagua</option>
+                  <option [ngValue]="10">Otros</option>
                 </select>
               </div>
             </div>
@@ -261,8 +288,8 @@
                 <label>2.12 ¿Esta gestando?</label>
                 <select [(ngModel)]="modelFicha.victGestando" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of siNoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Si</option>
+                  <option [ngValue]="2">No</option>
                 </select>
               </div>
             </div>
@@ -279,8 +306,13 @@
                 <label>2.13 Estado civil</label>
                 <select [(ngModel)]="modelFicha.victEstadoCivil" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of estadoCivilCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Soltero</option>
+                  <option [ngValue]="2">Conviviente</option>
+                  <option [ngValue]="3">Ex conviviente</option>
+                  <option [ngValue]="4">Casado</option>
+                  <option [ngValue]="5">Divorciado</option>
+                  <option [ngValue]="6">Viuda (a)</option>
+                  <option [ngValue]="7">Otros</option>
                 </select>
               </div>
             </div>
@@ -289,8 +321,16 @@
                 <label>2.14 Nivel educativo</label>
                 <select [(ngModel)]="modelFicha.victNEducativo" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of nivelEducativoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Sin estudios</option>
+                  <option [ngValue]="2">Inicial</option>
+                  <option [ngValue]="3">Primaria incompleta</option>
+                  <option [ngValue]="4">Primaria completa</option>
+                  <option [ngValue]="5">Secundaria incompleta</option>
+                  <option [ngValue]="6">Secundaria completa</option>
+                  <option [ngValue]="7">Superior no universitaria incompleta</option>
+                  <option [ngValue]="8">Superior no universitaria completa</option>
+                  <option [ngValue]="9">Superior universitaria incompleta</option>
+                  <option [ngValue]="10">Superior universitaria completa</option>
                 </select>
               </div>
             </div>
@@ -299,8 +339,8 @@
                 <label>2.15 ¿Cuenta con trabajo remunerado?</label>
                 <select [(ngModel)]="modelFicha.victTrabaja" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of siNoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Si</option>
+                  <option [ngValue]="2">No</option>
                 </select>
               </div>
             </div>
@@ -311,8 +351,19 @@
                 <label>2.15.1 Ocupacion</label>
                 <select [(ngModel)]="modelFicha.victOcupacion" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of ocupacionCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Ama de casa</option>
+                  <option [ngValue]="2">Empleada del hogar</option>
+                  <option [ngValue]="3">Estudiante</option>
+                  <option [ngValue]="4">Profesional independiente</option>
+                  <option [ngValue]="5">Ambulante</option>
+                  <option [ngValue]="6">Comerciante</option>
+                  <option [ngValue]="7">Funcionaria publica</option>
+                  <option [ngValue]="8">Empresaria</option>
+                  <option [ngValue]="9">Policia</option>
+                  <option [ngValue]="10">Profesora</option>
+                  <option [ngValue]="11">Obrera</option>
+                  <option [ngValue]="12">Otros</option>
+                  <option [ngValue]="13">Se desconoce</option>
                 </select>
               </div>
             </div>
@@ -335,8 +386,8 @@
                 <label>2.16 ¿Presenta discapacidad?</label>
                 <select [(ngModel)]="modelFicha.victDiscapacidad" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of siNoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Si</option>
+                  <option [ngValue]="2">No</option>
                 </select>
               </div>
             </div>
@@ -355,8 +406,8 @@
                 <label>2.17 ¿Acceso a sistema de salud?</label>
                 <select [(ngModel)]="modelFicha.victAccSalud" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of siNoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Si</option>
+                  <option [ngValue]="2">No</option>
                 </select>
               </div>
             </div>
@@ -371,8 +422,14 @@
                 <label>2.18 Relacion de la victima con la persona agresora</label>
                 <select [(ngModel)]="modelFicha.victRelaAgresora" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of relacionAgresorCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Conyugue</option>
+                  <option [ngValue]="2">Ex conyugue</option>
+                  <option [ngValue]="3">Conviviente</option>
+                  <option [ngValue]="4">Ex conviviente</option>
+                  <option [ngValue]="5">Enamorado</option>
+                  <option [ngValue]="6">Ex enamorado</option>
+                  <option [ngValue]="7">Novio</option>
+                  <option [ngValue]="8">Otro</option>
                 </select>
               </div>
             </div>
@@ -402,6 +459,17 @@
                 <label>3.2 Nacionalidad</label>
                 <select [(ngModel)]="modelFicha.victDepNacionalidad" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccione...</option>
+                  <option [ngValue]="1">Peru</option>
+                  <option [ngValue]="2">Venezuela</option>
+                  <option [ngValue]="3">Colombia</option>
+                  <option [ngValue]="4">Ecuador</option>
+                  <option [ngValue]="5">Brasil</option>
+                  <option [ngValue]="6">Argentina</option>
+                  <option [ngValue]="7">Bolivia</option>
+                  <option [ngValue]="8">Chile</option>
+                  <option [ngValue]="9">Canada</option>
+                  <option [ngValue]="10">Cuba</option>
+                  <option [ngValue]="11">Espana</option>
                 </select>
               </div>
             </div>
@@ -412,8 +480,10 @@
                 <label>3.3.1 Tipo de documento</label>
                 <select [(ngModel)]="modelFicha.victDepTipDocumento" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of tipoDocumentoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">DNI</option>
+                  <option [ngValue]="2">Carnet de extranjeria</option>
+                  <option [ngValue]="3">Pasaporte</option>
+                  <option [ngValue]="4">PPT</option>
                 </select>
               </div>
             </div>
@@ -442,8 +512,16 @@
                 <label>3.6 Nivel educativo</label>
                 <select [(ngModel)]="modelFicha.victDepNivelEd" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of nivelEducativoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Sin estudios</option>
+                  <option [ngValue]="2">Inicial</option>
+                  <option [ngValue]="3">Primaria incompleta</option>
+                  <option [ngValue]="4">Primaria completa</option>
+                  <option [ngValue]="5">Secundaria incompleta</option>
+                  <option [ngValue]="6">Secundaria completa</option>
+                  <option [ngValue]="7">Superior no universitaria incompleta</option>
+                  <option [ngValue]="8">Superior no universitaria completa</option>
+                  <option [ngValue]="9">Superior universitaria incompleta</option>
+                  <option [ngValue]="10">Superior universitaria completa</option>
                 </select>
               </div>
             </div>
@@ -452,8 +530,8 @@
                 <label>3.7 ¿Estudia actualmente?</label>
                 <select [(ngModel)]="modelFicha.victDepEstu" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of siNoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Si</option>
+                  <option [ngValue]="2">No</option>
                 </select>
               </div>
             </div>
@@ -464,8 +542,10 @@
                 <label>3.7.1 Tipo de institucion</label>
                 <select [(ngModel)]="modelFicha.victDepEstuTip" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of institucionCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">IE / Colegio</option>
+                  <option [ngValue]="2">Instituto superior</option>
+                  <option [ngValue]="3">Universidad</option>
+                  <option [ngValue]="4">Otro</option>
                 </select>
               </div>
             </div>
@@ -488,8 +568,8 @@
                 <label>3.8 ¿Cuenta con trabajo remunerado?</label>
                 <select [(ngModel)]="modelFicha.victDepTrabaja" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of siNoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Si</option>
+                  <option [ngValue]="2">No</option>
                 </select>
               </div>
             </div>
@@ -498,8 +578,19 @@
                 <label>3.8.1 Precisa la ocupacion</label>
                 <select [(ngModel)]="modelFicha.victDepOcupacion" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of ocupacionCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Ama de casa</option>
+                  <option [ngValue]="2">Empleada del hogar</option>
+                  <option [ngValue]="3">Estudiante</option>
+                  <option [ngValue]="4">Profesional independiente</option>
+                  <option [ngValue]="5">Ambulante</option>
+                  <option [ngValue]="6">Comerciante</option>
+                  <option [ngValue]="7">Funcionaria publica</option>
+                  <option [ngValue]="8">Empresaria</option>
+                  <option [ngValue]="9">Policia</option>
+                  <option [ngValue]="10">Profesora</option>
+                  <option [ngValue]="11">Obrera</option>
+                  <option [ngValue]="12">Otros</option>
+                  <option [ngValue]="13">Se desconoce</option>
                 </select>
               </div>
             </div>
@@ -516,8 +607,8 @@
                 <label>3.9 ¿La victima presenta alguna discapacidad?</label>
                 <select [(ngModel)]="modelFicha.victDepDiscapacidad" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of siNoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Si</option>
+                  <option [ngValue]="2">No</option>
                 </select>
               </div>
             </div>
@@ -526,8 +617,9 @@
                 <label>3.9.1 Tipo de discapacidad</label>
                 <select [(ngModel)]="modelFicha.victDepDiscapacidadDes" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of discapacidadCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Fisica</option>
+                  <option [ngValue]="2">Visual</option>
+                  <option [ngValue]="3">Intelectual</option>
                 </select>
               </div>
             </div>
@@ -536,8 +628,15 @@
                 <label>3.10 Vinculo de la victima dependiente con la victima directa</label>
                 <select [(ngModel)]="modelFicha.victDepRelaDirect" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of vinculoVictimaCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Madre</option>
+                  <option [ngValue]="2">Madrastra</option>
+                  <option [ngValue]="3">Hija</option>
+                  <option [ngValue]="4">Hijastra</option>
+                  <option [ngValue]="5">Abuela</option>
+                  <option [ngValue]="6">Hermana</option>
+                  <option [ngValue]="7">Hermanastra</option>
+                  <option [ngValue]="8">Nieta</option>
+                  <option [ngValue]="9">Otro</option>
                 </select>
               </div>
             </div>
@@ -567,6 +666,17 @@
                 <label>3.2 Nacionalidad</label>
                 <select [(ngModel)]="modelFicha.victDep2Nacionalidad" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccione...</option>
+                  <option [ngValue]="1">Peru</option>
+                  <option [ngValue]="2">Venezuela</option>
+                  <option [ngValue]="3">Colombia</option>
+                  <option [ngValue]="4">Ecuador</option>
+                  <option [ngValue]="5">Brasil</option>
+                  <option [ngValue]="6">Argentina</option>
+                  <option [ngValue]="7">Bolivia</option>
+                  <option [ngValue]="8">Chile</option>
+                  <option [ngValue]="9">Canada</option>
+                  <option [ngValue]="10">Cuba</option>
+                  <option [ngValue]="11">Espana</option>
                 </select>
               </div>
             </div>
@@ -577,8 +687,10 @@
                 <label>3.3.1 Tipo de documento</label>
                 <select [(ngModel)]="modelFicha.victDep2TipDocumento" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of tipoDocumentoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">DNI</option>
+                  <option [ngValue]="2">Carnet de extranjeria</option>
+                  <option [ngValue]="3">Pasaporte</option>
+                  <option [ngValue]="4">PPT</option>
                 </select>
               </div>
             </div>
@@ -607,8 +719,16 @@
                 <label>3.6 Nivel educativo</label>
                 <select [(ngModel)]="modelFicha.victDep2NivelEdu" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of nivelEducativoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Sin estudios</option>
+                  <option [ngValue]="2">Inicial</option>
+                  <option [ngValue]="3">Primaria incompleta</option>
+                  <option [ngValue]="4">Primaria completa</option>
+                  <option [ngValue]="5">Secundaria incompleta</option>
+                  <option [ngValue]="6">Secundaria completa</option>
+                  <option [ngValue]="7">Superior no universitaria incompleta</option>
+                  <option [ngValue]="8">Superior no universitaria completa</option>
+                  <option [ngValue]="9">Superior universitaria incompleta</option>
+                  <option [ngValue]="10">Superior universitaria completa</option>
                 </select>
               </div>
             </div>
@@ -617,8 +737,8 @@
                 <label>3.7 ¿Estudia actualmente?</label>
                 <select [(ngModel)]="modelFicha.victDep2Estu" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of siNoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Si</option>
+                  <option [ngValue]="2">No</option>
                 </select>
               </div>
             </div>
@@ -629,8 +749,10 @@
                 <label>3.7.1 Tipo de institucion</label>
                 <select [(ngModel)]="modelFicha.victDep2EstuTip" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of institucionCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">IE / Colegio</option>
+                  <option [ngValue]="2">Instituto superior</option>
+                  <option [ngValue]="3">Universidad</option>
+                  <option [ngValue]="4">Otro</option>
                 </select>
               </div>
             </div>
@@ -653,8 +775,8 @@
                 <label>3.8 ¿Cuenta con trabajo remunerado?</label>
                 <select [(ngModel)]="modelFicha.victDep2Trabaja" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of siNoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Si</option>
+                  <option [ngValue]="2">No</option>
                 </select>
               </div>
             </div>
@@ -677,8 +799,8 @@
                 <label>3.9 ¿La victima presenta alguna discapacidad?</label>
                 <select [(ngModel)]="modelFicha.victDep2Discapacidad" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of siNoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Si</option>
+                  <option [ngValue]="2">No</option>
                 </select>
               </div>
             </div>
@@ -687,8 +809,9 @@
                 <label>3.9.1 Tipo de discapacidad</label>
                 <select [(ngModel)]="modelFicha.victDep2DiscapacidadDes" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of discapacidadCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Fisica</option>
+                  <option [ngValue]="2">Visual</option>
+                  <option [ngValue]="3">Intelectual</option>
                 </select>
               </div>
             </div>
@@ -697,8 +820,15 @@
                 <label>3.10 Vinculo de la victima dependiente con la victima directa</label>
                 <select [(ngModel)]="modelFicha.victDep2RelaDirec" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of vinculoVictimaCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Madre</option>
+                  <option [ngValue]="2">Madrastra</option>
+                  <option [ngValue]="3">Hija</option>
+                  <option [ngValue]="4">Hijastra</option>
+                  <option [ngValue]="5">Abuela</option>
+                  <option [ngValue]="6">Hermana</option>
+                  <option [ngValue]="7">Hermanastra</option>
+                  <option [ngValue]="8">Nieta</option>
+                  <option [ngValue]="9">Otro</option>
                 </select>
               </div>
             </div>
