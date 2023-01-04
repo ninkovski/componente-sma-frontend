@@ -117,7 +117,13 @@
             <div class="col-sm-4">
               <div class="form-group">
                 <label>1.7.1 Nombre del medio</label>
-                <input [(ngModel)]="modelFicha.genNombreMedio" type="text" class="form-control form-control-sm">
+                <select [(ngModel)]="modelFicha.genNombreMedio" class="form-control form-control-sm">
+                  <option [ngValue]="0">Seleccionar...</option>
+                  <option [ngValue]="1">WEB</option>
+                  <option [ngValue]="2">Televisivo</option>
+                  <option [ngValue]="3">Periodico</option>
+                  <option [ngValue]="4">Radio</option>
+                </select>
               </div>
             </div>
             <div class="col-sm-4">
