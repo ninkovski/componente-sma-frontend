@@ -65,8 +65,8 @@
                 <label>1.5 Victima ¿beneficiaria del programa?</label>
                 <select [(ngModel)]="modelFicha.genBeneficiaria" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of siNoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Si</option>
+                  <option [ngValue]="2">No</option>
                 </select>
               </div>
             </div>
@@ -109,8 +109,8 @@
                 <label>1.7 ¿Se tomo conocimiento del hecho?</label>
                 <select [(ngModel)]="modelFicha.genMedioDeComuni" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of siNoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Si</option>
+                  <option [ngValue]="2">No</option>
                 </select>
               </div>
             </div>
@@ -158,6 +158,17 @@
                 <label>2.2 Nacionalidad</label>
                 <select [(ngModel)]="modelFicha.victIdTbNacionalidad" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccione...</option>
+                  <option [ngValue]="1">Peru</option>
+                  <option [ngValue]="2">Venezuela</option>
+                  <option [ngValue]="3">Colombia</option>
+                  <option [ngValue]="4">Ecuador</option>
+                  <option [ngValue]="5">Brasil</option>
+                  <option [ngValue]="6">Argentina</option>
+                  <option [ngValue]="7">Bolivia</option>
+                  <option [ngValue]="8">Chile</option>
+                  <option [ngValue]="9">Canada</option>
+                  <option [ngValue]="10">Cuba</option>
+                  <option [ngValue]="11">Espana</option>
                 </select>
               </div>
             </div>
@@ -168,8 +179,10 @@
                 <label>2.3.1 Tipo de documento</label>
                 <select [(ngModel)]="modelFicha.victTipDocu" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of tipoDocumentoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">DNI</option>
+                  <option [ngValue]="2">Carnet de extranjeria</option>
+                  <option [ngValue]="3">Pasaporte</option>
+                  <option [ngValue]="4">PPT</option>
                 </select>
               </div>
             </div>
@@ -224,6 +237,12 @@
                 <label>2.9 Idioma o lengua materna</label>
                 <select [(ngModel)]="modelFicha.victIdioma" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccione...</option>
+                  <option [ngValue]="1">Espanol</option>
+                  <option [ngValue]="2">Ingles</option>
+                  <option [ngValue]="3">Portugues</option>
+                  <option [ngValue]="4">Italiano</option>
+                  <option [ngValue]="5">Arabe</option>
+                  <option [ngValue]="6">Frances</option>
                 </select>
               </div>
             </div>
@@ -234,8 +253,16 @@
                 <label>2.10 Etnia o grupo</label>
                 <select [(ngModel)]="modelFicha.victEtnia" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of etniasCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Asháninka</option>
+                  <option [ngValue]="2">Atiri</option>
+                  <option [ngValue]="3">Aymara</option>
+                  <option [ngValue]="4">Aborígenes australianos</option>
+                  <option [ngValue]="5">Caucásicos</option>
+                  <option [ngValue]="6">Quechua</option>
+                  <option [ngValue]="7">Piro</option>
+                  <option [ngValue]="8">Jibaro</option>
+                  <option [ngValue]="9">Yaminagua</option>
+                  <option [ngValue]="10">Otros</option>
                 </select>
               </div>
             </div>
@@ -261,8 +288,8 @@
                 <label>2.12 ¿Esta gestando?</label>
                 <select [(ngModel)]="modelFicha.victGestando" class="form-control form-control-sm">
                   <option [ngValue]="0">Seleccionar...</option>
-                  <option *ngFor="let option of siNoCatalogo" [ngValue]="option.id">{{
-                    option.descripcion }}</option>
+                  <option [ngValue]="1">Si</option>
+                  <option [ngValue]="2">No</option>
                 </select>
               </div>
             </div>
