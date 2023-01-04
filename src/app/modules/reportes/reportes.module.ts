@@ -7,9 +7,11 @@ import {
   NgbTypeaheadModule,
 } from '@ng-bootstrap/ng-bootstrap';
 import { AlertaComponent } from './pages/alerta/alerta.component';
+import { TentativaComponent } from './pages/tentativa/tentativa.component';
+import { RiesgoComponent } from './pages/riesgo/riesgo.component';
 
 @NgModule({
-  declarations: [AlertaComponent],
+  declarations: [AlertaComponent, TentativaComponent, RiesgoComponent],
   imports: [
     CommonModule,
     ReportesRoutingModule,

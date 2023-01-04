@@ -29,9 +29,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: false,
 };
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ParametrosComponent } from './modules/maestras/pages/parametros/parametros.component';
 
 @NgModule({
-  declarations: [AppComponent, FullLayoutComponent, ContentLayoutComponent],
+  declarations: [AppComponent, FullLayoutComponent, ContentLayoutComponent, ParametrosComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

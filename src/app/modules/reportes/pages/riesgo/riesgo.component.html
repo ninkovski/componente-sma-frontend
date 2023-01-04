@@ -5,8 +5,8 @@
     </div>
   </div>
   <div class="ps-3">
-    <h4 class="text-primary mb-0">Ubicaciones de las dependencias</h4>
-    <p class="text-secondary">Ubicación de dependencias por establecimientos, plantas y ambientes</p>
+    <h4 class="text-primary mb-0">Reporte de mujeres en riesgo
+    </h4>
   </div>
 </div>
 <div class="row p-3">
@@ -41,28 +41,29 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Fiscal</th>
+      <!-- <th scope="col">Fiscal</th>
       <th scope="col">Delito</th>
       <th scope="col">Juridiccion</th>
-      <th scope="col">Fiscalia</th>
+      <th scope="col">Fiscalia</th> -->
       <th scope="col">Caso</th>
       <th scope="col">Fecha de ingreso</th>
       <th scope="col">Agraviado</th>
-      <th scope="col">Imputado</th>
+      <th scope="col">Cantidad Denuncias</th>
       <th scope="col">Estado</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let elemento of dataPagination">
       <th scope="row">{{ elemento.id | number }}</th>
-      <td>{{ elemento.nombresFiscal }}</td>
+      <!-- <td>{{ elemento.nombresFiscal }}</td>
       <td>{{ elemento.detalleDelito }}</td>
-      <td>{{ elemento.juridiccion }}</td>
-      <td>{{ elemento.dependenciaMPub }}</td>
+      <td>{{ elemento.juridiccion }}</td>-->
       <td>{{ elemento.caso }}</td>
       <td>{{ elemento.fechaIngreso }}</td>
       <td>{{ elemento.nombreAgraviado }}</td>
-      <td>{{ elemento.nombreImputado }}</td>
+
+      <td>{{ randomCantidad()}}</td>
+      <td>Feminicidio</td>
       <td>
         <i *ngIf="elemento.idEstado == 1" class="bi bi-circle-fill" style="color: #1717FF;"></i>
       </td>

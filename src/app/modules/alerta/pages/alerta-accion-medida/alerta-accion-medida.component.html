@@ -63,6 +63,8 @@
           (click)="openModal('accion', elemento.idAlerta)">Accion</button>
         <button type="button" class="btn btn-success btn-sm"
           (click)="openModal('Medida', elemento.idAlerta)">Medida</button>
+        <button type="button" class="btn btn-warning btn-sm"
+          (click)="openModalDenuncias('Denuncias', elemento.idAlerta)">Denuncias</button>
       </td>
     </tr>
   </tbody>
@@ -81,6 +83,7 @@
 </div>
 
 <div class="modal" tabindex="-1" role="dialog" [style.display]="dataModal.display">
+
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
@@ -99,6 +102,62 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" (click)="registerAccionMedida()">Registrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" [style.display]="dataModalDenuncias.display">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col"> id_denuncia </th>
+              <th scope="col"> año </th>
+              <th scope="col"> mes </th>
+              <th scope="col"> de_dist_judi </th>
+              <th scope="col"> de_depe_mpub </th>
+              <th scope="col"> id_unico </th>
+              <th scope="col"> caso </th>
+              <th scope="col"> fe_ing_caso </th>
+              <th scope="col"> de_proced </th>
+              <th scope="col"> nombres </th>
+              <th scope="col"> ti_sexo </th>
+              <th scope="col"> condicion </th>
+              <th scope="col"> de_tipo_parte </th>
+              <th scope="col"> gen_de_mat_deli </th>
+              <th scope="col"> sub_de_mat_deli </th>
+              <th scope="col"> esp_de_mat_deli </th>
+              <th scope="col"> de_estado </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let elemento of dataDenuncias">
+              <th scope="row">{{ elemento.idDenuncia | number }}</th>
+              <td>{{ elemento.ano}}</td>
+              <td>{{ elemento.mes}}</td>
+              <td>{{ elemento.deDistJudi}}</td>
+              <td>{{ elemento.deDepeMPub}}</td>
+              <td>{{ elemento.idUnico}}</td>
+              <td>{{ elemento.caso}}</td>
+              <td>{{ elemento.feIngCase}}</td>
+              <td>{{ elemento.deProced}}</td>
+              <td>{{ elemento.nombres}}</td>
+              <td>{{ elemento.tiSexo}}</td>
+              <td>{{ elemento.condicion}}</td>
+              <td>{{ elemento.deTipoParte}}</td>
+              <td>{{ elemento.genDeMatDeli}}</td>
+              <td>{{ elemento.subDeMatDeli}}</td>
+              <td>{{ elemento.espDeMatDeli}}</td>
+              <td>{{ elemento.registroFlag}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="center">
+          <button type="button" class="btn btn-primary btn-sm" (click)="cerrarModalDenuncias()">Ok</button>
+        </div>
       </div>
     </div>
   </div>

@@ -1,3 +1,5 @@
+import { TentativaComponent } from './pages/tentativa/tentativa.component';
+import { RiesgoComponent } from './pages/riesgo/riesgo.component';
 import { AlertaComponent } from './pages/alerta/alerta.component';
 
 import { NgModule } from '@angular/core';
@@ -12,6 +14,16 @@ const routes: Routes = [
         path: 'alertas',
         component: AlertaComponent,
         data: { title: 'alertas' },
+      },
+      {
+        path: 'mujeres-riesgo',
+        component: RiesgoComponent,
+        data: { title: 'Reporte de mujeres en riesgo' },
+      },
+      {
+        path: 'feminicidio-tentativa',
+        component: TentativaComponent,
+        data: { title: 'Reporte de caracterización' },
       },
     ],
   },

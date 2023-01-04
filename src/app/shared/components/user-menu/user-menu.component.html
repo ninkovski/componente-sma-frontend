@@ -1,21 +1,23 @@
 <div *ngIf="cargado_user" class="user-box dropdown">
-	<a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-		<img [src]="user.foto_rec" class="user-img" alt="user">
-		<div class="user-info ps-1">
-			<p class="user-name mb-0 text-white">{{user.nombre_completo}}</p>
-		</div>
-	</a>
-	<ul class="dropdown-menu dropdown-menu-end" style="width: 100%">
-		<li *ngIf="rutas?.ruta_admin_cuenta"><a class="dropdown-item" [href]="rutas.ruta_admin_cuenta"><i class="bx bx-user-circle"></i><span>Administrar cuenta MPFN</span></a>
-		</li>
-		<li *ngIf="rutas?.ruta_apps"><a class="dropdown-item" [href]="rutas.ruta_apps"><i class="bx bx-category"></i><span>Listado de aplicaciones</span></a>
-		</li>
-		<li><a class="dropdown-item" routerLink="/tablero"><i class='bx bx-home-circle'></i><span>Tablero</span></a>
-		</li>
-		<li>
-			<div class="dropdown-divider mb-0"></div>
-		</li>
-		<li><a class="dropdown-item curs_poin" (click)="cerrarSesion()"><i class='bx bx-log-out-circle'></i><span>Cerrar sesión</span></a>
-		</li>
-	</ul>
+  <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button"
+    data-bs-toggle="dropdown" aria-expanded="false">
+    <img [src]="user.foto_rec" class="user-img" alt="user">
+    <div class="user-info ps-1">
+      <p class="user-name mb-0 text-white">{{user.nombre_completo}}</p>
+    </div>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-end" style="width: 100%">
+    <li *ngIf="rutas?.ruta_admin_cuenta"><a class="dropdown-item" [href]="rutas.ruta_admin_cuenta"><i
+          class="bx bx-user-circle"></i><span>Administrar cuenta MPFN</span></a>
+    </li>
+    <li *ngIf="rutas?.ruta_apps"><a class="dropdown-item" [href]="rutas.ruta_apps"><i
+          class="bx bx-category"></i><span>Listado de aplicaciones</span></a>
+    </li>
+    <li>
+      <div class="dropdown-divider mb-0"></div>
+    </li>
+    <li><a class="dropdown-item curs_poin" (click)="cerrarSesion()"><i class='bx bx-log-out-circle'></i><span>Cerrar
+          sesión</span></a>
+    </li>
+  </ul>
 </div>

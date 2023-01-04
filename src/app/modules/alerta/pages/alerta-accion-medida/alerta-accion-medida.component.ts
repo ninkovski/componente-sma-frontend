@@ -1,8 +1,10 @@
+import { RespuestaDenuncias } from './../../interfaces/respuesta-denuncias';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { RespuestaAlertas } from '../../interfaces/respuesta-alertas';
 import { SelectInterface } from '../../interfaces/select-interface';
+import { dataModalInterfase } from '../../interfaces/modal-interface';
 
 @Component({
   selector: 'app-alerta-accion-medida',
@@ -11,16 +13,18 @@ import { SelectInterface } from '../../interfaces/select-interface';
 })
 export class AlertaAccionMedidaComponent implements OnInit {
   data: RespuestaAlertas[] = [];
+  dataDenuncias: RespuestaDenuncias[] = [];
   dataAccion: SelectInterface[] = [];
   dataMedida: SelectInterface[] = [];
-  dataModal: {
-    display: string;
-    esAccion: boolean;
-    alertaId: number;
-    selectId: number;
-    selectList: SelectInterface[];
-    detalle: string;
-  } = {
+  dataModal: dataModalInterfase = {
+    display: 'none',
+    esAccion: false,
+    alertaId: 0,
+    selectId: 0,
+    selectList: [],
+    detalle: '',
+  };
+  dataModalDenuncias: dataModalInterfase = {
     display: 'none',
     esAccion: false,
     alertaId: 0,
@@ -69,10 +73,11 @@ export class AlertaAccionMedidaComponent implements OnInit {
   }
 
   getAlertas() {
-    const fechaDesde = new DatePipe('en-US').transform(
-      this.fecha_desde,
+    let fechaDesde = new DatePipe('en-US').transform(
+      '01/01/2000',
       'dd/MM/yyyy'
     );
+
     const fechaHasta = new DatePipe('en-US').transform(
       this.fecha_hasta,
       'dd/MM/yyyy'
@@ -114,6 +119,21 @@ export class AlertaAccionMedidaComponent implements OnInit {
     this.dataModal.detalle = '';
   }
 
+  openModalDenuncias(tipo: string, alertaId: number) {
+    this.dataModalDenuncias.display = 'block';
+    this.dataModal.alertaId = alertaId;
+
+    this.http
+      .get(
+        'http://localhost:8082/api-integrador/denuncias?idAlerta=' + alertaId
+      )
+      .subscribe((respuesta: any) => {
+        this.dataDenuncias = respuesta.data;
+      });
+  }
+  cerrarModalDenuncias() {
+    this.dataModalDenuncias.display = 'none';
+  }
   registerAccionMedida() {
     const now = new Date();
     var data = null;

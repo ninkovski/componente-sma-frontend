@@ -27,6 +27,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'maestras',
+        loadChildren: () =>
+          import('./modules/maestras/maestras.module').then(
+            (m) => m.MaestrasModule
+          ),
+      },
+      {
         path: 'reportes',
         loadChildren: () =>
           import('./modules/reportes/reportes.module').then(

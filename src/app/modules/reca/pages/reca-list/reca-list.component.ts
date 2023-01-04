@@ -26,7 +26,7 @@ export class RecaListComponent implements OnInit {
 
   getAlertas() {
     const fechaDesde = new DatePipe('en-US').transform(
-      this.fecha_desde,
+      '01/01/2000',
       'dd/MM/yyyy'
     );
     const fechaHasta = new DatePipe('en-US').transform(

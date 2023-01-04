@@ -1,0 +1,59 @@
+<div class="d-flex p-4 pb-1 app-page-title">
+  <div>
+    <div class="p-2 pt-0 pb-0 shadow-sm bg-white page-title-c-icon">
+      <i class="bx bx-home-smile page-title-icon"></i>
+    </div>
+  </div>
+  <div class="ps-3">
+    <h4 class="text-primary mb-0">Configuración Parametros.</h4>
+    <p class="text-secondary">Control de meses para notificación de alerta.</p>
+  </div>
+</div>
+<div class="container pt-3">
+  <div class="accordion">
+    <div class="card">
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label>Seleccionar Parametro</label>
+              <select [(ngModel)]="parametro.id" class="form-control form-control-sm">
+                <option [ngValue]="0">Seleccionar...</option>
+                <option [ngValue]="1">Cantidad de meses</option>
+
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label>Cantidad</label>
+              <select [(ngModel)]="parametro.valor" class="form-control form-control-sm">
+                <option [ngValue]="0">Seleccionar...</option>
+                <option [ngValue]="1">1</option>
+                <option [ngValue]="2">2</option>
+                <option [ngValue]="3">3</option>
+                <option [ngValue]="4">4</option>
+                <option [ngValue]="5">5</option>
+                <option [ngValue]="6">6</option>
+                <option [ngValue]="7">7</option>
+                <option [ngValue]="8">8</option>
+                <option [ngValue]="9">9</option>
+                <option [ngValue]="10">10</option>
+                <option [ngValue]="11">11</option>
+                <option [ngValue]="12">12</option>
+
+              </select>
+            </div>
+          </div>
+          <div class="row p-3">
+            <div class="col-sm-1">
+              <div class="form-group">
+                <button type="button" class="btn btn-primary btn-sm" (click)="guardarParametro()">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
