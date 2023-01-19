@@ -40,7 +40,10 @@ export class ParametrosComponent implements OnInit {
     console.log(this.parametro);
     if (this.validate()) {
       this.http
-        .put('http://localhost:8082/api-integrador/parametros', this.parametro)
+        .put(
+          'http://172.16.60.98:7007/api-integrador/parametros',
+          this.parametro
+        )
         .subscribe((response: any) => {
           if (response.metadata.status == 200) {
             this.toastr.success(response.metadata.message, 'Registro exitoso!');

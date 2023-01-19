@@ -1,9 +1,9 @@
 export const environment = {
   production: false,
-  url_sso: 'http://localhost:8080/login',
+  url_sso: 'http://172.16.60.198:8080/login',
   url_continuar: 'http://localhost:4200/#/auth/next',
   client_app: '3afdbe83984a44e6b324719b77885ca7', // código único app
-  url_api_auth: 'http://localhost:8080/api/',
+  url_api_auth: 'http://172.16.60.198:8080/api/',
   mode_auth: 'yes',
   var_token: 'mpfn_acctok',
   var_refresh: 'mpfn_reftok',

@@ -40,7 +40,7 @@ export class TentativaComponent implements OnInit {
 
   getAlertas() {
     const fechaDesde = new DatePipe('en-US').transform(
-      this.fecha_desde,
+      '01/01/2000',
       'dd/MM/yyyy'
     );
     const fechaHasta = new DatePipe('en-US').transform(
@@ -51,7 +51,7 @@ export class TentativaComponent implements OnInit {
     var filtro_fecha = `?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`;
 
     this.http
-      .get('http://localhost:8082/api-integrador/alertas' + filtro_fecha)
+      .get('http://172.16.60.98:7007/api-integrador/alertas' + filtro_fecha)
       .subscribe((respuesta: any) => {
         this.data = respuesta.data;
         this.collectionSize = this.data.length;

@@ -17,12 +17,12 @@ export class PrincipalComponent implements OnInit {
 
   DashboardDatos(): void {
     this.http
-      .get('http://localhost:8082/api-integrador/alertas')
+      .get('http://172.16.60.98:7007/api-integrador/alertas')
       .subscribe((respuesta: any) => (this.dataAlerta = respuesta.data));
 
     this.http
       .get(
-        'http://localhost:8082/api-integrador/alertas/proteccion/cantidad?fechaInicio=01/11/1900&fechaFin=01/11/2050'
+        'http://172.16.60.98:7007/api-integrador/alertas/proteccion/cantidad?fechaInicio=01/11/1900&fechaFin=01/11/2050'
       )
       .subscribe(
         (respuesta: any) => (this.dataProteccion = respuesta.data.cantidad)
