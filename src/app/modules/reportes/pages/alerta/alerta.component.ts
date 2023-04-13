@@ -12,7 +12,8 @@ import autoTable from 'jspdf-autotable';
 })
 export class AlertaComponent implements OnInit {
   data: RespuestaAlertas[] = [];
-
+  filtroAlertas;
+  TipoFiltro = 0;
   displayedColumns: string[] = [
     'idAlerta',
     'juridiccion',
@@ -38,19 +39,28 @@ export class AlertaComponent implements OnInit {
   }
 
   getAlertas() {
-    const fechaDesde = new DatePipe('en-US').transform(
-      '01/01/2000',
+    let fechaDesde = new DatePipe('en-US').transform(
+      this.fecha_desde,
       'dd/MM/yyyy'
     );
-    const fechaHasta = new DatePipe('en-US').transform(
+    let fechaHasta = new DatePipe('en-US').transform(
       this.fecha_hasta,
       'dd/MM/yyyy'
     );
 
+    const fecha_hoy = new Date();
+
+    if (this.fecha_hasta == null) {
+      fechaHasta = new DatePipe('en-US').transform(fecha_hoy, 'dd/MM/yyyy');
+    }
+    if (this.fecha_desde == null) {
+      fechaDesde = new DatePipe('en-US').transform('01/01/2000', 'dd/MM/yyyy');
+    }
+    this.filtroAlertas = `Busqueda desde ${fechaDesde} hasta ${fechaHasta} por fecha`;
     var filtro_fecha = `?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`;
 
     this.http
-      .get('http://172.16.60.98:7007/api-integrador/alertas' + filtro_fecha)
+      .get('http://localhost:8082/api-integrador/alertas' + filtro_fecha)
       .subscribe((respuesta: any) => {
         this.data = respuesta.data;
         this.collectionSize = this.data.length;

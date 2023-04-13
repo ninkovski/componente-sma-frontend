@@ -1,9 +1,10 @@
-import { PrincipalComponent } from './principal/principal.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { DefaultComponent } from './default/default.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { PrincipalComponent } from './principal/principal.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardIIComponent } from './dashboardii/dashboardii.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,16 @@ const routes: Routes = [
         component: PrincipalComponent,
         data: { title: 'principal' },
       },
+      {
+        path: 'dashboard',
+        component: DashboardComponent,
+        data: { title: 'Dashboard' },
+      },
+      {
+        path: 'dashboardii',
+        component: DashboardIIComponent,
+        data: { title: 'Dashboard II' },
+      }
     ],
   },
 ];

@@ -51,7 +51,7 @@ export class TentativaComponent implements OnInit {
     var filtro_fecha = `?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`;
 
     this.http
-      .get('http://172.16.60.98:7007/api-integrador/alertas' + filtro_fecha)
+      .get('http://localhost:8082/api-integrador/alertas' + filtro_fecha)
       .subscribe((respuesta: any) => {
         this.data = respuesta.data;
         this.collectionSize = this.data.length;

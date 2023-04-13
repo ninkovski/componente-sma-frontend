@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { SelectInterface } from 'src/app/modules/alerta/interfaces/select-interface';
 
 @Component({
-  selector: 'app-reca-register',
-  templateUrl: './reca-register.component.html',
-  styleUrls: ['./reca-register.component.scss'],
+  selector: 'app-reca-print',
+  templateUrl: './reca-print.component.html',
+  styleUrls: ['./reca-print.component.scss'],
 })
-export class RecaRegisterComponent implements OnInit {
+export class RecaPrintComponent implements OnInit {
   catalogo: SelectInterface[] = [];
   violenciaCatalogo: SelectInterface[] = [];
   asistenciaCatalogo: SelectInterface[] = [];
@@ -30,6 +31,7 @@ export class RecaRegisterComponent implements OnInit {
   etniasCatalogo: SelectInterface[] = [];
 
   modelFicha = {
+    idTbFichaReca: 0,
     genDistJudicial: '',
     genUdavitUavit: '',
     genNumFicha: 0,
@@ -155,7 +157,12 @@ export class RecaRegisterComponent implements OnInit {
   };
 
   constructor(private http: HttpClient,
-    private activatedRoute: ActivatedRoute) {
+    private activatedRoute: ActivatedRoute,
+    private router: Router) {
+    this.activatedRoute.queryParams.subscribe((params) => {
+      this.modelFicha.idTbFichaReca = params['id'];
+    });
+
     this.getCatalogo(1); //
     this.getCatalogo(2);
     this.getCatalogo(3); //
@@ -177,14 +184,21 @@ export class RecaRegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe((params) => {
-      this.modelFicha.idAlerta = params['id'];
-    });
+    console.log(this.modelFicha.idTbFichaReca);
+    this.http
+      .get(`http://localhost:8082/api-integrador/fichas-reca?codigo=${this.modelFicha.idTbFichaReca}`)
+      .subscribe((respuesta: any) => {
+        if (respuesta != null && respuesta.data.length == 1)  {
+          this.modelFicha = respuesta.data[0];
+        } else {
+          this.router.navigate(['/reca-list']);
+        }
+      });
   }
 
   getCatalogo(catalogoID: number) {
     this.http
-      .get('http://172.16.60.98:7007/api-integrador/catalogos', {
+      .get('http://localhost:8082/api-integrador/catalogos', {
         params: {
           codigoPadre: catalogoID,
         },
@@ -375,18 +389,12 @@ export class RecaRegisterComponent implements OnInit {
       });
   }
 
-  onClickRegister() {
-    this.http
-      .post(
-        'http://172.16.60.98:7007/api-integrador/fichas-reca',
-        this.modelFicha
-      )
-      .subscribe((response: any) => {
-        if (response.metadata.status == 200) {
-          alert('Se registro ficha.');
-
-          document.location.href = '/reca-list';
-        }
-      });
+  Immprimir() {
+    // window.print();
+    var printContent = document.getElementsByClassName("print")[0].innerHTML;
+    var originalContent = document.body.innerHTML;
+    document.body.innerHTML = printContent;
+    window.print();
+    document.body.innerHTML = originalContent;
   }
 }

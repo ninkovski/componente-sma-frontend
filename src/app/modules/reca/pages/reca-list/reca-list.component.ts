@@ -53,7 +53,4 @@ export class RecaListComponent implements OnInit {
         (this.page - 1) * this.pageSize + this.pageSize
       );
   }
-  Registrar() {
-    this.router.navigate(['/reca-list/reca-register']);
-  }
 }

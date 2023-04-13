@@ -5,35 +5,46 @@
     </div>
   </div>
   <div class="ps-3">
-    <h4 class="text-primary mb-0">Ubicaciones de las dependencias</h4>
-    <p class="text-secondary">Ubicación de dependencias por establecimientos, plantas y ambientes</p>
+    <h4 class="text-primary mb-0">Reporte de alertas</h4>
+    <p class="text-secondary">Informacion acerca de las alertas por {{filtroAlertas}}</p>
   </div>
 </div>
 <div class="row p-3">
-  <div class="col-sm-1">
+  <div class="col-sm-2">
     <div class="form-group">
       <input [(ngModel)]="fecha_desde" class="form-control form-control-sm" type="date" />
     </div>
   </div>
-  <div class="col-sm-1">
+  <div class="col-sm-2">
     <div class="form-group">
       <input [(ngModel)]="fecha_hasta" class="form-control form-control-sm" type="date" />
     </div>
   </div>
+  <!-- <div class="col-sm-2">
+    <select [(ngModel)]="TipoFiltro" class="form-control form-control-sm">
+      <option [ngValue]="0">Filtros</option>
+      <option [ngValue]="1">Fecha Registro Denuncia </option>
+      <option [ngValue]="2">Fecha Registro Alerta </option>
+    </select>
+  </div> -->
   <div class="col-sm-1">
     <div class="form-group">
       <button type="button" class="btn btn-primary btn-sm" (click)="getAlertas()">Consultar</button>
     </div>
   </div>
-  <div class="col-sm-3">
-    <button type="button" (click)="exportExcel()" class="btn btn-primary btn-sm" placement="bottom"
-      ngbTooltip="Descargar">
-      <i class="bx bx-down-arrow-alt me-0"></i>Excel
-    </button>
-    <button type="button" (click)="downloadPdf()" class="btn btn-primary btn-sm" placement="bottom"
-      ngbTooltip="Descargar">
-      <i class="bx bx-down-arrow-alt me-0"></i>Pdf
-    </button>
+  <div class="col-sm-2">
+    <div class="ps-3">
+      <div>
+        <button type="button" (click)="exportExcel()" class="btn btn-primary btn-sm" placement="bottom"
+          ngbTooltip="Descargar">
+          <i class="bx bx-down-arrow-alt me-0"></i>Excel
+        </button>
+        <button type="button" (click)="downloadPdf()" class="btn btn-primary btn-sm" placement="bottom"
+          ngbTooltip="Descargar">
+          <i class="bx bx-down-arrow-alt me-0"></i>Pdf
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 

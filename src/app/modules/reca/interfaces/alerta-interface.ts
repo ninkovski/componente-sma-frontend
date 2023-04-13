@@ -10,4 +10,5 @@ export interface AlertaInterface {
     nombreImputado?: string;
     sexo?: string;
     idEstado: number;
+    idFichaReca: number;
 }

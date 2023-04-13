@@ -5,6 +5,7 @@ import { DatePipe } from '@angular/common';
 import { RespuestaAlertas } from '../../interfaces/respuesta-alertas';
 import { SelectInterface } from '../../interfaces/select-interface';
 import { dataModalInterfase } from '../../interfaces/modal-interface';
+import { AlertaMedida } from '../../interfaces/alerta-medida';
 
 @Component({
   selector: 'app-alerta-accion-medida',
@@ -16,6 +17,8 @@ export class AlertaAccionMedidaComponent implements OnInit {
   dataDenuncias: RespuestaDenuncias[] = [];
   dataAccion: SelectInterface[] = [];
   dataMedida: SelectInterface[] = [];
+  alertaMedida: AlertaMedida[] = [];
+
   dataModal: dataModalInterfase = {
     display: 'none',
     esAccion: false,
@@ -45,7 +48,7 @@ export class AlertaAccionMedidaComponent implements OnInit {
 
   ngOnInit(): void {
     this.http
-      .get('http://172.16.60.98:7007/api-integrador/alertas/accion')
+      .get('http://localhost:8082/api-integrador/alertas/accion')
       .subscribe((respuesta: any) => {
         if (respuesta.data.length > 0) {
           respuesta.data.forEach((element) => {
@@ -58,7 +61,7 @@ export class AlertaAccionMedidaComponent implements OnInit {
       });
 
     this.http
-      .get('http://172.16.60.98:7007/api-integrador/alertas/proteccion')
+      .get('http://localhost:8082/api-integrador/alertas/proteccion')
       .subscribe((respuesta: any) => {
         if (respuesta.data.length > 0) {
           respuesta.data.forEach((element) => {
@@ -86,11 +89,12 @@ export class AlertaAccionMedidaComponent implements OnInit {
     var filtro_fecha = `?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`;
 
     this.http
-      .get('http://172.16.60.98:7007/api-integrador/alertas' + filtro_fecha)
-      .subscribe((respuesta: any) => {
+      .get('http://localhost:8082/api-integrador/alertas' + filtro_fecha)
+      .subscribe(async (respuesta: any) => {
         this.data = respuesta.data;
         this.collectionSize = this.data.length;
         this.refreshPagination();
+        console.log(this.data);
       });
   }
 
@@ -119,13 +123,27 @@ export class AlertaAccionMedidaComponent implements OnInit {
     this.dataModal.detalle = '';
   }
 
+  cantidadAlertaProteccion(alertaId: number) {
+    var cantidadAlertas: number;
+    var cantidadMedidas: number;
+
+    this.http
+      .get(
+        'http://localhost:8082/api-integrador/alertas/alerta-accion-proteccion/' +
+          alertaId
+      )
+      .subscribe((respuesta: any) => {
+        this.alertaMedida = respuesta.data;
+      });
+  }
+
   openModalDenuncias(tipo: string, alertaId: number) {
     this.dataModalDenuncias.display = 'block';
     this.dataModal.alertaId = alertaId;
 
     this.http
       .get(
-        'http://172.16.60.98:7007/api-integrador/denuncias?idAlerta=' + alertaId
+        'http://localhost:8082/api-integrador/denuncias?idAlerta=' + alertaId
       )
       .subscribe((respuesta: any) => {
         this.dataDenuncias = respuesta.data;
@@ -151,6 +169,16 @@ export class AlertaAccionMedidaComponent implements OnInit {
           usuarioRegistro: 'demo',
           fechaRegistro: now.toLocaleDateString(),
         };
+        
+      this.http
+        .post(
+          'http://localhost:8082/api-integrador/alertas/alerta-accion',
+          data
+        )
+        .subscribe((respuesta: any) => {
+          alert('Se grabo con exito.');
+          this.dataModal.display = 'none';
+        });
       } else {
         data = {
           idAlerta: this.dataModal.alertaId,
@@ -161,17 +189,18 @@ export class AlertaAccionMedidaComponent implements OnInit {
           usuarioRegistro: 'demo',
           fechaRegistro: now.toLocaleDateString(),
         };
-      }
-
+        
       this.http
         .post(
-          'http://172.16.60.98:7007/api-integrador/alertas/accion-proteccion',
+          'http://localhost:8082/api-integrador/alertas/alerta-proteccion',
           data
         )
         .subscribe((respuesta: any) => {
           alert('Se grabo con exito.');
           this.dataModal.display = 'none';
         });
+      }
+
     }
   }
 }

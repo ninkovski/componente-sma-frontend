@@ -1,0 +1,1233 @@
+<div class="d-flex p-4 pb-1 app-page-title">
+    <div>
+      <div class="p-2 pt-0 pb-0 shadow-sm bg-white page-title-c-icon">
+        <i class="bx bx-home-smile page-title-icon"></i>
+      </div>
+    </div>
+    <div class="ps-3">
+      <h4 class="text-primary mb-0">Registro de ficha RECA.</h4>
+      <p class="text-secondary">Lista de alertas agrupadas por Agraviado e Imputado.</p>
+    </div>
+  </div>
+  
+  <div class="row p-3">
+    <div class="col-sm-1">
+      <div class="form-group">
+        <button type="button" class="btn btn-primary btn-sm" (click)="Immprimir()">Imprimir</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- [(ngModel)]="modelFicha." -->
+  
+  <div class="container pt-3 print">
+    <div class="accordion" id="accordionExample">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button class="btn btn-link" type="button">
+              SECCION I: GENERALIDADES
+            </button>
+          </h5>
+        </div>
+  
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body">
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>1.1 Distrito fiscal</label>
+                  <input [(ngModel)]="modelFicha.genDistJudicial" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>1.2 UDAVIT y UAIVIT</label>
+                  <input [(ngModel)]="modelFicha.genUdavitUavit" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>1.3 N de Ficha</label>
+                  <input [(ngModel)]="modelFicha.genNumFicha" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>1.4 Año/mes/dia</label>
+                  <input [(ngModel)]="modelFicha.genFecFicha" type="date" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>1.5 Victima ¿beneficiaria del programa?</label>
+                  <select [(ngModel)]="modelFicha.genBeneficiaria" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Si</option>
+                    <option [ngValue]="2">No</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="form-group">
+                  <label>Fecha incorporacion</label>
+                  <input [(ngModel)]="modelFicha.genBeneficiariaFecha" type="date" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="form-group">
+                  <label>Carpeta de asistencia</label>
+                  <input [(ngModel)]="modelFicha.genNumCarpetaAsist" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>1.6 Equipo a cargo - Abogado</label>
+                  <input [(ngModel)]="modelFicha.genNombreAbogago" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>1.6 Equipo a cargo - Trabajadora social</label>
+                  <input [(ngModel)]="modelFicha.genTSocial" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>1.6 Equipo a cargo - Psicologo</label>
+                  <input [(ngModel)]="modelFicha.genPsicologo" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>1.7 ¿Se tomo conocimiento del hecho?</label>
+                  <select [(ngModel)]="modelFicha.genMedioDeComuni" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Si</option>
+                    <option [ngValue]="2">No</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>1.7.1 Nombre del medio</label>
+                  <select [(ngModel)]="modelFicha.genNombreMedio" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">WEB</option>
+                    <option [ngValue]="2">Televisivo</option>
+                    <option [ngValue]="3">Periodico</option>
+                    <option [ngValue]="4">Radio</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>1.7.2 Fecha de publicacion en el medio</label>
+                  <input [(ngModel)]="modelFicha.genFecPublic" type="date" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" type="button">
+              SECCION II: DATOS DE LA VICTIMA
+            </button>
+          </h5>
+        </div>
+        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+          <div class="card-body">
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.1 Nombres y apellidos</label>
+                  <input [(ngModel)]="modelFicha.victNomApell" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.2 Nacionalidad</label>
+                  <select [(ngModel)]="modelFicha.victIdTbNacionalidad" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccione...</option>
+                    <option [ngValue]="1">Peru</option>
+                    <option [ngValue]="2">Venezuela</option>
+                    <option [ngValue]="3">Colombia</option>
+                    <option [ngValue]="4">Ecuador</option>
+                    <option [ngValue]="5">Brasil</option>
+                    <option [ngValue]="6">Argentina</option>
+                    <option [ngValue]="7">Bolivia</option>
+                    <option [ngValue]="8">Chile</option>
+                    <option [ngValue]="9">Canada</option>
+                    <option [ngValue]="10">Cuba</option>
+                    <option [ngValue]="11">Espana</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.3.1 Tipo de documento</label>
+                  <select [(ngModel)]="modelFicha.victTipDocu" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">DNI</option>
+                    <option [ngValue]="2">Carnet de extranjeria</option>
+                    <option [ngValue]="3">Pasaporte</option>
+                    <option [ngValue]="4">PPT</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.3.2 Numero de documento</label>
+                  <input [(ngModel)]="modelFicha.victNDni" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <!-- <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>2.4 Lugar de nacimiento</label>
+                                <input [(ngModel)]="modelFicha." type="text" class="form-control form-control-sm">
+                            </div>
+                        </div> -->
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.5 Fecha de nacimiento</label>
+                  <input [(ngModel)]="modelFicha.victFecNacimiento" type="date" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.6.1 Telefono fijo</label>
+                  <input [(ngModel)]="modelFicha.victTelfFijo" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.6.2 Telefono celular</label>
+                  <input [(ngModel)]="modelFicha.victCelular" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.7 Correo electronico</label>
+                  <input [(ngModel)]="modelFicha.victEmail" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.8 Domicilio</label>
+                  <input [(ngModel)]="modelFicha.victDominicilio" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.9 Idioma o lengua materna</label>
+                  <select [(ngModel)]="modelFicha.victIdioma" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccione...</option>
+                    <option [ngValue]="1">Espanol</option>
+                    <option [ngValue]="2">Ingles</option>
+                    <option [ngValue]="3">Portugues</option>
+                    <option [ngValue]="4">Italiano</option>
+                    <option [ngValue]="5">Arabe</option>
+                    <option [ngValue]="6">Frances</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.10 Etnia o grupo</label>
+                  <select [(ngModel)]="modelFicha.victEtnia" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Asháninka</option>
+                    <option [ngValue]="2">Atiri</option>
+                    <option [ngValue]="3">Aymara</option>
+                    <option [ngValue]="4">Aborígenes australianos</option>
+                    <option [ngValue]="5">Caucásicos</option>
+                    <option [ngValue]="6">Quechua</option>
+                    <option [ngValue]="7">Piro</option>
+                    <option [ngValue]="8">Jibaro</option>
+                    <option [ngValue]="9">Yaminagua</option>
+                    <option [ngValue]="10">Otros</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.11 Total de hijos</label>
+                  <select [(ngModel)]="modelFicha.victHjos" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">1</option>
+                    <option [ngValue]="2">2</option>
+                    <option [ngValue]="3">3</option>
+                    <option [ngValue]="4">4</option>
+                    <option [ngValue]="5">5</option>
+                    <option [ngValue]="6">Más de 5</option>
+                    <option [ngValue]="6">Sin Hijos</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.12 ¿Esta gestando?</label>
+                  <select [(ngModel)]="modelFicha.victGestando" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Si</option>
+                    <option [ngValue]="2">No</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.12.1 Numero de meses</label>
+                  <input [(ngModel)]="modelFicha.victGestandoMeses" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.13 Estado civil</label>
+                  <select [(ngModel)]="modelFicha.victEstadoCivil" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Soltero</option>
+                    <option [ngValue]="2">Conviviente</option>
+                    <option [ngValue]="3">Ex conviviente</option>
+                    <option [ngValue]="4">Casado</option>
+                    <option [ngValue]="5">Divorciado</option>
+                    <option [ngValue]="6">Viuda (a)</option>
+                    <option [ngValue]="7">Otros</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.14 Nivel educativo</label>
+                  <select [(ngModel)]="modelFicha.victNEducativo" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Sin estudios</option>
+                    <option [ngValue]="2">Inicial</option>
+                    <option [ngValue]="3">Primaria incompleta</option>
+                    <option [ngValue]="4">Primaria completa</option>
+                    <option [ngValue]="5">Secundaria incompleta</option>
+                    <option [ngValue]="6">Secundaria completa</option>
+                    <option [ngValue]="7">Superior no universitaria incompleta</option>
+                    <option [ngValue]="8">Superior no universitaria completa</option>
+                    <option [ngValue]="9">Superior universitaria incompleta</option>
+                    <option [ngValue]="10">Superior universitaria completa</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.15 ¿Cuenta con trabajo remunerado?</label>
+                  <select [(ngModel)]="modelFicha.victTrabaja" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Si</option>
+                    <option [ngValue]="2">No</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.15.1 Ocupacion</label>
+                  <select [(ngModel)]="modelFicha.victOcupacion" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Ama de casa</option>
+                    <option [ngValue]="2">Empleada del hogar</option>
+                    <option [ngValue]="3">Estudiante</option>
+                    <option [ngValue]="4">Profesional independiente</option>
+                    <option [ngValue]="5">Ambulante</option>
+                    <option [ngValue]="6">Comerciante</option>
+                    <option [ngValue]="7">Funcionaria publica</option>
+                    <option [ngValue]="8">Empresaria</option>
+                    <option [ngValue]="9">Policia</option>
+                    <option [ngValue]="10">Profesora</option>
+                    <option [ngValue]="11">Obrera</option>
+                    <option [ngValue]="12">Otros</option>
+                    <option [ngValue]="13">Se desconoce</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.15.2 Centro de trabajo</label>
+                  <input [(ngModel)]="modelFicha.victCentroTrab" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.15.3 ¿Monto de la remuneracion?</label>
+                  <input [(ngModel)]="modelFicha.victRemuneracion" type="number" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.16 ¿Presenta discapacidad?</label>
+                  <select [(ngModel)]="modelFicha.victDiscapacidad" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Si</option>
+                    <option [ngValue]="2">No</option>
+                  </select>
+                </div>
+              </div>
+              <!-- <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>2.16.1 Tipo de discapacidad</label>
+                                <select [(ngModel)]="modelFicha." class="form-control form-control-sm">
+                                    <option [ngValue]="0">Seleccione...</option>
+                                </select>
+                            </div>
+                        </div> -->
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.17 ¿Acceso a sistema de salud?</label>
+                  <select [(ngModel)]="modelFicha.victAccSalud" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Si</option>
+                    <option [ngValue]="2">No</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.17.1 Precise</label>
+                  <input [(ngModel)]="modelFicha.victAccSaludDetalle" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>2.18 Relacion de la victima con la persona agresora</label>
+                  <select [(ngModel)]="modelFicha.victRelaAgresora" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Conyugue</option>
+                    <option [ngValue]="2">Ex conyugue</option>
+                    <option [ngValue]="3">Conviviente</option>
+                    <option [ngValue]="4">Ex conviviente</option>
+                    <option [ngValue]="5">Enamorado</option>
+                    <option [ngValue]="6">Ex enamorado</option>
+                    <option [ngValue]="7">Novio</option>
+                    <option [ngValue]="8">Otro</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" type="button">
+              SECCION III: DATOS DE LA VICTIMA DEPENDIENTE 1
+            </button>
+          </h5>
+        </div>
+        <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+          <div class="card-body">
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.1 Nombres y apellidos</label>
+                  <input [(ngModel)]="modelFicha.victDepNomApell" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.2 Nacionalidad</label>
+                  <select [(ngModel)]="modelFicha.victDepNacionalidad" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccione...</option>
+                    <option [ngValue]="1">Peru</option>
+                    <option [ngValue]="2">Venezuela</option>
+                    <option [ngValue]="3">Colombia</option>
+                    <option [ngValue]="4">Ecuador</option>
+                    <option [ngValue]="5">Brasil</option>
+                    <option [ngValue]="6">Argentina</option>
+                    <option [ngValue]="7">Bolivia</option>
+                    <option [ngValue]="8">Chile</option>
+                    <option [ngValue]="9">Canada</option>
+                    <option [ngValue]="10">Cuba</option>
+                    <option [ngValue]="11">Espana</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.3.1 Tipo de documento</label>
+                  <select [(ngModel)]="modelFicha.victDepTipDocumento" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">DNI</option>
+                    <option [ngValue]="2">Carnet de extranjeria</option>
+                    <option [ngValue]="3">Pasaporte</option>
+                    <option [ngValue]="4">PPT</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.3.2 Numero de documento</label>
+                  <input [(ngModel)]="modelFicha.victDepNDni" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.4 Edad (en años cumplidos)</label>
+                  <input [(ngModel)]="modelFicha.victDepEdad" type="number" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.5 Domicilio</label>
+                  <input [(ngModel)]="modelFicha.victDepDomicilio" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.6 Nivel educativo</label>
+                  <select [(ngModel)]="modelFicha.victDepNivelEd" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Sin estudios</option>
+                    <option [ngValue]="2">Inicial</option>
+                    <option [ngValue]="3">Primaria incompleta</option>
+                    <option [ngValue]="4">Primaria completa</option>
+                    <option [ngValue]="5">Secundaria incompleta</option>
+                    <option [ngValue]="6">Secundaria completa</option>
+                    <option [ngValue]="7">Superior no universitaria incompleta</option>
+                    <option [ngValue]="8">Superior no universitaria completa</option>
+                    <option [ngValue]="9">Superior universitaria incompleta</option>
+                    <option [ngValue]="10">Superior universitaria completa</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.7 ¿Estudia actualmente?</label>
+                  <select [(ngModel)]="modelFicha.victDepEstu" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Si</option>
+                    <option [ngValue]="2">No</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.7.1 Tipo de institucion</label>
+                  <select [(ngModel)]="modelFicha.victDepEstuTip" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">IE / Colegio</option>
+                    <option [ngValue]="2">Instituto superior</option>
+                    <option [ngValue]="3">Universidad</option>
+                    <option [ngValue]="4">Otro</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.7.2 Centro de estudios</label>
+                  <input [(ngModel)]="modelFicha.victDepNomEdu" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.7.3 Año que cursa</label>
+                  <input [(ngModel)]="modelFicha.victDepEstuAno" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.8 ¿Cuenta con trabajo remunerado?</label>
+                  <select [(ngModel)]="modelFicha.victDepTrabaja" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Si</option>
+                    <option [ngValue]="2">No</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.8.1 Precisa la ocupacion</label>
+                  <select [(ngModel)]="modelFicha.victDepOcupacion" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Ama de casa</option>
+                    <option [ngValue]="2">Empleada del hogar</option>
+                    <option [ngValue]="3">Estudiante</option>
+                    <option [ngValue]="4">Profesional independiente</option>
+                    <option [ngValue]="5">Ambulante</option>
+                    <option [ngValue]="6">Comerciante</option>
+                    <option [ngValue]="7">Funcionaria publica</option>
+                    <option [ngValue]="8">Empresaria</option>
+                    <option [ngValue]="9">Policia</option>
+                    <option [ngValue]="10">Profesora</option>
+                    <option [ngValue]="11">Obrera</option>
+                    <option [ngValue]="12">Otros</option>
+                    <option [ngValue]="13">Se desconoce</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.8.2 Centro de trabajo</label>
+                  <input [(ngModel)]="modelFicha.victDepCentTrabajo" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.9 ¿La victima presenta alguna discapacidad?</label>
+                  <select [(ngModel)]="modelFicha.victDepDiscapacidad" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Si</option>
+                    <option [ngValue]="2">No</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.9.1 Tipo de discapacidad</label>
+                  <select [(ngModel)]="modelFicha.victDepDiscapacidadDes" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Fisica</option>
+                    <option [ngValue]="2">Visual</option>
+                    <option [ngValue]="3">Intelectual</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.10 Vinculo de la victima dependiente con la victima directa</label>
+                  <select [(ngModel)]="modelFicha.victDepRelaDirect" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Madre</option>
+                    <option [ngValue]="2">Madrastra</option>
+                    <option [ngValue]="3">Hija</option>
+                    <option [ngValue]="4">Hijastra</option>
+                    <option [ngValue]="5">Abuela</option>
+                    <option [ngValue]="6">Hermana</option>
+                    <option [ngValue]="7">Hermanastra</option>
+                    <option [ngValue]="8">Nieta</option>
+                    <option [ngValue]="9">Otro</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" type="button">
+              SECCION III: DATOS DE LA VICTIMA DEPENDIENTE 2
+            </button>
+          </h5>
+        </div>
+        <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+          <div class="card-body">
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.1 Nombres y apellidos</label>
+                  <input [(ngModel)]="modelFicha.victDep2NomApell" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.2 Nacionalidad</label>
+                  <select [(ngModel)]="modelFicha.victDep2Nacionalidad" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccione...</option>
+                    <option [ngValue]="1">Peru</option>
+                    <option [ngValue]="2">Venezuela</option>
+                    <option [ngValue]="3">Colombia</option>
+                    <option [ngValue]="4">Ecuador</option>
+                    <option [ngValue]="5">Brasil</option>
+                    <option [ngValue]="6">Argentina</option>
+                    <option [ngValue]="7">Bolivia</option>
+                    <option [ngValue]="8">Chile</option>
+                    <option [ngValue]="9">Canada</option>
+                    <option [ngValue]="10">Cuba</option>
+                    <option [ngValue]="11">Espana</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.3.1 Tipo de documento</label>
+                  <select [(ngModel)]="modelFicha.victDep2TipDocumento" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">DNI</option>
+                    <option [ngValue]="2">Carnet de extranjeria</option>
+                    <option [ngValue]="3">Pasaporte</option>
+                    <option [ngValue]="4">PPT</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.3.2 Numero de documento</label>
+                  <input [(ngModel)]="modelFicha.victDep2NDni" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.4 Edad (en años cumplidos)</label>
+                  <input [(ngModel)]="modelFicha.victDep2Edad" type="number" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.5 Domicilio</label>
+                  <input [(ngModel)]="modelFicha.victDep2Domicilio" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.6 Nivel educativo</label>
+                  <select [(ngModel)]="modelFicha.victDep2NivelEdu" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Sin estudios</option>
+                    <option [ngValue]="2">Inicial</option>
+                    <option [ngValue]="3">Primaria incompleta</option>
+                    <option [ngValue]="4">Primaria completa</option>
+                    <option [ngValue]="5">Secundaria incompleta</option>
+                    <option [ngValue]="6">Secundaria completa</option>
+                    <option [ngValue]="7">Superior no universitaria incompleta</option>
+                    <option [ngValue]="8">Superior no universitaria completa</option>
+                    <option [ngValue]="9">Superior universitaria incompleta</option>
+                    <option [ngValue]="10">Superior universitaria completa</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.7 ¿Estudia actualmente?</label>
+                  <select [(ngModel)]="modelFicha.victDep2Estu" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Si</option>
+                    <option [ngValue]="2">No</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.7.1 Tipo de institucion</label>
+                  <select [(ngModel)]="modelFicha.victDep2EstuTip" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">IE / Colegio</option>
+                    <option [ngValue]="2">Instituto superior</option>
+                    <option [ngValue]="3">Universidad</option>
+                    <option [ngValue]="4">Otro</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.7.2 Centro de estudios</label>
+                  <input [(ngModel)]="modelFicha.victDep2NomEdu" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.7.3 Año que cursa</label>
+                  <input [(ngModel)]="modelFicha.victDep2EstuAno" type="number" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.8 ¿Cuenta con trabajo remunerado?</label>
+                  <select [(ngModel)]="modelFicha.victDep2Trabaja" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Si</option>
+                    <option [ngValue]="2">No</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.8.1 Precisa la ocupacion</label>
+                  <input [(ngModel)]="modelFicha.victDep2Ocupacion" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.8.2 Centro de trabajo</label>
+                  <input [(ngModel)]="modelFicha.victDep2CentTrabajo" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.9 ¿La victima presenta alguna discapacidad?</label>
+                  <select [(ngModel)]="modelFicha.victDep2Discapacidad" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Si</option>
+                    <option [ngValue]="2">No</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.9.1 Tipo de discapacidad</label>
+                  <select [(ngModel)]="modelFicha.victDep2DiscapacidadDes" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Fisica</option>
+                    <option [ngValue]="2">Visual</option>
+                    <option [ngValue]="3">Intelectual</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>3.10 Vinculo de la victima dependiente con la victima directa</label>
+                  <select [(ngModel)]="modelFicha.victDep2RelaDirec" class="form-control form-control-sm">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option [ngValue]="1">Madre</option>
+                    <option [ngValue]="2">Madrastra</option>
+                    <option [ngValue]="3">Hija</option>
+                    <option [ngValue]="4">Hijastra</option>
+                    <option [ngValue]="5">Abuela</option>
+                    <option [ngValue]="6">Hermana</option>
+                    <option [ngValue]="7">Hermanastra</option>
+                    <option [ngValue]="8">Nieta</option>
+                    <option [ngValue]="9">Otro</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="card">
+        <div class="card-header" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" type="button">
+              SECCION IV: DATOS DE LA PERSONA AGRESORA
+            </button>
+          </h5>
+        </div>
+        <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+          <div class="card-body">
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>4.1 Nombres y apellidos</label>
+                  <input type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>4.2 Nacionalidad</label>
+                  <input type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>4.3.1 Tipo de documento</label>
+                  <select class="form-control form-control-sm" id="desplegableTipoDocumentoCatalogoAgresor">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option *ngFor="let option of tipoDocumentoCatalogo" [ngValue]="option.id">{{
+                      option.descripcion }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>4.3.2 Numero de documento</label>
+                  <input type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>4.4 Lugar de nacimiento</label>
+                  <input type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>4.5 Edad (en años cumplidos)</label>
+                  <input type="number" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>4.6 Domicilio</label>
+                  <input type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>4.7 Nivel educativo</label>
+                  <select class="form-control form-control-sm" id="desplegableNivelEducativoAgresor">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option *ngFor="let option of nivelEducativoCatalogo" [ngValue]="option.id">{{
+                      option.descripcion }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>4.9 Situacion de la persona agresora</label>
+                  <select class="form-control form-control-sm" id="desplegableSituacionJuridicaImputado">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option *ngFor="let option of situacionJuridicaImputadoCatalogo" [ngValue]="option.id">{{
+                      option.descripcion }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="form-group">
+                  <label>4.9.1 Numero de años</label>
+                  <input type="number" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-2">
+                <div class="form-group">
+                  <label>4.9.2 Numero de meses</label>
+                  <input type="number" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>4.9.3 Establecimiento penitenciario</label>
+                  <input type="number" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" type="button">
+              SECCION V: LA CARPETA FISCAL Y EL EXPEDIENTE JUDICIAL
+            </button>
+          </h5>
+        </div>
+        <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+          <div class="card-body">
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>5.1 Fecha de la ocurrencia de los hechos</label>
+                  <input type="date" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>5.2 Lugar de la ocurrencia</label>
+                  <select class="form-control form-control-sm" id="desplegableLugarOcurrencia">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option *ngFor="let option of lugarOcurrenciaCatalogo" [ngValue]="option.id">{{
+                      option.descripcion }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>5.3 Direccion de la ocurrencia</label>
+                  <input type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>5.4 Presuntos moviles</label>
+                  <select class="form-control form-control-sm" id="desplegableMovil">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option *ngFor="let option of movilCatalogo" [ngValue]="option.id">{{
+                      option.descripcion }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>5.5 Breve resumen de los hechos</label>
+                  <input type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" type="button">
+              SECCION V: LA CARPETA FISCAL
+            </button>
+          </h5>
+        </div>
+        <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+          <div class="card-body">
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>5.6 Numero de carpeta fiscal</label>
+                  <input type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>5.7 Fiscalia</label>
+                  <input type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>5.8 Fiscal responsable</label>
+                  <input type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>5.9 Delito</label>
+                  <select class="form-control form-control-sm" id="desplegableDelito">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option *ngFor="let option of delitoCatalogo" [ngValue]="option.id">{{
+                      option.descripcion }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>5.9.1 Precisar</label>
+                  <input type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>5.10 Estado procesal del caso</label>
+                  <select class="form-control form-control-sm" id="desplegableEstadoProcesal">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option *ngFor="let option of estadoProcesalCatalogo" [ngValue]="option.id">{{
+                      option.descripcion }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>5.10.1 Precisar</label>
+                  <input type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" type="button">
+              EXPEDIENTE JUDICIAL - PPROCESO ESPECIAL (ANTE JUZGADO DE FAMILIA)
+            </button>
+          </h5>
+        </div>
+        <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+          <div class="card-body">
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>5.11 Numero de expediente</label>
+                  <input type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>5.12 Juzgado de familia</label>
+                  <input type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>5.13 Nombre del juez de familia responsable</label>
+                  <input type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>5.14 Medidas de proteccion dictadas</label>
+                  <select class="form-control form-control-sm">
+                    <option>Small select</option>
+  
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>5.15 Tipo de violencia</label>
+                  <select class="form-control form-control-sm" id="desplegableViolencia">
+                    <option [ngValue]="0">Seleccionar...</option>
+                    <option *ngFor="let option of violenciaCatalogo" [ngValue]="option.id">{{
+                      option.descripcion }}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>  -->
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" type="button">
+              SECCION VI: LA ASISTENCIA BRINDADA
+            </button>
+          </h5>
+        </div>
+        <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+          <div class="card-body">
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>6.1 Numero de asistencias brindadas - Legal</label>
+                  <input [(ngModel)]="modelFicha.asistLegal" type="number" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>6.1 Numero de asistencias brindadas - Social</label>
+                  <input [(ngModel)]="modelFicha.asistSocial" type="number" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>6.1 Numero de asistencias brindadas - Psicologica</label>
+                  <input [(ngModel)]="modelFicha.asistPsicologica" type="number" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>6.2 Numero de informes multidiciplinarios</label>
+                  <input [(ngModel)]="modelFicha.asistInforEmit" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>6.3 Asistencia legal</label>
+                  <input [(ngModel)]="modelFicha.asistAsistLegaDet" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+  
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>6.4 Asistencia psicologica</label>
+                  <input [(ngModel)]="modelFicha.asistPsicologicaDet" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+            <div class="row pb-3">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>6.5 Asistencia social</label>
+                  <input [(ngModel)]="modelFicha.asistSocialDet" type="text" class="form-control form-control-sm">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingThree">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" type="button">
+              SECCION VII: APRECIACION DE LA VICTIMA RESPECTO AL SISTEMA DE JUSTICIA
+            </button>
+          </h5>
+        </div>
+        <div id="collapseThree" class="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Apreciacion</th>
+                <th scope="col">Marcaje</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">7.1 Atribuye actos de corrupcion al resultado del estado de sus casos.</th>
+                <td><input [(ngModel)]="modelFicha.aprePregunt1" type="number" class="form-control form-control-sm"></td>
+              </tr>
+              <tr>
+                <th scope="row">7.2 Manifiesta haber tenido percanses con el fiscal o el asistente de funcion fiscal</th>
+                <td><input [(ngModel)]="modelFicha.aprePregunt2" type="number" class="form-control form-control-sm"></td>
+              </tr>
+              <tr>
+                <th scope="row">7.3 Señala haber sido discriminada por los operadores de justicia.</th>
+                <td><input [(ngModel)]="modelFicha.aprePregunt3" type="number" class="form-control form-control-sm"></td>
+              </tr>
+              <tr>
+                <th scope="row">7.4 Refiere que la fecha de sus declaraciones ha sido reprogramada en varias
+                  oportunidades.</th>
+                <td><input [(ngModel)]="modelFicha.aprePregunt4" type="number" class="form-control form-control-sm"></td>
+              </tr>
+              <tr>
+                <th scope="row">7.5 Indica que loss operadores de justicia han emitido comentarios que atentan contra su
+                  integridad.</th>
+                <td><input [(ngModel)]="modelFicha.aprePregunt5" type="number" class="form-control form-control-sm"></td>
+              </tr>
+              <tr>
+                <th scope="row">7.6 Esta conforme con la atencion recibida por parte de los operadores de justicia.</th>
+                <td><input [(ngModel)]="modelFicha.aprePregunt6" type="number" class="form-control form-control-sm"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  

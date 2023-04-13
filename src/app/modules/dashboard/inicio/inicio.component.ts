@@ -11,7 +11,7 @@ export class InicioComponent implements OnInit {
   data;
   ngOnInit(): void {
     this.http
-      .get('http://172.16.60.198:8080/api/aplicaciones/info_app')
+      .get('http://localhost:8080/api/aplicaciones/info_app')
       .subscribe((respuesta: any) => (this.data = respuesta));
     console.log(this.data);
   }
