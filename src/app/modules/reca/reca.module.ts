@@ -5,11 +5,13 @@ import { NgbPaginationModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootst
 import { RecaRoutingModule } from './reca-routing.module';
 import { RecaListComponent } from './pages/reca-list/reca-list.component';
 import { RecaRegisterComponent } from './pages/reca-register/reca-register.component';
+import { RecaPrintComponent } from './pages/reca-print/reca-print.component';
 
 @NgModule({
   declarations: [
     RecaListComponent,
-    RecaRegisterComponent
+    RecaRegisterComponent,
+    RecaPrintComponent
   ],
   imports: [
     CommonModule,

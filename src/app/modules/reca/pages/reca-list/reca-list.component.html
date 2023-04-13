@@ -55,7 +55,8 @@
       <td>{{ elemento.nombreAgraviado }}</td>
       <td>{{ elemento.nombreImputado }}</td>
       <td>
-        <a (click)="Registrar()" class="btn btn-primary btn-sm" target="_blank">Registrar</a>
+        <a *ngIf="!elemento.idFichaReca" [routerLink]="['/reca-list/reca-register']" [queryParams]="{id: elemento.idAlerta}" class="btn btn-primary btn-sm" target="_blank">Registrar</a>
+        <a *ngIf="elemento.idFichaReca" [routerLink]="['/reca-list/reca-print']" [queryParams]="{id: elemento.idFichaReca}" class="btn btn-second btn-sm" target="_blank">Ver</a>
       </td>
     </tr>
   </tbody>
