@@ -1,23 +1,32 @@
-.modal-dialog{
+.modal-dialog {
   max-width: 1300px;
-  height:auto;
+  height: auto;
 
 }
+
 .modal-body {
-  overflow:scroll;
-  width:1300px;
+  overflow: scroll;
+  width: 1300px;
 
 }
-.center{
-  text-align:center;
+
+.modal-body-detalle {
+  overflow: scroll;
+
+}
+
+.center {
+  text-align: center;
 }
 
 .estado-pendiente {
   background-color: #FDEBD0;
 }
+
 .estado-accion {
   background-color: #FEF9E7;
 }
+
 .estado-medida {
   background-color: #EAFAF1;
 }

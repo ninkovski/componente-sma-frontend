@@ -17,7 +17,7 @@ export class AlertaAccionMedidaComponent implements OnInit {
   dataDenuncias: RespuestaDenuncias[] = [];
   dataAccion: SelectInterface[] = [];
   dataMedida: SelectInterface[] = [];
-  alertaMedida: AlertaMedida[] = [];
+  dataAlertaMedida: AlertaMedida[] = [];
 
   dataModal: dataModalInterfase = {
     display: 'none',
@@ -28,6 +28,14 @@ export class AlertaAccionMedidaComponent implements OnInit {
     detalle: '',
   };
   dataModalDenuncias: dataModalInterfase = {
+    display: 'none',
+    esAccion: false,
+    alertaId: 0,
+    selectId: 0,
+    selectList: [],
+    detalle: '',
+  };
+  dataModalAccionMedida: dataModalInterfase = {
     display: 'none',
     esAccion: false,
     alertaId: 0,
@@ -123,20 +131,20 @@ export class AlertaAccionMedidaComponent implements OnInit {
     this.dataModal.detalle = '';
   }
 
-  cantidadAlertaProteccion(alertaId: number) {
-    var cantidadAlertas: number;
-    var cantidadMedidas: number;
-
+  openModalAlertaDetalle(alertaId: number) {
+    this.dataModalAccionMedida.display = 'block';
     this.http
       .get(
         'http://localhost:8082/api-integrador/alertas/alerta-accion-proteccion/' +
           alertaId
       )
       .subscribe((respuesta: any) => {
-        this.alertaMedida = respuesta.data;
+        this.dataAlertaMedida = respuesta.data;
       });
   }
-
+  cerrarModalAlertaDetalle() {
+    this.dataModalAccionMedida.display = 'none';
+  }
   openModalDenuncias(tipo: string, alertaId: number) {
     this.dataModalDenuncias.display = 'block';
     this.dataModal.alertaId = alertaId;
@@ -169,16 +177,16 @@ export class AlertaAccionMedidaComponent implements OnInit {
           usuarioRegistro: 'demo',
           fechaRegistro: now.toLocaleDateString(),
         };
-        
-      this.http
-        .post(
-          'http://localhost:8082/api-integrador/alertas/alerta-accion',
-          data
-        )
-        .subscribe((respuesta: any) => {
-          alert('Se grabo con exito.');
-          this.dataModal.display = 'none';
-        });
+
+        this.http
+          .post(
+            'http://localhost:8082/api-integrador/alertas/alerta-accion',
+            data
+          )
+          .subscribe((respuesta: any) => {
+            alert('Se grabo con exito.');
+            this.dataModal.display = 'none';
+          });
       } else {
         data = {
           idAlerta: this.dataModal.alertaId,
@@ -189,18 +197,17 @@ export class AlertaAccionMedidaComponent implements OnInit {
           usuarioRegistro: 'demo',
           fechaRegistro: now.toLocaleDateString(),
         };
-        
-      this.http
-        .post(
-          'http://localhost:8082/api-integrador/alertas/alerta-proteccion',
-          data
-        )
-        .subscribe((respuesta: any) => {
-          alert('Se grabo con exito.');
-          this.dataModal.display = 'none';
-        });
-      }
 
+        this.http
+          .post(
+            'http://localhost:8082/api-integrador/alertas/alerta-proteccion',
+            data
+          )
+          .subscribe((respuesta: any) => {
+            alert('Se grabo con exito.');
+            this.dataModal.display = 'none';
+          });
+      }
     }
   }
 }

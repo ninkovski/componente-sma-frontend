@@ -46,10 +46,10 @@
   </thead>
   <tbody>
     <!-- <tr *ngFor="let elemento of dataPagination"> -->
-      <tr *ngFor="let elemento of dataPagination" [ngClass]="{
-        'estado-pendiente': elemento.idEstado === 1, 
+    <tr *ngFor="let elemento of dataPagination" [ngClass]="{
+        'estado-pendiente': elemento.idEstado === 1,
         'estado-accion': elemento.idEstado === 2,
-        'estado-medida': elemento.idEstado === 3  
+        'estado-medida': elemento.idEstado === 3
       }">
 
       <th scope="row">{{ elemento.id | number }}</th>
@@ -70,6 +70,8 @@
           (click)="openModal('Medida', elemento.idAlerta)">Medida</button>
         <button type="button" class="btn btn-warning btn-sm"
           (click)="openModalDenuncias('Denuncias', elemento.idAlerta)">Denuncias</button>
+        <button type="button" class="btn btn-danger btn-sm" (click)="openModalAlertaDetalle(elemento.idAlerta)">Detalle
+          Alerta</button>
       </td>
     </tr>
   </tbody>
@@ -162,6 +164,35 @@
         </table>
         <div class="center">
           <button type="button" class="btn btn-primary btn-sm" (click)="cerrarModalDenuncias()">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" tabindex="-1" role="dialog" [style.display]="dataModalAccionMedida.display">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body-detalle">
+
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col"> Nro </th>
+              <th scope="col"> Descripcion </th>
+              <th scope="col"> Tipo Medida </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let elemento of dataAlertaMedida; let i = index">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ elemento.descripcion}}</td>
+              <td>{{ elemento.tipo === 'A' ? 'Alerta' : elemento.tipo === 'MP' ? 'Medida de Proteción':''}}</td>
+
+            </tr>
+          </tbody>
+        </table>
+        <div class="center">
+          <button type="button" class="btn btn-primary btn-sm" (click)="cerrarModalAlertaDetalle()">Ok</button>
         </div>
       </div>
     </div>
