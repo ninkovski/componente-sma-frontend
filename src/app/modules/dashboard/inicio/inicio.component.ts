@@ -10,9 +10,10 @@ export class InicioComponent implements OnInit {
   constructor(private http: HttpClient) {}
   data;
   ngOnInit(): void {
-    this.http
-      .get('http://localhost:8080/api/aplicaciones/info_app')
-      .subscribe((respuesta: any) => (this.data = respuesta));
-    console.log(this.data);
+    // TODO: remove comments
+    // this.http
+    //   .get('http://localhost:8080/api/aplicaciones/info_app')
+    //   .subscribe((respuesta: any) => (this.data = respuesta));
+    // console.log(this.data);
   }
 }

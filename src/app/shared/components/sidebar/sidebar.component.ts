@@ -107,21 +107,140 @@ export class SidebarComponent implements OnInit {
     }
 
     getMenu(){
-        this.cargado_menu = false;
-        this.authApiService.menuJerarquico().subscribe(
-          res=> {
-            this.menus = res;
-            this.cargado_menu = true;
-            $.getScript('./assets/js/app-sidebar.js');
-            this.zIndex = 'zIndex999';
-            this.loading = false;
-          },
-          error=> {
-            this.cargado_menu = true;
-            this.loading = false;
-            this.msgs.error(error);
-          }
-        );
+      this.menus = [
+        {
+                    "id": 4605,
+                    "title": "Alertas",
+                    "icon": "fa fa-home",
+                    "routerLink": "/alertas",
+                    "target": null,
+                    "clase": "sub",
+                    "badge": "",
+                    "badgeClase": "",
+                    "children": [
+                        {
+                            "id": 4610,
+                            "title": "Registro de acciones y medidas.",
+                            "icon": "",
+                            "routerLink": "/alertas",
+                            "target": null,
+                            "clase": "",
+                            "badge": "",
+                            "badgeClase": "",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "id": 4607,
+                    "title": "RECA",
+                    "icon": "fa fa-home",
+                    "routerLink": "/reca-list",
+                    "target": null,
+                    "clase": "sub",
+                    "badge": "",
+                    "badgeClase": "",
+                    "children": [
+                        {
+                            "id": 4610,
+                            "title": "Registro de ficha RECA.",
+                            "icon": "",
+                            "routerLink": "/reca-list",
+                            "target": null,
+                            "clase": "",
+                            "badge": "",
+                            "badgeClase": "",
+                            "children": []
+                        }
+                    ]
+                },          {
+                    "id": 4608,
+                    "title": "Dashboard",
+                    "icon": "fa fa-home",
+                    "routerLink": "/dashboard",
+                    "target": null,
+                    "clase": "sub",
+                    "badge": "",
+                    "badgeClase": "",
+                    "children": [
+                        {
+                            "id": 4611,
+                            "title": "Principal",
+                            "icon": "",
+                            "routerLink": "/dashboard/principal",
+                            "target": null,
+                            "clase": "",
+                            "badge": "",
+                            "badgeClase": "",
+                            "children": []
+                        },
+                        {
+                            "id": 4612,
+                            "title": "Dashboard 1",
+                            "icon": "",
+                            "routerLink": "/dashboard/dashboard",
+                            "target": null,
+                            "clase": "",
+                            "badge": "",
+                            "badgeClase": "",
+                            "children": []
+                        },
+                        {
+                            "id": 4613,
+                            "title": "Dashboard 2",
+                            "icon": "",
+                            "routerLink": "/dashboard/dashboardii",
+                            "target": null,
+                            "clase": "",
+                            "badge": "",
+                            "badgeClase": "",
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "id": 4606,
+                    "title": "Reportes",
+                    "icon": "fa fa-home",
+                    "routerLink": "/reportes",
+                    "target": null,
+                    "clase": "sub",
+                    "badge": "",
+                    "badgeClase": "",
+                    "children": [
+                        {
+                            "id": 4607,
+                            "title": "Reporte de alertas",
+                            "icon": "fa fa-home",
+                            "routerLink": "/reportes/alertas",
+                            "target": null,
+                            "clase": "",
+                            "badge": "",
+                            "badgeClase": "",
+                            "children": []
+                        }
+                    ]
+                }
+            ];
+      this.cargado_menu = true;
+      $.getScript('./assets/js/app-sidebar.js');
+      this.zIndex = 'zIndex999';
+      this.loading = false;
+        // this.cargado_menu = false;
+        // this.authApiService.menuJerarquico().subscribe(
+        //   res=> {
+        //     this.menus = res;
+        //     this.cargado_menu = true;
+        //     $.getScript('./assets/js/app-sidebar.js');
+        //     this.zIndex = 'zIndex999';
+        //     this.loading = false;
+        //   },
+        //   error=> {
+        //     this.cargado_menu = true;
+        //     this.loading = false;
+        //     this.msgs.error(error);
+        //   }
+        // );
     }
 
     cerrarConfirm(){

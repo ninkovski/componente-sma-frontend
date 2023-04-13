@@ -40,12 +40,13 @@ export class AppsComponent implements OnInit {
     }
 
     getRutasAcceso(){
-        this.authApiService.rutasAcceso().subscribe(
-          res=> {
-            this.rutas = res;
-          },
-          error=> {
-          }
-        );
+		// TODO: remove comments
+        // this.authApiService.rutasAcceso().subscribe(
+        //   res=> {
+        //     this.rutas = res;
+        //   },
+        //   error=> {
+        //   }
+        // );
     }
 }

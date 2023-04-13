@@ -145,7 +145,7 @@ export class AlertaAccionMedidaComponent implements OnInit {
 
       this.http
         .post(
-          'http://localhost:8082/api-integrador/alertas/accion-proteccion',
+          'http://localhost:8082/api-integrador/alertas/alerta-proteccion',
           data
         )
         .subscribe((respuesta: any) => {
@@ -153,5 +153,9 @@ export class AlertaAccionMedidaComponent implements OnInit {
           this.dataModal.display = 'none';
         });
     }
+  }
+
+  cancelaAccionMedida() {
+    this.dataModal.display = 'none';
   }
 }
