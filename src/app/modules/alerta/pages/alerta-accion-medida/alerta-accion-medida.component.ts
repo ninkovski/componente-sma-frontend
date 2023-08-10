@@ -56,7 +56,7 @@ export class AlertaAccionMedidaComponent implements OnInit {
 
   ngOnInit(): void {
     this.http
-      .get('http://localhost:8082/api-integrador/alertas/accion')
+      .get('http://172.16.60.98:7007/api-integrador/alertas/accion')
       .subscribe((respuesta: any) => {
         if (respuesta.data.length > 0) {
           respuesta.data.forEach((element) => {
@@ -69,7 +69,7 @@ export class AlertaAccionMedidaComponent implements OnInit {
       });
 
     this.http
-      .get('http://localhost:8082/api-integrador/alertas/proteccion')
+      .get('http://172.16.60.98:7007/api-integrador/alertas/proteccion')
       .subscribe((respuesta: any) => {
         if (respuesta.data.length > 0) {
           respuesta.data.forEach((element) => {
@@ -97,7 +97,7 @@ export class AlertaAccionMedidaComponent implements OnInit {
     var filtro_fecha = `?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`;
 
     this.http
-      .get('http://localhost:8082/api-integrador/alertas' + filtro_fecha)
+      .get('http://172.16.60.98:7007/api-integrador/alertas' + filtro_fecha)
       .subscribe(async (respuesta: any) => {
         this.data = respuesta.data;
         this.collectionSize = this.data.length;
@@ -135,7 +135,7 @@ export class AlertaAccionMedidaComponent implements OnInit {
     this.dataModalAccionMedida.display = 'block';
     this.http
       .get(
-        'http://localhost:8082/api-integrador/alertas/alerta-accion-proteccion/' +
+        'http://172.16.60.98:7007/api-integrador/alertas/alerta-accion-proteccion/' +
           alertaId
       )
       .subscribe((respuesta: any) => {
@@ -151,7 +151,7 @@ export class AlertaAccionMedidaComponent implements OnInit {
 
     this.http
       .get(
-        'http://localhost:8082/api-integrador/denuncias?idAlerta=' + alertaId
+        'http://172.16.60.98:7007/api-integrador/denuncias?idAlerta=' + alertaId
       )
       .subscribe((respuesta: any) => {
         this.dataDenuncias = respuesta.data;
@@ -180,7 +180,7 @@ export class AlertaAccionMedidaComponent implements OnInit {
 
         this.http
           .post(
-            'http://localhost:8082/api-integrador/alertas/alerta-accion',
+            'http://172.16.60.98:7007/api-integrador/alertas/alerta-accion',
             data
           )
           .subscribe((respuesta: any) => {
@@ -200,7 +200,7 @@ export class AlertaAccionMedidaComponent implements OnInit {
 
         this.http
           .post(
-            'http://localhost:8082/api-integrador/alertas/alerta-proteccion',
+            'http://172.16.60.98:7007/api-integrador/alertas/alerta-proteccion',
             data
           )
           .subscribe((respuesta: any) => {

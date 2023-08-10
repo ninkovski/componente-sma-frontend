@@ -150,156 +150,194 @@ export class DashboardIIComponent implements OnInit {
     const anioHasta = formatDate(this.parametro.fecha_fin, "yyyy", this.locale);
 
     this.http
-      .get(`http://localhost:8082/api-integrador/dashboards/acciones-fiscales-anio?anioInicio=${anioDesde}&anioFin=${anioHasta}`)
+      .get(
+        `http://172.16.60.98:7007/api-integrador/dashboards/acciones-fiscales-anio?anioInicio=${anioDesde}&anioFin=${anioHasta}`
+      )
       .subscribe((respuesta: any) => {
         var arrayYear = [];
         var arraySerie = [];
 
-        if(respuesta.metadata.status == 200 && respuesta.data.length > 0) {
-          respuesta.data.forEach(elemento => {
+        if (respuesta.metadata.status == 200 && respuesta.data.length > 0) {
+          respuesta.data.forEach((elemento) => {
             var data = [];
 
             arrayYear.push(`${elemento.anio} - ${elemento.accion}`);
             data.push(elemento.cantidad);
-            arraySerie.push({ name: `${elemento.anio}`, type: "column", data: data });
+            arraySerie.push({
+              name: `${elemento.anio}`,
+              type: 'column',
+              data: data,
+            });
           });
         }
 
         this.chartAccionAnioOptions.xAxis = {
           categories: arrayYear,
           title: {
-            text: null
-          }
+            text: null,
+          },
         };
         this.chartAccionAnioOptions.series = arraySerie;
         this.updateAccionAnio = true;
       });
 
     this.http
-      .get(`http://localhost:8082/api-integrador/dashboards/victimas-potenciales-ranking-periodo?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`)
+      .get(
+        `http://172.16.60.98:7007/api-integrador/dashboards/victimas-potenciales-ranking-periodo?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`
+      )
       .subscribe((respuesta: any) => {
         var arrayYear = [];
         var arraySerie = [];
 
-        if(respuesta.metadata.status == 200 && respuesta.data.length > 0) {
-          respuesta.data.forEach(elemento => {
+        if (respuesta.metadata.status == 200 && respuesta.data.length > 0) {
+          respuesta.data.forEach((elemento) => {
             var data = [];
 
             arrayYear.push(`${elemento.periodo} - ${elemento.distrito}`);
             data.push(elemento.cantidad);
-            arraySerie.push({ name: `${elemento.periodo} - ${elemento.distrito}`, type: "column", data: data });
+            arraySerie.push({
+              name: `${elemento.periodo} - ${elemento.distrito}`,
+              type: 'column',
+              data: data,
+            });
           });
         }
 
         this.chartAccionPeriodoOptions.xAxis = {
           categories: arrayYear,
           title: {
-            text: null
-          }
+            text: null,
+          },
         };
         this.chartAccionPeriodoOptions.series = arraySerie;
         this.updateAccionPeriodo = true;
       });
 
     this.http
-      .get(`http://localhost:8082/api-integrador/dashboards/servicios-asistencia-udavit-anio?anioInicio=${anioDesde}&anioFin=${anioHasta}`)
+      .get(
+        `http://172.16.60.98:7007/api-integrador/dashboards/servicios-asistencia-udavit-anio?anioInicio=${anioDesde}&anioFin=${anioHasta}`
+      )
       .subscribe((respuesta: any) => {
         var arrayYear = [];
         var arraySerie = [];
 
-        if(respuesta.metadata.status == 200 && respuesta.data.length > 0) {
-          respuesta.data.forEach(elemento => {
+        if (respuesta.metadata.status == 200 && respuesta.data.length > 0) {
+          respuesta.data.forEach((elemento) => {
             var data = [];
 
             arrayYear.push(`${elemento.anio}`);
             data.push(elemento.cantidad);
-            arraySerie.push({ name: `${elemento.anio}`, type: "column", data: data });
+            arraySerie.push({
+              name: `${elemento.anio}`,
+              type: 'column',
+              data: data,
+            });
           });
         }
 
         this.chartAsistenciaAnioOptions.xAxis = {
           categories: arrayYear,
           title: {
-            text: null
-          }
+            text: null,
+          },
         };
         this.chartAsistenciaAnioOptions.series = arraySerie;
         this.updateAsistenciaAnio = true;
       });
 
     this.http
-      .get(`http://localhost:8082/api-integrador/dashboards/servicios-asistencia-udavit-periodo?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`)
+      .get(
+        `http://172.16.60.98:7007/api-integrador/dashboards/servicios-asistencia-udavit-periodo?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`
+      )
       .subscribe((respuesta: any) => {
         var arrayYear = [];
         var arraySerie = [];
 
-        if(respuesta.metadata.status == 200 && respuesta.data.length > 0) {
-          respuesta.data.forEach(elemento => {
+        if (respuesta.metadata.status == 200 && respuesta.data.length > 0) {
+          respuesta.data.forEach((elemento) => {
             var data = [];
 
             arrayYear.push(`${elemento.periodo}`);
             data.push(elemento.cantidad);
-            arraySerie.push({ name: `${elemento.periodo}`, type: "column", data: data });
+            arraySerie.push({
+              name: `${elemento.periodo}`,
+              type: 'column',
+              data: data,
+            });
           });
         }
 
         this.chartAsistenciaPeriodoOptions.xAxis = {
           categories: arrayYear,
           title: {
-            text: null
-          }
+            text: null,
+          },
         };
         this.chartAsistenciaPeriodoOptions.series = arraySerie;
         this.updateAsistenciaPeriodo = true;
       });
 
     this.http
-      .get(`http://localhost:8082/api-integrador/dashboards/medidas-proteccion-anio?anioInicio=${anioDesde}&anioFin=${anioHasta}`)
+      .get(
+        `http://172.16.60.98:7007/api-integrador/dashboards/medidas-proteccion-anio?anioInicio=${anioDesde}&anioFin=${anioHasta}`
+      )
       .subscribe((respuesta: any) => {
         var arrayYear = [];
         var arraySerie = [];
 
-        if(respuesta.metadata.status == 200 && respuesta.data.length > 0) {
-          respuesta.data.forEach(elemento => {
+        if (respuesta.metadata.status == 200 && respuesta.data.length > 0) {
+          respuesta.data.forEach((elemento) => {
             var data = [];
 
             arrayYear.push(`${elemento.anio} - ${elemento.medidaProteccion}`);
             data.push(elemento.cantidad);
-            arraySerie.push({ name: `${elemento.anio} - ${elemento.medidaProteccion}`, type: "column", data: data });
+            arraySerie.push({
+              name: `${elemento.anio} - ${elemento.medidaProteccion}`,
+              type: 'column',
+              data: data,
+            });
           });
         }
 
         this.chartServicioAnioOptions.xAxis = {
           categories: arrayYear,
           title: {
-            text: null
-          }
+            text: null,
+          },
         };
         this.chartServicioAnioOptions.series = arraySerie;
         this.updateServicioAnio = true;
       });
 
     this.http
-      .get(`http://localhost:8082/api-integrador/dashboards/medidas-proteccion-periodo?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`)
+      .get(
+        `http://172.16.60.98:7007/api-integrador/dashboards/medidas-proteccion-periodo?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`
+      )
       .subscribe((respuesta: any) => {
         var arrayYear = [];
         var arraySerie = [];
 
-        if(respuesta.metadata.status == 200 && respuesta.data.length > 0) {
-          respuesta.data.forEach(elemento => {
+        if (respuesta.metadata.status == 200 && respuesta.data.length > 0) {
+          respuesta.data.forEach((elemento) => {
             var data = [];
 
-            arrayYear.push(`${elemento.periodo} - ${elemento.medidaProteccion}`);
+            arrayYear.push(
+              `${elemento.periodo} - ${elemento.medidaProteccion}`
+            );
             data.push(elemento.cantidad);
-            arraySerie.push({ name: `${elemento.periodo} - ${elemento.medidaProteccion}`, type: "column", data: data });
+            arraySerie.push({
+              name: `${elemento.periodo} - ${elemento.medidaProteccion}`,
+              type: 'column',
+              data: data,
+            });
           });
         }
 
         this.chartServicioPeriodoOptions.xAxis = {
           categories: arrayYear,
           title: {
-            text: null
-          }
+            text: null,
+          },
         };
         this.chartServicioPeriodoOptions.series = arraySerie;
         this.updateServicioPeriodo = true;

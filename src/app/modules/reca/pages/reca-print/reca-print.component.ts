@@ -186,7 +186,7 @@ export class RecaPrintComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.modelFicha.idTbFichaReca);
     this.http
-      .get(`http://localhost:8082/api-integrador/fichas-reca?codigo=${this.modelFicha.idTbFichaReca}`)
+      .get(`http://172.16.60.98:7007/api-integrador/fichas-reca?codigo=${this.modelFicha.idTbFichaReca}`)
       .subscribe((respuesta: any) => {
         if (respuesta != null && respuesta.data.length == 1)  {
           this.modelFicha = respuesta.data[0];
@@ -198,7 +198,7 @@ export class RecaPrintComponent implements OnInit {
 
   getCatalogo(catalogoID: number) {
     this.http
-      .get('http://localhost:8082/api-integrador/catalogos', {
+      .get('http://172.16.60.98:7007/api-integrador/catalogos', {
         params: {
           codigoPadre: catalogoID,
         },

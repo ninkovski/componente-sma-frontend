@@ -169,70 +169,84 @@ export class DashboardComponent implements OnInit {
     const anioHasta = formatDate(this.parametro.fecha_fin, "yyyy", this.locale);
 
     this.http
-      .get(`http://localhost:8082/api-integrador/dashboards/activacion-alerta-anio?anioInicio=${anioDesde}&anioFin=${anioHasta}`)
+      .get(
+        `http://172.16.60.98:7007/api-integrador/dashboards/activacion-alerta-anio?anioInicio=${anioDesde}&anioFin=${anioHasta}`
+      )
       .subscribe((respuesta: any) => {
         var arrayYear = [];
         var arraySerie = [];
 
-        if(respuesta.metadata.status == 200 && respuesta.data.length > 0) {
-          respuesta.data.forEach(elemento => {
+        if (respuesta.metadata.status == 200 && respuesta.data.length > 0) {
+          respuesta.data.forEach((elemento) => {
             var data = [];
 
             arrayYear.push(`${elemento.anio}`);
             data.push(elemento.cantidad);
-            arraySerie.push({ name: `${elemento.anio}`, type: "column", data: data });
+            arraySerie.push({
+              name: `${elemento.anio}`,
+              type: 'column',
+              data: data,
+            });
           });
         }
 
         this.chartAlertasAnioOptions.xAxis = {
           categories: arrayYear,
           title: {
-            text: null
-          }
+            text: null,
+          },
         };
         this.chartAlertasAnioOptions.series = arraySerie;
         this.updateAlertaAnio = true;
       });
-    
+
     this.http
-      .get(`http://localhost:8082/api-integrador/dashboards/activacion-alerta-periodo?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`)
+      .get(
+        `http://172.16.60.98:7007/api-integrador/dashboards/activacion-alerta-periodo?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`
+      )
       .subscribe((respuesta: any) => {
         var arrayYear = [];
         var arraySerie = [];
 
-        if(respuesta.metadata.status == 200 && respuesta.data.length > 0) {
-          respuesta.data.forEach(elemento => {
+        if (respuesta.metadata.status == 200 && respuesta.data.length > 0) {
+          respuesta.data.forEach((elemento) => {
             var data = [];
 
             arrayYear.push(`${elemento.periodo}`);
             data.push(elemento.cantidad);
-            arraySerie.push({ name: `${elemento.periodo}`, type: "column", data: data });
+            arraySerie.push({
+              name: `${elemento.periodo}`,
+              type: 'column',
+              data: data,
+            });
           });
         }
 
         this.chartAlertasPeriodoOptions.xAxis = {
           categories: arrayYear,
           title: {
-            text: null
-          }
+            text: null,
+          },
         };
         this.chartAlertasPeriodoOptions.series = arraySerie;
         this.updateAlertaPeriodo = true;
       });
 
     this.http
-      .get(`http://localhost:8082/api-integrador/dashboards/activacion-alerta-ranking-anio?anioInicio=${anioDesde}&anioFin=${anioHasta}`)
+      .get(
+        `http://172.16.60.98:7007/api-integrador/dashboards/activacion-alerta-ranking-anio?anioInicio=${anioDesde}&anioFin=${anioHasta}`
+      )
       .subscribe((respuesta: any) => {
         var arrayYear = [];
         var arraySerie = [];
 
-        if(respuesta.metadata.status == 200 && respuesta.data.length > 0) {
+        if (respuesta.metadata.status == 200 && respuesta.data.length > 0) {
           var data = [];
-          respuesta.data.forEach(elemento => {
+          respuesta.data.forEach((elemento) => {
             arrayYear.push(`${elemento.distrito}`);
             data.push(elemento.cantidad);
           });
-          arraySerie.push({ type: "column", data: data });
+          arraySerie.push({ type: 'column', data: data });
         }
 
         console.log(arrayYear);
@@ -241,137 +255,163 @@ export class DashboardComponent implements OnInit {
         this.chartDistritoAnioOptions.xAxis = {
           categories: arrayYear,
           title: {
-            text: null
-          }
+            text: null,
+          },
         };
         this.chartDistritoAnioOptions.series = arraySerie;
         this.updateDistritoAnio = true;
       });
 
     this.http
-      .get(`http://localhost:8082/api-integrador/dashboards/activacion-alerta-ranking-periodo?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`)
+      .get(
+        `http://172.16.60.98:7007/api-integrador/dashboards/activacion-alerta-ranking-periodo?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`
+      )
       .subscribe((respuesta: any) => {
         var arrayYear = [];
         var arraySerie = [];
 
-        if(respuesta.metadata.status == 200 && respuesta.data.length > 0) {
+        if (respuesta.metadata.status == 200 && respuesta.data.length > 0) {
           var data = [];
-          respuesta.data.forEach(elemento => {
+          respuesta.data.forEach((elemento) => {
             arrayYear.push(`${elemento.periodo} - ${elemento.distrito}`);
             data.push(elemento.cantidad);
           });
-          arraySerie.push({ type: "column", data: data });
+          arraySerie.push({ type: 'column', data: data });
         }
 
         this.chartDistritoPeriodoOptions.xAxis = {
           categories: arrayYear,
           title: {
-            text: null
-          }
+            text: null,
+          },
         };
         this.chartDistritoPeriodoOptions.series = arraySerie;
         this.updateDistritoPeriodo = true;
       });
 
     this.http
-      .get(`http://localhost:8082/api-integrador/dashboards/victimas-potenciales-anio?anioInicio=${anioDesde}&anioFin=${anioHasta}`)
+      .get(
+        `http://172.16.60.98:7007/api-integrador/dashboards/victimas-potenciales-anio?anioInicio=${anioDesde}&anioFin=${anioHasta}`
+      )
       .subscribe((respuesta: any) => {
         var arrayYear = [];
         var arraySerie = [];
 
-        if(respuesta.metadata.status == 200 && respuesta.data.length > 0) {
-          respuesta.data.forEach(elemento => {
+        if (respuesta.metadata.status == 200 && respuesta.data.length > 0) {
+          respuesta.data.forEach((elemento) => {
             var data = [];
 
             arrayYear.push(`${elemento.anio}`);
             data.push(elemento.cantidad);
-            arraySerie.push({ name: `${elemento.anio}`, type: "column", data: data });
+            arraySerie.push({
+              name: `${elemento.anio}`,
+              type: 'column',
+              data: data,
+            });
           });
         }
 
         this.chartVictimaAnioOptions.xAxis = {
           categories: arrayYear,
           title: {
-            text: null
-          }
+            text: null,
+          },
         };
         this.chartVictimaAnioOptions.series = arraySerie;
         this.updateVictimeAnio = true;
       });
 
     this.http
-      .get(`http://localhost:8082/api-integrador/dashboards/victimas-potenciales-periodo?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`)
+      .get(
+        `http://172.16.60.98:7007/api-integrador/dashboards/victimas-potenciales-periodo?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`
+      )
       .subscribe((respuesta: any) => {
         var arrayYear = [];
         var arraySerie = [];
 
-        if(respuesta.metadata.status == 200 && respuesta.data.length > 0) {
-          respuesta.data.forEach(elemento => {
+        if (respuesta.metadata.status == 200 && respuesta.data.length > 0) {
+          respuesta.data.forEach((elemento) => {
             var data = [];
 
             arrayYear.push(`${elemento.periodo}`);
             data.push(elemento.cantidad);
-            arraySerie.push({ name: `${elemento.periodo}`, type: "column", data: data });
+            arraySerie.push({
+              name: `${elemento.periodo}`,
+              type: 'column',
+              data: data,
+            });
           });
         }
 
         this.chartVictimaPeriodoOptions.xAxis = {
           categories: arrayYear,
           title: {
-            text: null
-          }
+            text: null,
+          },
         };
         this.chartVictimaPeriodoOptions.series = arraySerie;
         this.updateVictimePeriodo = true;
       });
 
     this.http
-      .get(`http://localhost:8082/api-integrador/dashboards/victimas-potenciales-ranking-anio?anioInicio=${anioDesde}&anioFin=${anioHasta}`)
+      .get(
+        `http://172.16.60.98:7007/api-integrador/dashboards/victimas-potenciales-ranking-anio?anioInicio=${anioDesde}&anioFin=${anioHasta}`
+      )
       .subscribe((respuesta: any) => {
         var arrayYear = [];
         var arraySerie = [];
 
-        if(respuesta.metadata.status == 200 && respuesta.data.length > 0) {
-          respuesta.data.forEach(elemento => {
+        if (respuesta.metadata.status == 200 && respuesta.data.length > 0) {
+          respuesta.data.forEach((elemento) => {
             var data = [];
 
             arrayYear.push(`${elemento.anio} - ${elemento.distrito}`);
             data.push(elemento.cantidad);
-            arraySerie.push({ name: `${elemento.anio} - ${elemento.distrito}`, type: "column", data: data });
+            arraySerie.push({
+              name: `${elemento.anio} - ${elemento.distrito}`,
+              type: 'column',
+              data: data,
+            });
           });
         }
 
         this.chartVictimaDistritoAnioOptions.xAxis = {
           categories: arrayYear,
           title: {
-            text: null
-          }
+            text: null,
+          },
         };
         this.chartVictimaDistritoAnioOptions.series = arraySerie;
         this.updateVictimaDistritoAnio = true;
       });
 
     this.http
-      .get(`http://localhost:8082/api-integrador/dashboards/victimas-potenciales-ranking-periodo?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`)
+      .get(
+        `http://172.16.60.98:7007/api-integrador/dashboards/victimas-potenciales-ranking-periodo?fechaInicio=${fechaDesde}&fechaFin=${fechaHasta}`
+      )
       .subscribe((respuesta: any) => {
         var arrayYear = [];
         var arraySerie = [];
 
-        if(respuesta.metadata.status == 200 && respuesta.data.length > 0) {
-          respuesta.data.forEach(elemento => {
+        if (respuesta.metadata.status == 200 && respuesta.data.length > 0) {
+          respuesta.data.forEach((elemento) => {
             var data = [];
 
             arrayYear.push(`${elemento.periodo} - ${elemento.distrito}`);
             data.push(elemento.cantidad);
-            arraySerie.push({ name: `${elemento.periodo} - ${elemento.distrito}`, type: "column", data: data });
+            arraySerie.push({
+              name: `${elemento.periodo} - ${elemento.distrito}`,
+              type: 'column',
+              data: data,
+            });
           });
         }
 
         this.chartVictimaDistritoPeriodoOptions.xAxis = {
           categories: arrayYear,
           title: {
-            text: null
-          }
+            text: null,
+          },
         };
         this.chartVictimaDistritoPeriodoOptions.series = arraySerie;
         this.updateVictimaDistritoPeriodo = true;
